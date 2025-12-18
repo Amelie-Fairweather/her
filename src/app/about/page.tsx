@@ -17,6 +17,35 @@ export default function About() {
 
       {/* Main Content */}
       <main className="max-w-4xl mx-auto px-4 py-8 md:py-16">
+        {/* News Feature Video Section */}
+        <section className="mb-16">
+          <div className="bg-white rounded-lg shadow-lg p-4 md:p-6 max-w-2xl mx-auto">
+            <h2 className="text-xl md:text-2xl font-bold text-[#EB89B5] mb-3 md:mb-4 text-center">
+              Watch our recent news feature
+            </h2>
+            <div className="aspect-video w-full overflow-hidden rounded-lg shadow-md bg-gray-100">
+              <iframe
+                src="https://www.wcax.com/2025/11/17/cvu-students-push-womens-history-curriculum/"
+                title="CVU students push for women's history curriculum"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="w-full h-full border-0"
+                loading="lazy"
+              ></iframe>
+            </div>
+            <div className="mt-3 text-center">
+              <a
+                href="https://www.wcax.com/2025/11/17/cvu-students-push-womens-history-curriculum/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#EB89B5] hover:text-[#C76B99] transition-colors text-sm underline"
+              >
+                Read the full article on WCAX
+              </a>
+            </div>
+          </div>
+        </section>
+
         {/* Resources Section */}
         <section className="mb-16">
           <div className="bg-white rounded-lg shadow-lg p-4 md:p-8">

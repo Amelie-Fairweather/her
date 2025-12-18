@@ -237,13 +237,13 @@ export default function Involved() {
                         stroke="#EB89B5"
                         strokeWidth="8"
                         strokeDasharray={`${2 * Math.PI * 40}`}
-                        strokeDashoffset={`${2 * Math.PI * 40 * (1 - 610.25 / 1000)}`}
+                        strokeDashoffset={`${2 * Math.PI * 40 * (1 - 730 / 1000)}`}
                         strokeLinecap="round"
                       />
                     </svg>
                     <div className="absolute inset-0 flex items-center justify-center">
                       <div className="text-center">
-                        <div className="text-2xl font-bold text-[#EB89B5]">$610.25</div>
+                        <div className="text-2xl font-bold text-[#EB89B5]">$730</div>
                         <div className="text-sm text-gray-600">of $1000</div>
                       </div>
                     </div>
