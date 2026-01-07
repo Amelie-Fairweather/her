@@ -12,7 +12,7 @@ export default function Events() {
     {
       id: 1,
       title: "Weekly HER Club Meeting",
-      date: "November 6, 2025",
+      date: "January 9, 2026",
       time: "10:00 AM - 10:30 AM",
       location: "CVU Room 134",
       description: "Regular club meeting to discuss upcoming initiatives and plan future events.",
@@ -22,7 +22,7 @@ export default function Events() {
     {
       id: 2,
       title: "Weekly HER Club Meeting",
-      date: "November 13, 2025",
+      date: "January 16, 2026",
       time: "10:00 AM - 10:30 AM",
       location: "CVU Room 134",
       description: "Regular club meeting to discuss upcoming initiatives and plan future events.",
@@ -31,6 +31,16 @@ export default function Events() {
     },
     {
       id: 3,
+      title: "Presentation at Wake Robin",
+      date: "Late January - Early February 2026",
+      time: "TBD",
+      location: "Wake Robin",
+      description: "HER club members will be presenting to the Wake Robin community about our mission and women's history education.",
+      type: "Special Event",
+      rsvpRequired: false
+    },
+    {
+      id: 4,
       title: "Event to Include Women in the Curriculum",
       date: "November 12, 2025",
       time: "5:30 PM - 8:00 PM",
@@ -42,63 +52,13 @@ export default function Events() {
       catering: "Catered by Folino's"
     },
     {
-      id: 7,
+      id: 5,
       title: "Social Studies Presentation",
       date: "November 19, 2025",
       time: "3:00 PM - 3:30 PM",
       location: "CVU",
       description: "Club members will be presenting survey results and discussing implementation.",
       type: "Special Event",
-      rsvpRequired: false
-    },
-    {
-      id: 4,
-      title: "Weekly HER Club Meeting",
-      date: "November 20, 2025",
-      time: "10:00 AM - 10:30 AM",
-      location: "CVU Room 134",
-      description: "Regular club meeting to discuss upcoming initiatives and plan future events.",
-      type: "Club Meeting",
-      rsvpRequired: false
-    },
-    {
-      id: 5,
-      title: "Weekly HER Club Meeting",
-      date: "November 27, 2025",
-      time: "10:00 AM - 10:30 AM",
-      location: "CVU Room 134",
-      description: "Regular club meeting to discuss upcoming initiatives and plan future events.",
-      type: "Club Meeting",
-      rsvpRequired: false
-    },
-    {
-      id: 6,
-      title: "Weekly HER Club Meeting",
-      date: "December 4, 2025",
-      time: "10:00 AM - 10:30 AM",
-      location: "CVU Room 134",
-      description: "Regular club meeting to discuss upcoming initiatives and plan future events.",
-      type: "Club Meeting",
-      rsvpRequired: false
-    },
-    {
-      id: 8,
-      title: "Weekly HER Club Meeting",
-      date: "December 11, 2025",
-      time: "10:00 AM - 10:30 AM",
-      location: "CVU Room 134",
-      description: "Regular club meeting to discuss upcoming initiatives and plan future events.",
-      type: "Club Meeting",
-      rsvpRequired: false
-    },
-    {
-      id: 9,
-      title: "Weekly HER Club Meeting",
-      date: "December 18, 2025",
-      time: "10:00 AM - 10:30 AM",
-      location: "CVU Room 134",
-      description: "Regular club meeting to discuss upcoming initiatives and plan future events.",
-      type: "Club Meeting",
       rsvpRequired: false
     }
   ]

@@ -32,7 +32,8 @@ const mediaArticles = [
   {
     title: "HER Club Feature - Media Factory",
     source: "Media Factory CVSD",
-    description: "Video feature documenting the HER club's activities and advocacy for women's history education. Skip ahead to 11:30 for our segment.",
+    description: "Video feature documenting the HER club's activities and advocacy for women's history education.",
+    extraInfo: "Skip ahead to 11:30 for our segment.",
     url: "https://www.mediafactory.org/cvsd?modal=48,episode,238683",
     type: "video"
   }
@@ -93,6 +94,9 @@ export default function MediaCoverage() {
                 </h3>
                 <p className="text-gray-600 text-sm leading-relaxed mb-4">
                   {article.description}
+                  {article.extraInfo && (
+                    <> Skip ahead to <span className="font-bold">11:30</span> for our segment.</>
+                  )}
                 </p>
                 <div className="flex items-center text-[#EB89B5] font-semibold text-sm">
                   <span>Read more</span>
