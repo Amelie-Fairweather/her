@@ -38,7 +38,10 @@ export default function Events() {
       description: "HER club members will be presenting to the Wake Robin community about our mission and women's history education.",
       type: "Special Event",
       rsvpRequired: false
-    },
+    }
+  ]
+
+  const pastEvents = [
     {
       id: 4,
       title: "Event to Include Women in the Curriculum",
@@ -125,7 +128,7 @@ export default function Events() {
             <div 
               key={event.id} 
               className={`bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow ${
-                event.title === "Event to Include Women in the Curriculum" || event.title === "Social Studies Presentation" ? "border-4 border-[#EB89B5]" : ""
+                event.type === "Special Event" ? "border-4 border-[#EB89B5]" : ""
               }`}
             >
               <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
@@ -137,9 +140,6 @@ export default function Events() {
                     </span>
                   </div>
                   <p className="text-gray-600 mb-3">{event.description}</p>
-                  {event.catering && (
-                    <p className="text-sm text-gray-500 italic mb-3">{event.catering}</p>
-                  )}
                 </div>
               </div>
               
@@ -164,22 +164,75 @@ export default function Events() {
                   <span className="text-gray-600">{event.location}</span>
                 </div>
               </div>
-              
-              {event.eventRecap && (
-                <div className="mt-4">
-                  <Link
-                    href="/events/recap"
-                    className="inline-block bg-[#EB89B5] text-white px-6 py-2 rounded-lg font-semibold hover:bg-[#C76B99] transition-colors shadow-md hover:shadow-lg"
-                  >
-                    EVENT RECAP!
-                  </Link>
-                </div>
-              )}
             </div>
           ))}
         </div>
 
-        {/* Removed hearts and stars animation */}
+        {/* Archive Section */}
+        <div className="mt-16">
+          <div className="flex items-center gap-4 mb-8">
+            <div className="flex-1 h-px bg-[#EB89B5]"></div>
+            <h2 className="text-2xl font-bold text-[#EB89B5] px-4">PAST EVENTS</h2>
+            <div className="flex-1 h-px bg-[#EB89B5]"></div>
+          </div>
+          
+          <div className="space-y-6">
+            {pastEvents.map((event) => (
+              <div 
+                key={event.id} 
+                className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow border-4 border-[#EB89B5]"
+              >
+                <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-3 mb-2">
+                      <h3 className="text-xl font-bold text-gray-800">{event.title}</h3>
+                      <span className={`px-3 py-1 rounded-full text-sm font-medium ${getEventTypeColor(event.type)}`}>
+                        {event.type}
+                      </span>
+                    </div>
+                    <p className="text-gray-600 mb-3">{event.description}</p>
+                    {event.catering && (
+                      <p className="text-sm text-gray-500 italic mb-3">{event.catering}</p>
+                    )}
+                  </div>
+                </div>
+                
+                <div className="grid md:grid-cols-3 gap-4 text-sm mb-4">
+                  <div className="flex items-center gap-2">
+                    <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    <span className="text-gray-600">{event.date}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span className="text-gray-600">{event.time}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    <span className="text-gray-600">{event.location}</span>
+                  </div>
+                </div>
+                
+                {event.eventRecap && (
+                  <div className="mt-4">
+                    <Link
+                      href="/events/recap"
+                      className="inline-block bg-[#EB89B5] text-white px-6 py-2 rounded-lg font-semibold hover:bg-[#C76B99] transition-colors shadow-md hover:shadow-lg"
+                    >
+                      EVENT RECAP!
+                    </Link>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
 
         {/* No Events Message (if needed) */}
         {upcomingEvents.length === 0 && (
