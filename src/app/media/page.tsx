@@ -3,7 +3,7 @@ import Link from 'next/link'
 const mediaArticles = [
   {
     title: "CVU Students Demand More Women's History",
-    source: "The Shelburne News",
+    source: "The Citizen",
     description: "Coverage of CVU students advocating for expanded women's history education in the school curriculum.",
     url: "https://www.vtcng.com/shelburnenews/community/school_news/cvu-students-demand-more-women-s-history/article_144a3891-74b0-45d7-ab1d-7b23881c6f47.html",
     type: "article"
