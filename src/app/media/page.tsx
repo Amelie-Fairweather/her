@@ -36,6 +36,20 @@ const mediaArticles = [
     extraInfo: "Skip ahead to 11:30 for our segment.",
     url: "https://www.mediafactory.org/cvsd?modal=48,episode,238683",
     type: "video"
+  },
+  {
+    title: "CVU Students Push for Women's History Curriculum",
+    source: "Vermont State Youth Council",
+    description: "Featured in the VSYC newsletter's Youth Changemakers section, highlighting HER club's mission to include women's history in the curriculum.",
+    url: "https://www.vtstateyouthcouncil.org/updates/1",
+    type: "article"
+  },
+  {
+    title: "High Schoolers Advocate for Women's History Curriculum",
+    source: "The Charlotte News",
+    description: "Coverage of HER club's event at Pierson Library, featuring student presentations and community outreach efforts to expand women's history education.",
+    url: "https://www.charlottenewsvt.org/2026/01/15/high-schoolers-advocate-for-womens-history-curriculum/",
+    type: "article"
   }
 ]
 
