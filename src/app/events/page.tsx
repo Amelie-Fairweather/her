@@ -32,7 +32,7 @@ export default function Events() {
     {
       id: 3,
       title: "Presentation at Wake Robin",
-      date: "Late January - Early February 2026",
+      date: "February 9, 2026",
       time: "TBD",
       location: "Wake Robin",
       description: "HER club members will be presenting to the Wake Robin community about our mission and women's history education.",
