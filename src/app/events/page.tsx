@@ -4,11 +4,24 @@ import Link from 'next/link'
 import { useState } from 'react'
 import RSVPForm from '@/components/RSVPForm'
 
+interface Event {
+  id: number
+  title: string
+  date: string
+  time: string
+  location: string
+  description: string
+  type: string
+  rsvpRequired: boolean
+  eventRecap?: boolean
+  catering?: string
+}
+
 export default function Events() {
   const [showRSVPForm, setShowRSVPForm] = useState(false)
   const [selectedEvent, setSelectedEvent] = useState<{id: number, title: string} | null>(null)
   // Removed hearts and stars animation
-  const upcomingEvents = [
+  const upcomingEvents: Event[] = [
     {
       id: 1,
       title: "Weekly HER Club Meeting",
@@ -37,11 +50,12 @@ export default function Events() {
       location: "Wake Robin",
       description: "HER club members will be presenting to the Wake Robin community about our mission and women's history education.",
       type: "Special Event",
-      rsvpRequired: false
+      rsvpRequired: false,
+      eventRecap: true
     }
   ]
 
-  const pastEvents = [
+  const pastEvents: Event[] = [
     {
       id: 4,
       title: "Event to Include Women in the Curriculum",
@@ -164,6 +178,17 @@ export default function Events() {
                   <span className="text-gray-600">{event.location}</span>
                 </div>
               </div>
+              
+              {event.eventRecap && (
+                <div className="mt-4">
+                  <Link
+                    href={event.id === 3 ? "/events/wake-robin-recap" : "/events/recap"}
+                    className="inline-block bg-[#EB89B5] text-white px-6 py-2 rounded-lg font-semibold hover:bg-[#C76B99] transition-colors shadow-md hover:shadow-lg"
+                  >
+                    EVENT RECAP!
+                  </Link>
+                </div>
+              )}
             </div>
           ))}
         </div>

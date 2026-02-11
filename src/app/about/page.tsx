@@ -157,6 +157,17 @@ export default function About() {
                   sizes="(max-width: 768px) 50vw, 33vw"
                 />
               </div>
+              
+              {/* Wake Robin Talk Image */}
+              <div className="relative aspect-square overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                <Image
+                  src="/talk.jpeg"
+                  alt="HER Club presentation at Wake Robin"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 50vw, 33vw"
+                />
+              </div>
             </div>
           </div>
         </section>
