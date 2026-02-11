@@ -168,6 +168,28 @@ export default function About() {
                   sizes="(max-width: 768px) 50vw, 33vw"
                 />
               </div>
+              
+              {/* Image 03 */}
+              <div className="relative aspect-square overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                <Image
+                  src="/03.JPG"
+                  alt="HER Club event photo"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 50vw, 33vw"
+                />
+              </div>
+              
+              {/* Image 17 */}
+              <div className="relative aspect-square overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                <Image
+                  src="/17.JPG"
+                  alt="HER Club event photo"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 50vw, 33vw"
+                />
+              </div>
             </div>
           </div>
         </section>
