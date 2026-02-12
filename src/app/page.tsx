@@ -84,18 +84,6 @@ export default function Home() {
                 </p>
               </div>
             </div>
-
-            {/* Education Blurb */}
-            <div className="max-w-4xl mx-auto px-4 md:px-0 mb-20 mt-16">
-              <div className="text-center">
-                <p className="text-lg md:text-2xl font-bold text-[#EB89B5] mb-4">
-                  Ask yourself
-                </p>
-                <p className="text-base md:text-xl text-gray-700 leading-relaxed">
-                  Does your daughter, your sister, know her history? Does she know her rights? Does she know how to recognize when she&apos;s being discriminated against? Does she know how to speak up against discrimination?
-                </p>
-              </div>
-            </div>
           </div>
         </div>
 
