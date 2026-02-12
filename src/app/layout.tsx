@@ -19,6 +19,17 @@ export const metadata: Metadata = {
     icon: '/logo.png',
     apple: '/logo.png',
   },
+  openGraph: {
+    title: "Her Education Required",
+    description: "HER - Her Education Required | CVU Student Club advocating for women's history education",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Her Education Required",
+    description: "HER - Her Education Required | CVU Student Club advocating for women's history education",
+  },
+  metadataBase: new URL('https://www.hereducation.org'),
 };
 
 export default function RootLayout({
