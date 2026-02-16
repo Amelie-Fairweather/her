@@ -18,16 +18,6 @@ export default function Home() {
                 style={{ objectFit: 'cover' }}
                 priority
               />
-              {/* Female symbol overlay that expands on hover */}
-              <svg 
-                className="her-logo-female-symbol w-12 h-12 md:w-16 md:h-16 text-white opacity-90"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
-                {/* Female symbol (♀) - circle with cross */}
-                <circle cx="12" cy="7" r="4.5" fill="currentColor"/>
-                <path d="M12 11.5v6M9 14.5h6" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
-              </svg>
             </div>
           </div>
           <h2 className="text-2xl font-semibold mb-2">Her Education Required</h2>
