@@ -106,6 +106,34 @@ body {
   font-style: normal;
 }
 
+/* HER Logo with expanding female symbol on hover */
+.her-logo-container {
+  position: relative;
+  display: inline-block;
+}
+
+.her-logo-container img {
+  display: block;
+  object-fit: contain;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+.her-logo-female-symbol {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  pointer-events: none;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.her-logo-container:hover .her-logo-female-symbol {
+  transform: translate(-50%, -50%) scale(1.5);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
 /* Lace border styles - scalloped decorative border */
 .lace-border-wrapper {
   position: relative;

@@ -8,9 +8,26 @@ export default function Home() {
       {/* Header */}
       <header className="bg-[#EB89B5] text-white py-8 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-5xl md:text-7xl font-bold mb-4 transition-transform duration-500 hover:scale-150 focus:scale-150 active:scale-140 cursor-pointer transform-gpu ease-out coiny-regular">
-            HER
-          </h1>
+          <div className="her-logo-container mb-4">
+            <div className="relative w-32 h-32 md:w-40 md:h-40 mx-auto">
+              <Image
+                src="/logo.png"
+                alt="HER Logo"
+                fill
+                className="object-contain"
+                style={{ objectFit: 'contain', padding: 0 }}
+                priority
+              />
+              {/* Female symbol overlay that expands on hover */}
+              <svg 
+                className="her-logo-female-symbol w-12 h-12 md:w-16 md:h-16 text-white opacity-90"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+              </svg>
+            </div>
+          </div>
           <h2 className="text-2xl font-semibold mb-2">Her Education Required</h2>
           <p className="text-lg opacity-90">
             Student-led club at CVU dedicated to addressing the lack of Women&apos;s history and current rights in the curriculum
