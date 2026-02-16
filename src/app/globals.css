@@ -122,6 +122,8 @@ body {
   border-radius: 50%;
   overflow: hidden;
   background: transparent;
+  /* Crop out white border by scaling image slightly larger */
+  transform: scale(1.1);
 }
 
 .her-logo-container img {

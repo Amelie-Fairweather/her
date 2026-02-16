@@ -10,14 +10,14 @@ export default function Home() {
         <div className="max-w-4xl mx-auto text-center">
           <div className="her-logo-container mb-4">
             <div className="relative w-32 h-32 md:w-40 md:h-40 mx-auto">
-              <Image
+        <Image
                 src="/logo.png"
                 alt="HER Logo"
                 fill
                 className="object-cover"
-                style={{ objectFit: 'cover' }}
-                priority
-              />
+                style={{ objectFit: 'cover', objectPosition: 'center', transform: 'scale(1.15)' }}
+          priority
+        />
             </div>
           </div>
           <h2 className="text-2xl font-semibold mb-2">Her Education Required</h2>
