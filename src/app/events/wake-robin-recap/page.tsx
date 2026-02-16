@@ -84,6 +84,61 @@ export default function WakeRobinRecap() {
                 sizes="(max-width: 768px) 50vw, 33vw"
               />
             </div>
+            
+            {/* Image 10 */}
+            <div className="relative aspect-square overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-shadow">
+              <Image
+                src="/10.JPG"
+                alt="HER Club presentation at Wake Robin"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 50vw, 33vw"
+              />
+            </div>
+            
+            {/* Image 11 */}
+            <div className="relative aspect-square overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-shadow">
+              <Image
+                src="/11.JPG"
+                alt="HER Club presentation at Wake Robin"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 50vw, 33vw"
+              />
+            </div>
+            
+            {/* Image 13 */}
+            <div className="relative aspect-square overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-shadow">
+              <Image
+                src="/13.JPG"
+                alt="HER Club presentation at Wake Robin"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 50vw, 33vw"
+              />
+            </div>
+            
+            {/* Image 14 */}
+            <div className="relative aspect-square overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-shadow">
+              <Image
+                src="/14.JPG"
+                alt="HER Club presentation at Wake Robin"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 50vw, 33vw"
+              />
+            </div>
+            
+            {/* Image 18 */}
+            <div className="relative aspect-square overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-shadow">
+              <Image
+                src="/18.JPG"
+                alt="HER Club presentation at Wake Robin"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 50vw, 33vw"
+              />
+            </div>
           </div>
         </div>
       </main>
