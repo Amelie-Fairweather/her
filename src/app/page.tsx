@@ -14,8 +14,8 @@ export default function Home() {
                 src="/logo.png"
                 alt="HER Logo"
                 fill
-                className="object-contain"
-                style={{ objectFit: 'contain', padding: 0 }}
+                className="object-cover"
+                style={{ objectFit: 'cover' }}
                 priority
               />
               {/* Female symbol overlay that expands on hover */}
@@ -24,7 +24,9 @@ export default function Home() {
                 viewBox="0 0 24 24"
                 fill="currentColor"
               >
-                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                {/* Female symbol (♀) - circle with cross */}
+                <circle cx="12" cy="7" r="4.5" fill="currentColor"/>
+                <path d="M12 11.5v6M9 14.5h6" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
               </svg>
             </div>
           </div>
