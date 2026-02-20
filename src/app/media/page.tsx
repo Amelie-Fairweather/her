@@ -50,6 +50,13 @@ const mediaArticles = [
     description: "Coverage of HER club's event at Pierson Library, featuring student presentations and community outreach efforts to expand women's history education.",
     url: "https://www.charlottenewsvt.org/2026/01/15/high-schoolers-advocate-for-womens-history-curriculum/",
     type: "article"
+  },
+  {
+    title: "HER and there",
+    source: "Shelburne News",
+    description: "Coverage of CVU students from HER club spending time with the women at Wake Robin in an intergenerational exchange of stories, insights and ideas.",
+    url: "https://www.vtcng.com/shelburnenews/community/her-and-there/article_0b3fe4f4-9347-4e93-84a0-a6c75c503f19.html",
+    type: "article"
   }
 ]
 
