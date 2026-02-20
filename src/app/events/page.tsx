@@ -20,28 +20,60 @@ interface Event {
 export default function Events() {
   const [showRSVPForm, setShowRSVPForm] = useState(false)
   const [selectedEvent, setSelectedEvent] = useState<{id: number, title: string} | null>(null)
-  // Removed hearts and stars animation
-  const upcomingEvents: Event[] = [
-    {
-      id: 1,
-      title: "Weekly HER Club Meeting",
-      date: "January 9, 2026",
-      time: "10:00 AM - 10:30 AM",
-      location: "CVU Room 134",
-      description: "Regular club meeting to discuss upcoming initiatives and plan future events.",
-      type: "Club Meeting",
-      rsvpRequired: false
-    },
-    {
-      id: 2,
-      title: "Weekly HER Club Meeting",
-      date: "January 16, 2026",
-      time: "10:00 AM - 10:30 AM",
-      location: "CVU Room 134",
-      description: "Regular club meeting to discuss upcoming initiatives and plan future events.",
-      type: "Club Meeting",
-      rsvpRequired: false
+  
+  // Function to get next weekly meeting dates (Thursdays)
+  const getNextWeeklyMeetings = (count: number = 2): Event[] => {
+    const meetings: Event[] = []
+    const today = new Date()
+    today.setHours(0, 0, 0, 0)
+    const currentDay = today.getDay() // 0 = Sunday, 4 = Thursday
+    
+    // Calculate days until next Thursday
+    let daysUntilThursday = (4 - currentDay + 7) % 7
+    if (daysUntilThursday === 0) {
+      // Today is Thursday, check if it's before 10:30 AM
+      const now = new Date()
+      if (now.getHours() < 10 || (now.getHours() === 10 && now.getMinutes() <= 30)) {
+        daysUntilThursday = 0 // Include today
+      } else {
+        daysUntilThursday = 7 // Next Thursday
+      }
     }
+    
+    // Start from the next meeting date
+    const nextMeeting = new Date(today)
+    nextMeeting.setDate(today.getDate() + daysUntilThursday)
+    
+    for (let i = 0; i < count; i++) {
+      const meetingDate = new Date(nextMeeting)
+      meetingDate.setDate(nextMeeting.getDate() + (i * 7))
+      
+      const formattedDate = meetingDate.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      })
+      
+      meetings.push({
+        id: 100 + i, // Use high IDs to avoid conflicts
+        title: "Weekly HER Club Meeting",
+        date: formattedDate,
+        time: "10:00 AM - 10:30 AM",
+        location: "CVU Room 134",
+        description: "Regular club meeting to discuss upcoming initiatives and plan future events.",
+        type: "Club Meeting",
+        rsvpRequired: false
+      })
+    }
+    
+    return meetings
+  }
+  
+  // Removed hearts and stars animation
+  const weeklyMeetings = getNextWeeklyMeetings(2)
+  
+  const upcomingEvents: Event[] = [
+    ...weeklyMeetings
   ]
 
   const pastEvents: Event[] = [
