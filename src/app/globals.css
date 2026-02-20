@@ -124,6 +124,7 @@ body {
   background: transparent;
   /* Crop out white border by scaling image slightly larger */
   transform: scale(1.1);
+  border: 3px solid white;
 }
 
 .her-logo-container img {
