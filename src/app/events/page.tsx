@@ -41,7 +41,10 @@ export default function Events() {
       description: "Regular club meeting to discuss upcoming initiatives and plan future events.",
       type: "Club Meeting",
       rsvpRequired: false
-    },
+    }
+  ]
+
+  const pastEvents: Event[] = [
     {
       id: 3,
       title: "Presentation at Wake Robin",
@@ -52,10 +55,7 @@ export default function Events() {
       type: "Special Event",
       rsvpRequired: false,
       eventRecap: true
-    }
-  ]
-
-  const pastEvents: Event[] = [
+    },
     {
       id: 4,
       title: "Event to Include Women in the Curriculum",
@@ -182,7 +182,7 @@ export default function Events() {
               {event.eventRecap && (
                 <div className="mt-4">
                   <Link
-                    href={event.id === 3 ? "/events/wake-robin-recap" : "/events/recap"}
+                    href={event.title === "Presentation at Wake Robin" ? "/events/wake-robin-recap" : "/events/recap"}
                     className="inline-block bg-[#EB89B5] text-white px-6 py-2 rounded-lg font-semibold hover:bg-[#C76B99] transition-colors shadow-md hover:shadow-lg"
                   >
                     EVENT RECAP!
@@ -247,7 +247,7 @@ export default function Events() {
                 {event.eventRecap && (
                   <div className="mt-4">
                     <Link
-                      href="/events/recap"
+                      href={event.title === "Presentation at Wake Robin" ? "/events/wake-robin-recap" : "/events/recap"}
                       className="inline-block bg-[#EB89B5] text-white px-6 py-2 rounded-lg font-semibold hover:bg-[#C76B99] transition-colors shadow-md hover:shadow-lg"
                     >
                       EVENT RECAP!

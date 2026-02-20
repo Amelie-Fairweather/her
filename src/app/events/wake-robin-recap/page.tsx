@@ -22,6 +22,16 @@ export default function WakeRobinRecap() {
           <p className="text-lg text-gray-600 mb-8">
             Recap of the Presentation at Wake Robin held on February 9, 2026. HER club members presented to the Wake Robin community about our mission and women's history education.
           </p>
+          <div className="mt-6">
+            <a
+              href="https://docs.google.com/document/d/1IDgEAdsMd3uK8O0vdXzD01IXmYtpEFoZra_ABqgKQQA/edit?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-[#EB89B5] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#C76B99] transition-colors shadow-md hover:shadow-lg"
+            >
+              View discussion questions
+            </a>
+          </div>
         </div>
 
         {/* Event Images Collage */}
