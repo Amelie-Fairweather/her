@@ -22,7 +22,7 @@ export default function Home() {
           </div>
           <h2 className="text-2xl font-semibold mb-2">Her Education Required</h2>
           <p className="text-lg opacity-90">
-            Student-led club at CVU dedicated to addressing the lack of Women&apos;s history and current rights in the curriculum
+            Student-led club at CVU and SBHS dedicated to addressing the lack of Women&apos;s history and current rights in the curriculum
           </p>
         </div>
       </header>
@@ -69,6 +69,23 @@ export default function Home() {
                     </p>
                   </div>
                 </div>
+              </div>
+            </div>
+
+            {/* County-wide curriculum event */}
+            <div className="mb-10 md:mb-12 max-w-3xl mx-auto px-4">
+              <div className="bg-white rounded-2xl shadow-lg shadow-[#EB89B5]/15 border-2 border-[#EB89B5] p-6 md:p-8 text-center">
+                <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-[#EB89B5] leading-snug mb-6">
+                  COUNTY WIDE EVENT TO INCLUDE WOMEN IN THE CURRICULUM
+                </h2>
+                <a
+                  href="https://docs.google.com/forms/d/e/1FAIpQLScHBqoK_ZWrDBFLjyXysiTgIX3Ssr9xtOxa55v-2-cHIpQb2Q/viewform"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block bg-[#EB89B5] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#C76B99] transition-colors shadow-md hover:shadow-lg"
+                >
+                  RSVP
+                </a>
               </div>
             </div>
 

@@ -15,6 +15,7 @@ interface Event {
   rsvpRequired: boolean
   eventRecap?: boolean
   catering?: string
+  rsvpUrl?: string
 }
 
 export default function Events() {
@@ -72,8 +73,23 @@ export default function Events() {
   // Removed hearts and stars animation
   const weeklyMeetings = getNextWeeklyMeetings(2)
   
+  const countyWideRsvpUrl =
+    'https://docs.google.com/forms/d/e/1FAIpQLScHBqoK_ZWrDBFLjyXysiTgIX3Ssr9xtOxa55v-2-cHIpQb2Q/viewform'
+
   const upcomingEvents: Event[] = [
-    ...weeklyMeetings
+    {
+      id: 6,
+      title: 'COUNTY WIDE EVENT TO INCLUDE WOMEN IN THE CURRICULUM',
+      date: 'April 16, 2026',
+      time: '4:30 PM - 6:30 PM',
+      location: 'CVU Library',
+      description:
+        "County-wide gathering to discuss including more women's history and perspectives in the curriculum. Open to students, families, educators, and community members.",
+      type: 'Special Event',
+      rsvpRequired: false,
+      rsvpUrl: countyWideRsvpUrl,
+    },
+    ...weeklyMeetings,
   ]
 
   const pastEvents: Event[] = [
@@ -210,6 +226,19 @@ export default function Events() {
                   <span className="text-gray-600">{event.location}</span>
                 </div>
               </div>
+
+              {event.rsvpUrl && (
+                <div className="mt-4">
+                  <a
+                    href={event.rsvpUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block bg-[#EB89B5] text-white px-6 py-2 rounded-lg font-semibold hover:bg-[#C76B99] transition-colors shadow-md hover:shadow-lg"
+                  >
+                    RSVP
+                  </a>
+                </div>
+              )}
               
               {event.eventRecap && (
                 <div className="mt-4">
