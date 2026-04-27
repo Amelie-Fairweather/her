@@ -67,9 +67,7 @@ export default function Events() {
   // Removed hearts and stars animation
   const weeklyMeetings = getNextWeeklyMeetings(2)
 
-  const upcomingEvents: Event[] = [
-    ...weeklyMeetings,
-  ]
+  const upcomingEvents: Event[] = [...weeklyMeetings]
 
   const pastEvents: Event[] = [
     {
@@ -245,6 +243,11 @@ export default function Events() {
                       </span>
                     </div>
                     <p className="text-gray-600 mb-3">{event.description}</p>
+                    {event.title === 'COUNTY WIDE EVENT TO INCLUDE WOMEN IN THE CURRICULUM' && (
+                      <p className="text-sm text-[#EB89B5] font-semibold mb-3">
+                        $500 was raised for PPNE at this event.
+                      </p>
+                    )}
                     {event.catering && (
                       <p className="text-sm text-gray-500 italic mb-3">{event.catering}</p>
                     )}

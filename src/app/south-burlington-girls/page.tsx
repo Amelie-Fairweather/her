@@ -61,7 +61,7 @@ export default function SouthBurlingtonGirlsPage() {
 
           <section className="p-3 md:p-4 transition-all duration-300 rounded-2xl hover:-translate-y-1 hover:shadow-lg hover:shadow-[#EB89B5]/15">
             <blockquote className="text-gray-800 text-lg md:text-2xl leading-relaxed pl-2">
-              &ldquo;We started H.E.R because we&apos;ve personally noticed that our school, along with many others, excludes a lot of women&apos;s history in the curriculum. Women&apos;s voices throughout history, and even now are gone unheard. We believe that we can help make a change by joining H.E.R and pushing for our history to be taught.&rdquo;
+              &ldquo;We started H.E.R because we&apos;ve personally noticed that our school, along with many others, excludes a lot of women&apos;s history in the curriculum. Women&apos;s voices throughout history, and even now, have gone unheard. We believe that we can help make a change by joining H.E.R and pushing for our history to be taught.&rdquo;
             </blockquote>
             <p className="mt-3 text-right text-[#EB89B5] font-semibold text-lg md:text-xl">- Trusha Patel</p>
           </section>
@@ -92,7 +92,9 @@ export default function SouthBurlingtonGirlsPage() {
               SBHS Students!
             </p>
             <p className="mt-1 text-gray-800 text-base md:text-lg font-semibold">
-              Join our club in <span className="text-[#EB89B5]">Room 102</span> during <span className="text-[#EB89B5]">A Block</span>.
+              Join our club in <span className="text-[#EB89B5]">Room 102</span> during <span className="text-[#EB89B5]">A Block</span>
+              {' '}
+              and/or office hours on Fridays.
             </p>
           </section>
 
