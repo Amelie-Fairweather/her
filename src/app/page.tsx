@@ -78,14 +78,9 @@ export default function Home() {
                 <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-[#EB89B5] leading-snug mb-6">
                   COUNTY WIDE EVENT TO INCLUDE WOMEN IN THE CURRICULUM
                 </h2>
-                <a
-                  href="https://docs.google.com/forms/d/e/1FAIpQLScHBqoK_ZWrDBFLjyXysiTgIX3Ssr9xtOxa55v-2-cHIpQb2Q/viewform"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block bg-[#EB89B5] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#C76B99] transition-colors shadow-md hover:shadow-lg"
-                >
-                  RSVP
-                </a>
+                <p className="text-gray-700 text-sm md:text-base">
+                  This event has now concluded. Thank you to everyone who participated.
+                </p>
               </div>
             </div>
 

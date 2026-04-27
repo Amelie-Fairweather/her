@@ -1,8 +1,6 @@
 'use client'
 
 import Link from 'next/link'
-import { useState } from 'react'
-import RSVPForm from '@/components/RSVPForm'
 
 interface Event {
   id: number
@@ -15,13 +13,9 @@ interface Event {
   rsvpRequired: boolean
   eventRecap?: boolean
   catering?: string
-  rsvpUrl?: string
 }
 
 export default function Events() {
-  const [showRSVPForm, setShowRSVPForm] = useState(false)
-  const [selectedEvent, setSelectedEvent] = useState<{id: number, title: string} | null>(null)
-  
   // Function to get next weekly meeting dates (Thursdays)
   const getNextWeeklyMeetings = (count: number = 2): Event[] => {
     const meetings: Event[] = []
@@ -72,11 +66,12 @@ export default function Events() {
   
   // Removed hearts and stars animation
   const weeklyMeetings = getNextWeeklyMeetings(2)
-  
-  const countyWideRsvpUrl =
-    'https://docs.google.com/forms/d/e/1FAIpQLScHBqoK_ZWrDBFLjyXysiTgIX3Ssr9xtOxa55v-2-cHIpQb2Q/viewform'
 
   const upcomingEvents: Event[] = [
+    ...weeklyMeetings,
+  ]
+
+  const pastEvents: Event[] = [
     {
       id: 6,
       title: 'COUNTY WIDE EVENT TO INCLUDE WOMEN IN THE CURRICULUM',
@@ -86,13 +81,8 @@ export default function Events() {
       description:
         "County-wide gathering to discuss including more women's history and perspectives in the curriculum. Open to students, families, educators, and community members.",
       type: 'Special Event',
-      rsvpRequired: false,
-      rsvpUrl: countyWideRsvpUrl,
+      rsvpRequired: false
     },
-    ...weeklyMeetings,
-  ]
-
-  const pastEvents: Event[] = [
     {
       id: 3,
       title: "Presentation at Wake Robin",
@@ -141,16 +131,6 @@ export default function Events() {
       default:
         return 'bg-gray-100 text-gray-800'
     }
-  }
-
-  const handleRSVPClick = (eventId: number, eventTitle: string) => {
-    setSelectedEvent({ id: eventId, title: eventTitle })
-    setShowRSVPForm(true)
-  }
-
-  const handleCloseRSVP = () => {
-    setShowRSVPForm(false)
-    setSelectedEvent(null)
   }
 
   // Removed handleSpecialEventHover function
@@ -227,19 +207,6 @@ export default function Events() {
                 </div>
               </div>
 
-              {event.rsvpUrl && (
-                <div className="mt-4">
-                  <a
-                    href={event.rsvpUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-block bg-[#EB89B5] text-white px-6 py-2 rounded-lg font-semibold hover:bg-[#C76B99] transition-colors shadow-md hover:shadow-lg"
-                  >
-                    RSVP
-                  </a>
-                </div>
-              )}
-              
               {event.eventRecap && (
                 <div className="mt-4">
                   <Link
@@ -355,13 +322,6 @@ export default function Events() {
         </div>
       </footer>
 
-      {/* RSVP Form Modal */}
-      {showRSVPForm && selectedEvent && (
-        <RSVPForm
-          eventTitle={selectedEvent.title}
-          onClose={handleCloseRSVP}
-        />
-      )}
     </div>
   )
 }

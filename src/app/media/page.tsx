@@ -2,6 +2,20 @@ import Link from 'next/link'
 
 const mediaArticles = [
   {
+    title: "H.E.R. student club expands its reach",
+    source: "Shelburne News",
+    description: "Local news coverage on HER club's growing impact and expanded outreach efforts in the community.",
+    url: "https://www.vtcng.com/shelburnenews/news/local_news/h-e-r-student-club-expands-its-reach/article_68e78c35-c66b-4c4d-ac83-bf5642d93196.html",
+    type: "article"
+  },
+  {
+    title: "Her Education Required: Bridging Women's History Gaps",
+    source: "Apple Podcasts",
+    description: "Podcast episode featuring HER club's work to bridge gaps in women's history education.",
+    url: "https://podcasts.apple.com/us/podcast/her-education-required-bridging-womens-history-gaps/id1855755233?i=1000763299723&l=zh-Hans-CN",
+    type: "video"
+  },
+  {
     title: "CVU Students Demand More Women's History",
     source: "The Citizen",
     description: "Coverage of CVU students advocating for expanded women's history education in the school curriculum.",
