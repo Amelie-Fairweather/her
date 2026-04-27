@@ -81,7 +81,8 @@ export default function Events() {
       description:
         "County-wide gathering to discuss including more women's history and perspectives in the curriculum. Open to students, families, educators, and community members.",
       type: 'Special Event',
-      rsvpRequired: false
+      rsvpRequired: false,
+      eventRecap: true
     },
     {
       id: 3,

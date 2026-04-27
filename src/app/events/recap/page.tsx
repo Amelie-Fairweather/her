@@ -2,6 +2,24 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 export default function EventRecap() {
+  const eventPhotos = [
+    '/county-02-olivia-cieri.jpg',
+    '/county-05-vla.jpg',
+    '/county-06-group.jpg',
+    '/county-08-rice-crispie-treats.jpg',
+    '/county-09-applause.jpg',
+    '/county-13-amelie-gov-kunin.jpg',
+    '/recap-17-applause.jpg',
+    '/recap-57.jpg',
+    '/recap-47.jpg',
+    '/recap-34.jpg',
+    '/recap-20.jpg',
+    '/recap-19.jpg',
+    '/recap-15-gov-kunin-speaks.jpg',
+    '/recap-53.jpg',
+    '/recap-21.jpg'
+  ]
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#FFFBF3] to-[#FFF8D2]">
       {/* Header */}
@@ -25,20 +43,28 @@ export default function EventRecap() {
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
             <a
-              href="https://docs.google.com/document/d/1rfBk_AY9W4rAnKTmsod4Mq7H8HwBcTt39DdgKDetItU/edit?usp=sharing"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block bg-[#EB89B5] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#C76B99] transition-colors shadow-lg hover:shadow-xl text-center"
-            >
-              View Student Speeches
-            </a>
-            <a
-              href="https://docs.google.com/presentation/d/1SyTZSl6CRGAmtq75MI6w4PjbesC4q5xLg8AYu-rq2oE/edit?usp=sharing"
+              href="https://docs.google.com/presentation/d/1zpWPbF3Mq4Xi9_JoTawzYs3-vQ37vlJ3a9HUkoOFhGk/edit?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block bg-[#EB89B5] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#C76B99] transition-colors shadow-lg hover:shadow-xl text-center"
             >
               View Event Slides
+            </a>
+            <a
+              href="https://docs.google.com/document/d/1ri3FWfUHuIv_q1TQEVups_hMjbLtmJJWS5f2aSWuELA/edit?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-[#EB89B5] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#C76B99] transition-colors shadow-lg hover:shadow-xl text-center"
+            >
+              View Event Agenda
+            </a>
+            <a
+              href="https://docs.google.com/document/d/1G1yA9qRNS43FGnqXz7bPo9m8SBHmsVhWo6nq_M_o4L4/edit?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-[#EB89B5] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#C76B99] transition-colors shadow-lg hover:shadow-xl text-center"
+            >
+              View County-Wide Event Script
             </a>
           </div>
         </div>
@@ -49,82 +75,20 @@ export default function EventRecap() {
             EVENT PHOTOS
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
-            {/* Event 8 */}
-            <div className="relative aspect-square overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-shadow">
-              <Image
-                src="/event8.jpg"
-                alt="HER Club event photo"
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 50vw, 33vw"
-              />
-            </div>
-            
-            {/* Event 9 */}
-            <div className="relative aspect-square overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-shadow">
-              <Image
-                src="/event9.jpg"
-                alt="HER Club event photo"
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 50vw, 33vw"
-              />
-            </div>
-            
-            {/* Event 10 */}
-            <div className="relative aspect-square overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-shadow">
-              <Image
-                src="/event10.jpg"
-                alt="HER Club event photo"
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 50vw, 33vw"
-              />
-            </div>
-            
-            {/* Event 11 */}
-            <div className="relative aspect-square overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-shadow">
-              <Image
-                src="/event11.jpg"
-                alt="HER Club event photo"
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 50vw, 33vw"
-              />
-            </div>
-            
-            {/* Event 12 */}
-            <div className="relative aspect-square overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-shadow">
-              <Image
-                src="/event12.jpg"
-                alt="HER Club event photo"
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 50vw, 33vw"
-              />
-            </div>
-            
-            {/* Event 13 */}
-            <div className="relative aspect-square overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-shadow">
-              <Image
-                src="/event13.jpg"
-                alt="HER Club event photo"
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 50vw, 33vw"
-              />
-            </div>
-          </div>
-          
-          {/* Event 14 - Full Width */}
-          <div className="mt-4 md:mt-6 relative w-full overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-shadow" style={{ aspectRatio: '21/9' }}>
-            <Image
-              src="/event14.jpg"
-              alt="HER Club event photo"
-              fill
-              className="object-cover"
-              sizes="100vw"
-            />
+            {eventPhotos.map((photoPath) => (
+              <div
+                key={photoPath}
+                className="relative aspect-square overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-shadow"
+              >
+                <Image
+                  src={photoPath}
+                  alt="HER Club event photo"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 50vw, 33vw"
+                />
+              </div>
+            ))}
           </div>
         </div>
       </main>

@@ -67,6 +67,38 @@ export default function Involved() {
 
       {/* Main Content */}
       <main className="max-w-4xl mx-auto px-4 py-8 md:py-16">
+        <div className="mb-10 max-w-2xl mx-auto relative">
+          <div className="absolute -top-4 -left-4 text-[#EB89B5] drop-shadow-sm">
+            <svg className="w-6 h-6 md:w-7 md:h-7" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+          </div>
+          <div className="absolute -top-3 -right-3 text-[#EB89B5] drop-shadow-sm">
+            <svg className="w-5 h-5 md:w-6 md:h-6" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+          </div>
+          <div className="absolute -bottom-4 left-6 text-[#EB89B5] drop-shadow-sm">
+            <svg className="w-5 h-5 md:w-6 md:h-6" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+          </div>
+          <div className="absolute -bottom-4 right-8 text-[#EB89B5] drop-shadow-sm">
+            <svg className="w-6 h-6 md:w-7 md:h-7" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+          </div>
+          <Image
+            src="/get-involved-top-group.jpg"
+            alt="HER group photo"
+            width={900}
+            height={500}
+            className="w-full h-auto rounded-xl object-cover shadow-lg"
+            style={{ aspectRatio: '16/9' }}
+            priority
+          />
+        </div>
+
         {/* Petition Notice */}
         <div className="mb-16 p-4 md:p-8 bg-white border-4 border-[#EB89B5] rounded-lg shadow-lg max-w-4xl mx-auto">
           <div className="text-center">

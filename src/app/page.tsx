@@ -72,18 +72,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* County-wide curriculum event */}
-            <div className="mb-10 md:mb-12 max-w-3xl mx-auto px-4">
-              <div className="bg-white rounded-2xl shadow-lg shadow-[#EB89B5]/15 border-2 border-[#EB89B5] p-6 md:p-8 text-center">
-                <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-[#EB89B5] leading-snug mb-6">
-                  COUNTY WIDE EVENT TO INCLUDE WOMEN IN THE CURRICULUM
-                </h2>
-                <p className="text-gray-700 text-sm md:text-base">
-                  This event has now concluded. Thank you to everyone who participated.
-                </p>
-              </div>
-            </div>
-
             {/* Main Mission Bubble */}
             <div className="relative bg-[#FFD7E9] rounded-full py-8 md:py-16 px-6 md:px-16 max-w-5xl mx-auto shadow-xl border-4 border-[#EB89B5]">
               {/* Heart decoration at top */}
@@ -167,6 +155,25 @@ export default function Home() {
               <p className="text-xs md:text-base text-gray-600 group-hover:text-gray-700 leading-tight">
                 News articles and videos featuring our mission.
               </p>
+            </div>
+          </Link>
+        </div>
+
+        {/* South Burlington High School Photo Page Link */}
+        <div className="mt-8 flex justify-center">
+          <Link
+            href="/south-burlington-girls"
+            className="group w-full max-w-xl"
+          >
+            <div className="bg-gradient-to-br from-white to-[#FFF6FB] rounded-2xl shadow-lg shadow-[#EB89B5]/10 p-6 md:p-7 text-center transition-all duration-300 transform group-hover:-translate-y-2 group-hover:shadow-xl group-hover:shadow-[#EB89B5]/20 border border-[#EB89B5]/20 group-hover:border-[#EB89B5]/50">
+              <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-[#FFD7E9] flex items-center justify-center text-[#EB89B5] group-hover:bg-[#EB89B5] group-hover:text-white transition-colors duration-300">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+              </div>
+              <h3 className="text-2xl md:text-3xl font-bold text-[#EB89B5] leading-tight">
+                Meet the girls at South Burlington High School!
+              </h3>
             </div>
           </Link>
         </div>
