@@ -30,6 +30,13 @@ const mediaArticles = [
     type: "video"
   },
   {
+    title: "CVU show interview with founder Amelie Fairweather",
+    source: "CVU Show",
+    description: "Video from the CVU Show channel covering HER's county-wide curriculum event at CVU; opens at the 1:00 mark.",
+    url: "https://youtu.be/t3EXbn03izw?t=60",
+    type: "video"
+  },
+  {
     title: "High Schoolers Advocate for Women's History",
     source: "The Hinesburg Record",
     description: "Community newspaper article highlighting student efforts to include women's history in required curriculum.",
