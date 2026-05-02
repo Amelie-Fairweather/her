@@ -66,6 +66,14 @@ const mediaArticles = [
     type: "article"
   },
   {
+    title: "Letters to the Editor: April 30 — \"The future is H.E.R.\"",
+    source: "The Charlotte News",
+    description:
+      "Letter spotlighting HER’s county-wide curriculum event at CVU, support from Vermont leaders including former Governor Kunin, and the case for formally incorporating women’s history in schools.",
+    url: "https://www.charlottenewsvt.org/2026/04/30/letters-to-the-editor-april-30/",
+    type: "article"
+  },
+  {
     title: "HER and there",
     source: "Shelburne News",
     description: "Coverage of CVU students from HER club spending time with the women at Wake Robin in an intergenerational exchange of stories, insights and ideas.",
