@@ -229,6 +229,20 @@ export default function Involved() {
               </div>
             </div>
           </div>
+
+          <div className="mt-8 flex justify-center">
+            <Link
+              href="/involved/community-supporters"
+              className="group inline-flex max-w-full items-center justify-center gap-3 rounded-lg border border-[#EB89B5]/40 bg-white px-12 md:px-20 py-5 md:py-6 text-lg md:text-2xl font-semibold text-[#7A2454] shadow-sm transition-all hover:-translate-y-0.5 hover:border-[#EB89B5]/70 hover:shadow-md focus:outline-none focus-visible:ring-4 focus-visible:ring-[#EB89B5]/20"
+            >
+              <span className="text-center leading-tight tracking-tight">
+                MEET OUR SPONSORS
+              </span>
+              <span className="inline-block transition-transform group-hover:translate-x-0.5" aria-hidden="true">
+                →
+              </span>
+            </Link>
+          </div>
         </section>
 
         {/* How to Support */}

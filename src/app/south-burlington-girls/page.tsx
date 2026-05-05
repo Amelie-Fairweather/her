@@ -15,6 +15,35 @@ export default function SouthBurlingtonGirlsPage() {
 
       <main className="max-w-5xl mx-auto px-4 py-8 md:py-12">
         <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl shadow-[#EB89B5]/10 p-5 md:p-10 space-y-12 md:space-y-14">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+            <div className="bg-white rounded-2xl p-4 md:p-8 shadow-lg shadow-[#EB89B5]/20 transform hover:scale-110 transition-transform duration-300 h-[200px] md:h-[240px] flex items-center">
+              <div className="text-center w-full">
+                <div className="text-2xl md:text-4xl font-bold text-[#EB89B5] mb-2 md:mb-3">80%</div>
+                <p className="text-xs md:text-sm text-gray-700 font-semibold px-1 md:px-4 leading-tight">
+                  of students said school did not go deep enough into women&apos;s history.
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-2xl p-4 md:p-8 shadow-lg shadow-[#EB89B5]/20 transform hover:scale-110 transition-transform duration-300 h-[200px] md:h-[240px] flex items-center">
+              <div className="text-center w-full">
+                <div className="text-2xl md:text-4xl font-bold text-[#EB89B5] mb-2 md:mb-3">70%</div>
+                <p className="text-xs md:text-sm text-gray-700 font-semibold px-1 md:px-4 leading-tight">
+                  of students said they had received no women&apos;s history outside of optional classes.
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-2xl p-4 md:p-8 shadow-lg shadow-[#EB89B5]/20 transform hover:scale-110 transition-transform duration-300 h-[200px] md:h-[240px] flex items-center">
+              <div className="text-center w-full">
+                <div className="text-2xl md:text-4xl font-bold text-[#EB89B5] mb-2 md:mb-3">90%</div>
+                <p className="text-xs md:text-sm text-gray-700 font-semibold px-1 md:px-4 leading-tight">
+                  of students did not know what a suffragist was, or what Title VII or Title IX were or did.
+                </p>
+              </div>
+            </div>
+          </div>
+
           <h2 className="text-center text-4xl md:text-5xl font-extrabold text-[#EB89B5] tracking-tight">South Burlington HER</h2>
 
           <section className="bg-white border border-[#EB89B5]/30 rounded-2xl p-5 md:p-7 text-center shadow-sm">
@@ -87,42 +116,56 @@ export default function SouthBurlingtonGirlsPage() {
             </div>
           </div>
 
-          <section className="bg-gradient-to-r from-white via-[#FFF6FB] to-white border border-[#EB89B5]/40 rounded-2xl p-5 md:p-6 text-center shadow-md shadow-[#EB89B5]/10">
-            <p className="text-[#EB89B5] text-xl md:text-2xl font-extrabold tracking-tight">
-              SBHS Students!
-            </p>
-            <p className="mt-1 text-gray-800 text-base md:text-lg font-semibold">
-              Join our club in <span className="text-[#EB89B5]">Room 102</span> during <span className="text-[#EB89B5]">A Block</span>
-              {' '}
-              and/or office hours on Fridays.
-            </p>
-          </section>
+          <div className="grid grid-cols-1 gap-4">
+            <section className="relative overflow-hidden rounded-2xl bg-white/80 p-5 md:p-7 text-center shadow-sm">
+              <div
+                className="pointer-events-none absolute inset-0 opacity-80"
+                style={{
+                  background:
+                    'radial-gradient(900px circle at 50% 0%, rgba(235,137,181,0.18), rgba(255,255,255,0))',
+                }}
+              />
+              <div className="relative">
+                <p className="text-[#EB89B5] text-xl md:text-2xl font-extrabold tracking-tight">
+                  SBHS Students
+                </p>
+                <p className="mt-2 text-gray-800 text-base md:text-lg font-semibold leading-snug">
+                  Join our club in <span className="text-[#EB89B5]">Room 102</span> during{' '}
+                  <span className="text-[#EB89B5]">A Block</span> and/or office hours on Fridays.
+                </p>
+              </div>
+            </section>
 
-          <section className="bg-white border border-[#EB89B5]/30 rounded-2xl p-4 md:p-5 text-center shadow-sm">
-            <p className="text-[#EB89B5] text-xl md:text-2xl font-bold mb-2">Follow our socials!</p>
-            <a
-              href="https://www.instagram.com/sb.hereducationrequired/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#EB89B5] underline hover:text-[#C76B99] font-semibold text-base md:text-lg"
-            >
-              @sb.hereducationrequired
-            </a>
-          </section>
-
-          <section className="bg-gradient-to-br from-[#FFD7E9] to-[#FFEAF4] border border-[#EB89B5]/40 rounded-2xl p-5 md:p-6 text-center shadow-sm">
-            <h3 className="text-xl md:text-2xl font-bold text-[#EB89B5] mb-2">Start a HER club at your school!</h3>
-            <p className="text-gray-800 text-sm md:text-base">
-              Contact{' '}
+            <section className="rounded-2xl bg-white p-5 md:p-7 text-center shadow-sm">
+              <p className="text-[#EB89B5] text-xl md:text-2xl font-bold tracking-tight">
+                Follow our socials
+              </p>
               <a
-                href="mailto:hereducationrequired@gmail.com"
-                className="text-[#EB89B5] underline hover:text-[#C76B99] font-semibold"
+                href="https://www.instagram.com/sb.hereducationrequired/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-3 inline-flex items-center justify-center rounded-lg bg-[#FFF6FB] px-4 py-2 text-[#7A2454] font-semibold hover:bg-white transition-colors shadow-sm"
               >
-                hereducationrequired@gmail.com
-              </a>{' '}
-              to get started.
-            </p>
-          </section>
+                @sb.hereducationrequired
+              </a>
+            </section>
+
+            <section className="rounded-2xl bg-gradient-to-br from-[#FFD7E9] to-[#FFEAF4] p-5 md:p-7 text-center shadow-sm">
+              <h3 className="text-xl md:text-2xl font-bold text-[#EB89B5] tracking-tight">
+                Start a HER club at your school
+              </h3>
+              <p className="mt-2 text-gray-800 text-sm md:text-base leading-relaxed">
+                Contact{' '}
+                <a
+                  href="mailto:hereducationrequired@gmail.com"
+                  className="text-[#7A2454] underline decoration-[#EB89B5]/60 underline-offset-4 hover:decoration-[#EB89B5] font-semibold"
+                >
+                  hereducationrequired@gmail.com
+                </a>{' '}
+                to get started.
+              </p>
+            </section>
+          </div>
         </div>
       </main>
     </div>
