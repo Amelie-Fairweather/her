@@ -8,8 +8,7 @@ export default function BurlingtonHighSchoolGirlsPage() {
           <Link href="/" className="inline-block mb-4 text-pink-100 hover:text-white transition-colors">
             ← Back to Home
           </Link>
-          <h1 className="text-3xl md:text-4xl font-bold">Meet the girls at BHS</h1>
-          <p className="mt-2 text-lg opacity-90">Burlington High School</p>
+          <h1 className="text-3xl md:text-4xl font-bold">Meet the girls at Burlington High School</h1>
         </div>
       </header>
 

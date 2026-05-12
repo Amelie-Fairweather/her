@@ -190,36 +190,35 @@ export default function Home() {
           <Link href="/burlington-high-school-girls" className="group">
             <div className="bg-gradient-to-br from-white to-[#FFF6FB] rounded-2xl shadow-lg shadow-[#EB89B5]/10 p-6 md:p-7 text-center transition-all duration-300 transform group-hover:-translate-y-2 group-hover:shadow-xl group-hover:shadow-[#EB89B5]/20 border border-[#EB89B5]/20 group-hover:border-[#EB89B5]/50 h-full flex flex-col justify-center min-h-[140px]">
               <h3 className="text-xl md:text-2xl font-bold text-[#EB89B5] leading-tight">
-                Meet the girls at BHS
+                Meet the girls at Burlington High School
               </h3>
-              <p className="mt-2 text-sm text-gray-600">Burlington High School</p>
             </div>
           </Link>
         </div>
 
         {/* Special announcement — event highlight */}
-        <div className="mt-10 max-w-4xl mx-auto rounded-2xl border-4 border-[#EB89B5] bg-white shadow-xl overflow-hidden">
-          <div className="bg-[#EB89B5] text-white text-center py-3 px-4">
-            <p className="text-sm font-bold tracking-[0.2em] uppercase">Special announcement</p>
+        <div className="mt-8 max-w-md sm:max-w-lg mx-auto rounded-xl border-2 border-[#EB89B5] bg-white shadow-lg overflow-hidden">
+          <div className="bg-[#EB89B5] text-white text-center py-2 px-3">
+            <p className="text-xs font-bold tracking-[0.18em] uppercase">Special announcement</p>
           </div>
-          <div className="p-6 md:p-8 text-center">
-            <h2 className="text-2xl md:text-3xl font-bold text-[#EB89B5] mb-2">Event highlight</h2>
-            <p className="text-gray-700 mb-2 max-w-2xl mx-auto">
+          <div className="p-4 md:p-5 text-center">
+            <h2 className="text-lg md:text-xl font-bold text-[#EB89B5] mb-1.5">Event highlight</h2>
+            <p className="text-gray-700 mb-1.5 max-w-md mx-auto text-sm leading-snug">
               HER is co-hosting an AMA with Pulitzer Prize-winning journalist Jodi Kantor (
               <em>The New York Times</em>). <span className="font-semibold text-gray-800">Tuesday, May 12, 2026 · 6:00–7:00 PM.</span>
             </p>
-            <p className="text-gray-600 mb-6 max-w-2xl mx-auto text-sm md:text-base">
+            <p className="text-gray-600 mb-4 max-w-md mx-auto text-xs md:text-sm leading-snug">
               Students: reach out to HER at your school to join, or DM us about involvement.
             </p>
-            <Link href="/events" className="inline-block mb-6 text-[#EB89B5] font-semibold underline hover:text-[#C76B99]">
+            <Link href="/events" className="inline-block mb-4 text-sm text-[#EB89B5] font-semibold underline hover:text-[#C76B99]">
               View on Upcoming Events →
             </Link>
-            <div className="relative w-full max-w-lg mx-auto rounded-xl overflow-hidden shadow-md">
+            <div className="relative w-full max-w-xs md:max-w-sm mx-auto rounded-lg overflow-hidden shadow-sm">
               <Image
                 src="/jodi.JPG"
                 alt="Promotional graphic: Her Education Required AMA with journalist Jodi Kantor"
-                width={800}
-                height={1000}
+                width={640}
+                height={800}
                 className="w-full h-auto object-contain"
               />
             </div>
