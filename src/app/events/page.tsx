@@ -67,9 +67,32 @@ export default function Events() {
   // Removed hearts and stars animation
   const weeklyMeetings = getNextWeeklyMeetings(2)
 
-  const upcomingEvents: Event[] = [...weeklyMeetings]
+  const jodiKantorAma: Event = {
+    id: 200,
+    title: 'AMA with Pulitzer Prize-winning journalist Jodi Kantor',
+    date: 'May 12, 2026',
+    time: '6:00 PM - 7:00 PM',
+    location: 'Details from HER at your school or via DM',
+    description:
+      'Join HER for an AMA with Pulitzer Prize-winning journalist Jodi Kantor. Reach out to HER at your school to participate, or message us about involvement.',
+    type: 'Special Event',
+    rsvpRequired: false,
+  }
+
+  const upcomingEvents: Event[] = [jodiKantorAma, ...weeklyMeetings]
 
   const pastEvents: Event[] = [
+    {
+      id: 201,
+      title: 'HER representatives speaking at the Vermont Learners Association conference',
+      date: 'May 9, 2026',
+      time: '2:00 PM - 5:00 PM',
+      location: 'Vermont Learners Association conference',
+      description:
+        'HER representatives shared our mission and work with attendees at the Vermont Learners Association conference.',
+      type: 'Special Event',
+      rsvpRequired: false,
+    },
     {
       id: 6,
       title: 'COUNTY WIDE EVENT TO INCLUDE WOMEN IN THE CURRICULUM',
