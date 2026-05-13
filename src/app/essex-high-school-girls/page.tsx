@@ -9,11 +9,13 @@ export default function EssexHighSchoolGirlsPage() {
             ← Back to Home
           </Link>
           <h1 className="text-3xl md:text-4xl font-bold">Meet the girls at Essex High School</h1>
+          <p className="mt-2 text-lg opacity-90">EHS</p>
         </div>
       </header>
 
       <main className="max-w-4xl mx-auto px-4 py-16 text-center">
-        <p className="text-xl text-gray-700">More information coming soon!</p>
+        <p className="text-xl text-gray-700 font-semibold">Coming soon</p>
+        <p className="mt-2 text-gray-600">More information about HER at Essex High School will be posted here.</p>
       </main>
     </div>
   )

@@ -13,6 +13,7 @@ interface Event {
   rsvpRequired: boolean
   eventRecap?: boolean
   catering?: string
+  instagramWatchUrl?: string
 }
 
 export default function Events() {
@@ -67,21 +68,21 @@ export default function Events() {
   // Removed hearts and stars animation
   const weeklyMeetings = getNextWeeklyMeetings(2)
 
-  const jodiKantorAma: Event = {
-    id: 200,
-    title: 'AMA with Pulitzer Prize-winning journalist Jodi Kantor',
-    date: 'May 12, 2026',
-    time: '6:00 PM - 7:00 PM',
-    location: 'Details from HER at your school or via DM',
-    description:
-      'Join HER for an AMA with Pulitzer Prize-winning journalist Jodi Kantor. Reach out to HER at your school to participate, or message us about involvement.',
-    type: 'Special Event',
-    rsvpRequired: false,
-  }
-
-  const upcomingEvents: Event[] = [jodiKantorAma, ...weeklyMeetings]
+  const upcomingEvents: Event[] = [...weeklyMeetings]
 
   const pastEvents: Event[] = [
+    {
+      id: 200,
+      title: 'AMA with Pulitzer Prize-winning journalist Jodi Kantor',
+      date: 'May 12, 2026',
+      time: '6:00 PM - 7:00 PM',
+      location: 'Virtual / HER channels',
+      description:
+        'HER co-hosted an AMA with Pulitzer Prize-winning journalist Jodi Kantor (The New York Times).',
+      type: 'Special Event',
+      rsvpRequired: false,
+      instagramWatchUrl: 'https://www.instagram.com/hereducationrequired/',
+    },
     {
       id: 201,
       title: 'HER representatives speaking at the Vermont Learners Association conference',
@@ -266,6 +267,18 @@ export default function Events() {
                       </span>
                     </div>
                     <p className="text-gray-600 mb-3">{event.description}</p>
+                    {event.instagramWatchUrl && (
+                      <p className="mb-3">
+                        <a
+                          href={event.instagramWatchUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 text-[#EB89B5] font-semibold underline hover:text-[#C76B99]"
+                        >
+                          Watch on our Instagram
+                        </a>
+                      </p>
+                    )}
                     {event.title === 'COUNTY WIDE EVENT TO INCLUDE WOMEN IN THE CURRICULUM' && (
                       <p className="text-sm text-[#EB89B5] font-semibold mb-3">
                         $500 was raised for PPNE at this event.

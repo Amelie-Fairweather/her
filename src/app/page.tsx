@@ -159,41 +159,38 @@ export default function Home() {
           </Link>
         </div>
 
-        {/* South Burlington High School Photo Page Link */}
-        <div className="mt-8 flex justify-center">
-          <Link
-            href="/south-burlington-girls"
-            className="group w-full max-w-xl"
-          >
-            <div className="bg-gradient-to-br from-white to-[#FFF6FB] rounded-2xl shadow-lg shadow-[#EB89B5]/10 p-6 md:p-7 text-center transition-all duration-300 transform group-hover:-translate-y-2 group-hover:shadow-xl group-hover:shadow-[#EB89B5]/20 border border-[#EB89B5]/20 group-hover:border-[#EB89B5]/50">
+        {/* Meet the girls: Essex, South Burlington, BHS */}
+        <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 max-w-5xl mx-auto">
+          <div className="rounded-2xl bg-gradient-to-br from-[#FFF6FB] to-[#FFEAF4] shadow-md shadow-[#EB89B5]/10 p-6 md:p-7 text-center min-h-[160px] flex flex-col items-center justify-center">
+            <h3 className="font-serif text-xl md:text-2xl font-bold text-[#7A2454] leading-tight">
+              Meet the girls at EHS
+            </h3>
+            <p className="mt-3 text-sm font-semibold text-gray-700 tracking-[0.12em] uppercase">
+              Coming soon
+            </p>
+            <p className="mt-2 font-serif text-xs text-gray-600">Essex High School</p>
+          </div>
+          <Link href="/south-burlington-girls" className="group">
+            <div className="bg-gradient-to-br from-white to-[#FFF6FB] rounded-2xl shadow-lg shadow-[#EB89B5]/10 p-6 md:p-7 text-center transition-all duration-300 transform group-hover:-translate-y-2 group-hover:shadow-xl group-hover:shadow-[#EB89B5]/20 border border-[#EB89B5]/20 group-hover:border-[#EB89B5]/50 h-full flex flex-col justify-center min-h-[160px]">
               <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-[#FFD7E9] flex items-center justify-center text-[#EB89B5] group-hover:bg-[#EB89B5] group-hover:text-white transition-colors duration-300">
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
               </div>
-              <h3 className="text-2xl md:text-3xl font-bold text-[#EB89B5] leading-tight">
-                Meet the girls at South Burlington High School!
-              </h3>
-            </div>
-          </Link>
-        </div>
-
-        {/* Essex & Burlington High School */}
-        <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4 max-w-5xl mx-auto">
-          <Link href="/essex-high-school-girls" className="group">
-            <div className="bg-gradient-to-br from-white to-[#FFF6FB] rounded-2xl shadow-lg shadow-[#EB89B5]/10 p-6 md:p-7 text-center transition-all duration-300 transform group-hover:-translate-y-2 group-hover:shadow-xl group-hover:shadow-[#EB89B5]/20 border border-[#EB89B5]/20 group-hover:border-[#EB89B5]/50 h-full flex flex-col justify-center min-h-[140px]">
               <h3 className="text-xl md:text-2xl font-bold text-[#EB89B5] leading-tight">
-                Meet the girls at Essex High School
+                Meet the girls at South Burlington High School
               </h3>
             </div>
           </Link>
-          <Link href="/burlington-high-school-girls" className="group">
-            <div className="bg-gradient-to-br from-white to-[#FFF6FB] rounded-2xl shadow-lg shadow-[#EB89B5]/10 p-6 md:p-7 text-center transition-all duration-300 transform group-hover:-translate-y-2 group-hover:shadow-xl group-hover:shadow-[#EB89B5]/20 border border-[#EB89B5]/20 group-hover:border-[#EB89B5]/50 h-full flex flex-col justify-center min-h-[140px]">
-              <h3 className="text-xl md:text-2xl font-bold text-[#EB89B5] leading-tight">
-                Meet the girls at Burlington High School
-              </h3>
-            </div>
-          </Link>
+          <div className="rounded-2xl bg-gradient-to-br from-[#FFF6FB] to-[#FFEAF4] shadow-md shadow-[#EB89B5]/10 p-6 md:p-7 text-center min-h-[160px] flex flex-col items-center justify-center">
+            <h3 className="font-serif text-xl md:text-2xl font-bold text-[#7A2454] leading-tight">
+              Meet the girls at BHS
+            </h3>
+            <p className="mt-3 text-sm font-semibold text-gray-700 tracking-[0.12em] uppercase">
+              Coming soon
+            </p>
+            <p className="mt-2 font-serif text-xs text-gray-600">Burlington High School</p>
+          </div>
         </div>
 
         {/* Special announcement — event highlight */}
@@ -204,14 +201,23 @@ export default function Home() {
           <div className="p-4 md:p-5 text-center">
             <h2 className="text-lg md:text-xl font-bold text-[#EB89B5] mb-1.5">Event highlight</h2>
             <p className="text-gray-700 mb-1.5 max-w-md mx-auto text-sm leading-snug">
-              HER is co-hosting an AMA with Pulitzer Prize-winning journalist Jodi Kantor (
-              <em>The New York Times</em>). <span className="font-semibold text-gray-800">Tuesday, May 12, 2026 · 6:00–7:00 PM.</span>
+              We co-hosted an AMA with Pulitzer Prize-winning journalist Jodi Kantor (
+              <em>The New York Times</em>) on May 12, 2026.
             </p>
-            <p className="text-gray-600 mb-4 max-w-md mx-auto text-xs md:text-sm leading-snug">
-              Students: reach out to HER at your school to join, or DM us about involvement.
+            <p className="text-gray-600 mb-3 max-w-md mx-auto text-xs md:text-sm leading-snug">
+              Watch on our{' '}
+              <a
+                href="https://www.instagram.com/hereducationrequired/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#EB89B5] font-semibold underline hover:text-[#C76B99]"
+              >
+                Instagram
+              </a>
+              , or see it under Past Events.
             </p>
             <Link href="/events" className="inline-block mb-4 text-sm text-[#EB89B5] font-semibold underline hover:text-[#C76B99]">
-              View on Upcoming Events →
+              Past events →
             </Link>
             <div className="relative w-full max-w-xs md:max-w-sm mx-auto rounded-lg overflow-hidden shadow-sm">
               <Image

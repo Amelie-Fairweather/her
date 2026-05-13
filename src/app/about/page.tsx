@@ -365,12 +365,12 @@ export default function About() {
                 <div>
                   <p className="text-gray-700 font-semibold">INSTAGRAM:</p>
                   <a 
-                    href="https://www.instagram.com/her_hereducationrequired" 
+                    href="https://www.instagram.com/hereducationrequired/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-[#EB89B5] hover:text-[#C76B99] transition-colors text-lg font-semibold"
                   >
-                    @her_hereducationrequired
+                    @hereducationrequired
                   </a>
                 </div>
               </div>

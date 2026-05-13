@@ -46,7 +46,7 @@ export default function Involved() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m0 0V1a1 1 0 011-1h2a1 1 0 011 1v22a1 1 0 01-1 1h-2a1 1 0 01-1-1V4M7 4V1a1 1 0 00-1-1H4a1 1 0 00-1 1v22a1 1 0 001 1h2a1 1 0 001-1V4m8 8h2m-2 4h2m-8-4h2m-2 4h2m-8-4h2m-2 4h2" />
         </svg>
       ),
-      benefits: ["You can follow us on Instagram at @her_hereducationrequired", "Sign up for our email list (written by students)"]
+      benefits: ["You can follow us on Instagram at @hereducationrequired", "Sign up for our email list (written by students)"]
     }
   ]
 
