@@ -8,7 +8,7 @@ export default function EssexHighSchoolGirlsPage() {
           <Link href="/" className="inline-block mb-4 text-pink-100 hover:text-white transition-colors">
             ← Back to Home
           </Link>
-          <h1 className="text-3xl md:text-4xl font-bold">Meet the girls at Essex High School</h1>
+          <h1 className="text-3xl md:text-4xl font-bold">Meet the students at Essex High School</h1>
           <p className="mt-2 text-lg opacity-90">EHS</p>
         </div>
       </header>

@@ -22,7 +22,7 @@ export default function Home() {
           </div>
           <h2 className="text-2xl font-semibold mb-2">Her Education Required</h2>
           <p className="text-lg opacity-90">
-            Student-led club at CVU and SBHS dedicated to addressing the lack of Women&apos;s history and current rights in the curriculum
+            The largest student-led network for women&apos;s rights in Vermont.
           </p>
         </div>
       </header>
@@ -159,16 +159,22 @@ export default function Home() {
           </Link>
         </div>
 
-        {/* Meet the girls: Essex, South Burlington, BHS */}
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 max-w-5xl mx-auto">
+        {/* CVU page context — above school chapters */}
+        <div className="mt-10 max-w-7xl mx-auto mb-4 rounded-xl bg-[#FFF8D2] border border-[#EB89B5]/30 py-3 px-4 text-center shadow-sm">
+          <p className="text-sm md:text-base font-semibold text-[#7A2454] tracking-wide uppercase">
+            You are viewing the CVU page
+          </p>
+        </div>
+
+        {/* Meet the students: Essex, South Burlington, Burlington, Stowe */}
+        <div className="mt-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-7xl mx-auto">
           <div className="rounded-2xl bg-gradient-to-br from-[#FFF6FB] to-[#FFEAF4] shadow-md shadow-[#EB89B5]/10 p-6 md:p-7 text-center min-h-[160px] flex flex-col items-center justify-center">
             <h3 className="font-serif text-xl md:text-2xl font-bold text-[#7A2454] leading-tight">
-              Meet the girls at EHS
+              Meet the students at Essex High School
             </h3>
             <p className="mt-3 text-sm font-semibold text-gray-700 tracking-[0.12em] uppercase">
               Coming soon
             </p>
-            <p className="mt-2 font-serif text-xs text-gray-600">Essex High School</p>
           </div>
           <Link href="/south-burlington-girls" className="group">
             <div className="bg-gradient-to-br from-white to-[#FFF6FB] rounded-2xl shadow-lg shadow-[#EB89B5]/10 p-6 md:p-7 text-center transition-all duration-300 transform group-hover:-translate-y-2 group-hover:shadow-xl group-hover:shadow-[#EB89B5]/20 border border-[#EB89B5]/20 group-hover:border-[#EB89B5]/50 h-full flex flex-col justify-center min-h-[160px]">
@@ -178,18 +184,25 @@ export default function Home() {
                 </svg>
               </div>
               <h3 className="text-xl md:text-2xl font-bold text-[#EB89B5] leading-tight">
-                Meet the girls at South Burlington High School
+                Meet the students at South Burlington High School
               </h3>
             </div>
           </Link>
           <div className="rounded-2xl bg-gradient-to-br from-[#FFF6FB] to-[#FFEAF4] shadow-md shadow-[#EB89B5]/10 p-6 md:p-7 text-center min-h-[160px] flex flex-col items-center justify-center">
             <h3 className="font-serif text-xl md:text-2xl font-bold text-[#7A2454] leading-tight">
-              Meet the girls at BHS
+              Meet the students at Burlington High School
             </h3>
             <p className="mt-3 text-sm font-semibold text-gray-700 tracking-[0.12em] uppercase">
               Coming soon
             </p>
-            <p className="mt-2 font-serif text-xs text-gray-600">Burlington High School</p>
+          </div>
+          <div className="rounded-2xl bg-gradient-to-br from-[#FFF6FB] to-[#FFEAF4] shadow-md shadow-[#EB89B5]/10 p-6 md:p-7 text-center min-h-[160px] flex flex-col items-center justify-center">
+            <h3 className="font-serif text-xl md:text-2xl font-bold text-[#7A2454] leading-tight">
+              Meet the students at Stowe High School
+            </h3>
+            <p className="mt-3 text-sm font-semibold text-gray-700 tracking-[0.12em] uppercase">
+              Coming soon
+            </p>
           </div>
         </div>
 

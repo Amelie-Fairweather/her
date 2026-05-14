@@ -9,7 +9,7 @@ export default function SouthBurlingtonGirlsPage() {
           <Link href="/" className="inline-block mb-4 text-pink-100 hover:text-white transition-colors">
             ← Back to Home
           </Link>
-          <h1 className="text-3xl md:text-4xl font-bold">Meet the girls at South Burlington</h1>
+          <h1 className="text-3xl md:text-4xl font-bold">Meet the students at South Burlington</h1>
         </div>
       </header>
 
