@@ -166,16 +166,21 @@ export default function Home() {
           </p>
         </div>
 
-        {/* Meet the students: Essex, South Burlington, Burlington, Stowe */}
-        <div className="mt-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-7xl mx-auto">
-          <div className="rounded-2xl bg-gradient-to-br from-[#FFF6FB] to-[#FFEAF4] shadow-md shadow-[#EB89B5]/10 p-6 md:p-7 text-center min-h-[160px] flex flex-col items-center justify-center">
-            <h3 className="font-serif text-xl md:text-2xl font-bold text-[#7A2454] leading-tight">
+        {/* Meet the students: Essex, South Burlington, Burlington, Stowe, Harwick Union */}
+        <div className="mt-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 max-w-7xl mx-auto">
+          <a
+            href="https://www.instagram.com/ehs_her.education.required/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group block rounded-2xl bg-gradient-to-br from-[#FFF6FB] to-[#FFEAF4] shadow-md shadow-[#EB89B5]/10 p-6 md:p-7 text-center min-h-[160px] flex flex-col items-center justify-center transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-[#EB89B5]/20"
+          >
+            <h3 className="font-serif text-xl md:text-2xl font-bold text-[#7A2454] leading-tight group-hover:text-[#EB89B5] transition-colors">
               Meet the students at Essex High School
             </h3>
             <p className="mt-3 text-sm font-semibold text-gray-700 tracking-[0.12em] uppercase">
               Coming soon
             </p>
-          </div>
+          </a>
           <Link href="/south-burlington-girls" className="group">
             <div className="bg-gradient-to-br from-white to-[#FFF6FB] rounded-2xl shadow-lg shadow-[#EB89B5]/10 p-6 md:p-7 text-center transition-all duration-300 transform group-hover:-translate-y-2 group-hover:shadow-xl group-hover:shadow-[#EB89B5]/20 border border-[#EB89B5]/20 group-hover:border-[#EB89B5]/50 h-full flex flex-col justify-center min-h-[160px]">
               <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-[#FFD7E9] flex items-center justify-center text-[#EB89B5] group-hover:bg-[#EB89B5] group-hover:text-white transition-colors duration-300">
@@ -188,60 +193,45 @@ export default function Home() {
               </h3>
             </div>
           </Link>
-          <div className="rounded-2xl bg-gradient-to-br from-[#FFF6FB] to-[#FFEAF4] shadow-md shadow-[#EB89B5]/10 p-6 md:p-7 text-center min-h-[160px] flex flex-col items-center justify-center">
-            <h3 className="font-serif text-xl md:text-2xl font-bold text-[#7A2454] leading-tight">
+          <a
+            href="https://www.instagram.com/bhs_hereducation/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group block rounded-2xl bg-gradient-to-br from-[#FFF6FB] to-[#FFEAF4] shadow-md shadow-[#EB89B5]/10 p-6 md:p-7 text-center min-h-[160px] flex flex-col items-center justify-center transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-[#EB89B5]/20"
+          >
+            <h3 className="font-serif text-xl md:text-2xl font-bold text-[#7A2454] leading-tight group-hover:text-[#EB89B5] transition-colors">
               Meet the students at Burlington High School
             </h3>
             <p className="mt-3 text-sm font-semibold text-gray-700 tracking-[0.12em] uppercase">
               Coming soon
             </p>
-          </div>
-          <div className="rounded-2xl bg-gradient-to-br from-[#FFF6FB] to-[#FFEAF4] shadow-md shadow-[#EB89B5]/10 p-6 md:p-7 text-center min-h-[160px] flex flex-col items-center justify-center">
-            <h3 className="font-serif text-xl md:text-2xl font-bold text-[#7A2454] leading-tight">
+          </a>
+          <a
+            href="https://www.instagram.com/stowe.hereducationrequired/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group block rounded-2xl bg-gradient-to-br from-[#FFF6FB] to-[#FFEAF4] shadow-md shadow-[#EB89B5]/10 p-6 md:p-7 text-center min-h-[160px] flex flex-col items-center justify-center transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-[#EB89B5]/20"
+          >
+            <h3 className="font-serif text-xl md:text-2xl font-bold text-[#7A2454] leading-tight group-hover:text-[#EB89B5] transition-colors">
               Meet the students at Stowe High School
             </h3>
             <p className="mt-3 text-sm font-semibold text-gray-700 tracking-[0.12em] uppercase">
               Coming soon
             </p>
-          </div>
-        </div>
-
-        {/* Special announcement — event highlight */}
-        <div className="mt-8 max-w-md sm:max-w-lg mx-auto rounded-xl border-2 border-[#EB89B5] bg-white shadow-lg overflow-hidden">
-          <div className="bg-[#EB89B5] text-white text-center py-2 px-3">
-            <p className="text-xs font-bold tracking-[0.18em] uppercase">Special announcement</p>
-          </div>
-          <div className="p-4 md:p-5 text-center">
-            <h2 className="text-lg md:text-xl font-bold text-[#EB89B5] mb-1.5">Event highlight</h2>
-            <p className="text-gray-700 mb-1.5 max-w-md mx-auto text-sm leading-snug">
-              We co-hosted an AMA with Pulitzer Prize-winning journalist Jodi Kantor (
-              <em>The New York Times</em>) on May 12, 2026.
+          </a>
+          <a
+            href="https://www.instagram.com/huhs_hereducationrequired/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group block rounded-2xl bg-gradient-to-br from-[#FFF6FB] to-[#FFEAF4] shadow-md shadow-[#EB89B5]/10 p-6 md:p-7 text-center min-h-[160px] flex flex-col items-center justify-center transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-[#EB89B5]/20"
+          >
+            <h3 className="font-serif text-xl md:text-2xl font-bold text-[#7A2454] leading-tight group-hover:text-[#EB89B5] transition-colors">
+              Meet the girls at Harwick Union High School
+            </h3>
+            <p className="mt-3 text-sm font-semibold text-gray-700 tracking-[0.12em] uppercase">
+              Coming soon
             </p>
-            <p className="text-gray-600 mb-3 max-w-md mx-auto text-xs md:text-sm leading-snug">
-              Watch on our{' '}
-              <a
-                href="https://www.instagram.com/hereducationrequired/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[#EB89B5] font-semibold underline hover:text-[#C76B99]"
-              >
-                Instagram
-              </a>
-              , or see it under Past Events.
-            </p>
-            <Link href="/events" className="inline-block mb-4 text-sm text-[#EB89B5] font-semibold underline hover:text-[#C76B99]">
-              Past events →
-            </Link>
-            <div className="relative w-full max-w-xs md:max-w-sm mx-auto rounded-lg overflow-hidden shadow-sm">
-              <Image
-                src="/jodi.JPG"
-                alt="Promotional graphic: Her Education Required AMA with journalist Jodi Kantor"
-                width={640}
-                height={800}
-                className="w-full h-auto object-contain"
-              />
-            </div>
-          </div>
+          </a>
         </div>
 
         {/* Petition Notice */}

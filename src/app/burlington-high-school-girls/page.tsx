@@ -15,7 +15,15 @@ export default function BurlingtonHighSchoolGirlsPage() {
 
       <main className="max-w-4xl mx-auto px-4 py-16 text-center">
         <p className="text-xl text-gray-700 font-semibold">Coming soon</p>
-        <p className="mt-2 text-gray-600">More information about HER at Burlington High School will be posted here.</p>
+        <p className="mt-2 text-gray-600 mb-6">Follow HER at Burlington High School on Instagram for updates.</p>
+        <a
+          href="https://www.instagram.com/bhs_hereducation/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center justify-center rounded-lg bg-[#FFF6FB] px-6 py-3 text-[#EB89B5] font-semibold hover:bg-white border border-[#EB89B5]/30 transition-colors"
+        >
+          @bhs_hereducation
+        </a>
       </main>
     </div>
   )

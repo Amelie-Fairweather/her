@@ -68,7 +68,19 @@ export default function Events() {
   // Removed hearts and stars animation
   const weeklyMeetings = getNextWeeklyMeetings(2)
 
-  const upcomingEvents: Event[] = [...weeklyMeetings]
+  const rubinaFillionAma: Event = {
+    id: 202,
+    title: 'AMA with Rubina Fillion, Head of AI Initiatives at The New York Times',
+    date: 'June 5, 2026',
+    time: '3:30 PM - 4:00 PM',
+    location: 'Details from HER at your school or via DM',
+    description:
+      'Join HER for an AMA with Rubina Fillion, Head of AI Initiatives at The New York Times. Reach out to HER at your school to participate, or message us about involvement.',
+    type: 'Special Event',
+    rsvpRequired: false,
+  }
+
+  const upcomingEvents: Event[] = [rubinaFillionAma, ...weeklyMeetings]
 
   const pastEvents: Event[] = [
     {
