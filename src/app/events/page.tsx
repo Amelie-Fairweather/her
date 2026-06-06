@@ -1,6 +1,8 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
+import { useState } from 'react'
 
 interface Event {
   id: number
@@ -14,9 +16,12 @@ interface Event {
   eventRecap?: boolean
   catering?: string
   instagramWatchUrl?: string
+  photoUrl?: string
+  photoAlt?: string
 }
 
 export default function Events() {
+  const [expandedPhoto, setExpandedPhoto] = useState<string | null>(null)
   // Function to get next weekly meeting dates (Thursdays)
   const getNextWeeklyMeetings = (count: number = 2): Event[] => {
     const meetings: Event[] = []
@@ -68,21 +73,22 @@ export default function Events() {
   // Removed hearts and stars animation
   const weeklyMeetings = getNextWeeklyMeetings(2)
 
-  const rubinaFillionAma: Event = {
-    id: 202,
-    title: 'AMA with Rubina Fillion, Head of AI Initiatives at The New York Times',
-    date: 'June 5, 2026',
-    time: '3:30 PM - 4:00 PM',
-    location: 'Details from HER at your school or via DM',
-    description:
-      'Join HER for an AMA with Rubina Fillion, Head of AI Initiatives at The New York Times. Reach out to HER at your school to participate, or message us about involvement.',
-    type: 'Special Event',
-    rsvpRequired: false,
-  }
-
-  const upcomingEvents: Event[] = [rubinaFillionAma, ...weeklyMeetings]
+  const upcomingEvents: Event[] = [...weeklyMeetings]
 
   const pastEvents: Event[] = [
+    {
+      id: 202,
+      title: 'AMA with Rubina Fillion, Head of AI Initiatives at The New York Times',
+      date: 'June 5, 2026',
+      time: '3:30 PM - 4:00 PM',
+      location: 'Virtual / HER channels',
+      description:
+        'HER co-hosted an AMA with Rubina Fillion, Head of AI Initiatives at The New York Times.',
+      type: 'Special Event',
+      rsvpRequired: false,
+      photoUrl: '/rubina-ama-screenshot.png',
+      photoAlt: 'Screenshot from the HER AMA with Rubina Fillion on Google Meet',
+    },
     {
       id: 200,
       title: 'AMA with Pulitzer Prize-winning journalist Jodi Kantor',
@@ -324,6 +330,26 @@ export default function Events() {
                   </div>
                 </div>
                 
+                {event.photoUrl && (
+                  <div className="mt-4">
+                    <button
+                      type="button"
+                      onClick={() => setExpandedPhoto(event.photoUrl!)}
+                      className="block rounded-lg overflow-hidden shadow-md ring-2 ring-transparent hover:ring-[#EB89B5] transition-all focus:outline-none focus-visible:ring-[#EB89B5]"
+                      aria-label="View event photo larger"
+                    >
+                      <Image
+                        src={event.photoUrl}
+                        alt={event.photoAlt ?? 'Event photo'}
+                        width={320}
+                        height={180}
+                        className="w-48 md:w-56 h-auto object-cover cursor-pointer"
+                      />
+                    </button>
+                    <p className="mt-1 text-xs text-gray-500">Click to view larger</p>
+                  </div>
+                )}
+
                 {event.eventRecap && (
                   <div className="mt-4">
                     <Link
@@ -373,6 +399,37 @@ export default function Events() {
           </p>
         </div>
       </footer>
+
+      {expandedPhoto && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 p-4"
+          onClick={() => setExpandedPhoto(null)}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Expanded event photo"
+        >
+          <button
+            type="button"
+            onClick={() => setExpandedPhoto(null)}
+            className="absolute top-4 right-4 text-white text-3xl font-bold leading-none hover:text-pink-200 z-10"
+            aria-label="Close"
+          >
+            ×
+          </button>
+          <div
+            className="relative max-w-5xl max-h-[90vh] w-full"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Image
+              src={expandedPhoto}
+              alt="Expanded event photo"
+              width={1200}
+              height={675}
+              className="w-full h-auto max-h-[90vh] object-contain rounded-lg shadow-2xl"
+            />
+          </div>
+        </div>
+      )}
 
     </div>
   )
