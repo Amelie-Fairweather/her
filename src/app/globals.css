@@ -141,22 +141,8 @@ body {
   transform: scale(1.15);
 }
 
-.her-logo-container > div {
-  border-radius: 50%;
-  overflow: hidden;
-  background: transparent;
-  /* Crop out white border by scaling image slightly larger */
-  transform: scale(1.1);
-  border: 3px solid white;
-}
-
 .her-logo-container img {
   display: block;
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
 }
 
 /* Lace border styles - scalloped decorative border */

@@ -9,16 +9,14 @@ export default function Home() {
       <header className="bg-[#EB89B5] text-white py-8 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <div className="her-logo-container mb-4">
-            <div className="relative w-32 h-32 md:w-40 md:h-40 mx-auto">
-              <Image
-                src="/logo.png"
-                alt="HER Logo"
-                fill
-                className="object-cover"
-                style={{ objectFit: 'cover', objectPosition: 'center', transform: 'scale(1.15)' }}
-                priority
-              />
-            </div>
+            <Image
+              src="/logo.png"
+              alt="HER Logo"
+              width={224}
+              height={224}
+              className="mx-auto w-44 h-44 md:w-56 md:h-56 rounded-xl border-[3px] border-white"
+              priority
+            />
           </div>
           <h2 className="text-2xl font-semibold mb-2">Her Education Required</h2>
           <p className="text-lg opacity-90">
