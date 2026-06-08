@@ -14,16 +14,28 @@ export default function BurlingtonHighSchoolGirlsPage() {
       </header>
 
       <main className="max-w-4xl mx-auto px-4 py-16 text-center">
-        <p className="text-xl text-gray-700 font-semibold">Coming soon</p>
-        <p className="mt-2 text-gray-600 mb-6">Follow HER at Burlington High School on Instagram for updates.</p>
+        <p className="text-xl text-gray-700 font-semibold mb-6">
+          Visit the Burlington High School HER page for mission, data, and how to get involved.
+        </p>
         <a
-          href="https://www.instagram.com/bhs_hereducation/"
+          href="https://blackmaj3.wixsite.com/bhshereducation"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center justify-center rounded-lg bg-[#FFF6FB] px-6 py-3 text-[#EB89B5] font-semibold hover:bg-white border border-[#EB89B5]/30 transition-colors"
+          className="inline-flex items-center justify-center rounded-lg bg-[#EB89B5] px-6 py-3 text-white font-semibold hover:bg-[#d977a5] transition-colors"
         >
-          @bhs_hereducation
+          Go to BHS HER page
         </a>
+        <p className="mt-6 text-gray-600">
+          Or follow on{' '}
+          <a
+            href="https://www.instagram.com/bhs_hereducation/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[#EB89B5] font-semibold hover:underline"
+          >
+            Instagram
+          </a>
+        </p>
       </main>
     </div>
   )

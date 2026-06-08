@@ -192,17 +192,21 @@ export default function Home() {
             </div>
           </Link>
           <a
-            href="https://www.instagram.com/bhs_hereducation/"
+            href="https://blackmaj3.wixsite.com/bhshereducation"
             target="_blank"
             rel="noopener noreferrer"
-            className="group block rounded-2xl bg-gradient-to-br from-[#FFF6FB] to-[#FFEAF4] shadow-md shadow-[#EB89B5]/10 p-6 md:p-7 text-center min-h-[160px] flex flex-col items-center justify-center transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-[#EB89B5]/20"
+            className="group block"
           >
-            <h3 className="font-serif text-xl md:text-2xl font-bold text-[#7A2454] leading-tight group-hover:text-[#EB89B5] transition-colors">
-              Meet the students at Burlington High School
-            </h3>
-            <p className="mt-3 text-sm font-semibold text-gray-700 tracking-[0.12em] uppercase">
-              Coming soon
-            </p>
+            <div className="bg-gradient-to-br from-white to-[#FFF6FB] rounded-2xl shadow-lg shadow-[#EB89B5]/10 p-6 md:p-7 text-center transition-all duration-300 transform group-hover:-translate-y-2 group-hover:shadow-xl group-hover:shadow-[#EB89B5]/20 border border-[#EB89B5]/20 group-hover:border-[#EB89B5]/50 h-full flex flex-col justify-center min-h-[160px]">
+              <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-[#FFD7E9] flex items-center justify-center text-[#EB89B5] group-hover:bg-[#EB89B5] group-hover:text-white transition-colors duration-300">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+              </div>
+              <h3 className="text-xl md:text-2xl font-bold text-[#EB89B5] leading-tight">
+                Meet the students at Burlington High School
+              </h3>
+            </div>
           </a>
           <a
             href="https://www.instagram.com/stowe.hereducationrequired/"
