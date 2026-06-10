@@ -164,8 +164,8 @@ export default function Home() {
           </p>
         </div>
 
-        {/* Meet the students: Essex, South Burlington, Burlington, Stowe, Harwick Union */}
-        <div className="mt-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 max-w-7xl mx-auto">
+        {/* Meet the students: Essex, South Burlington, Burlington, Stowe, Harwick Union, Vergennes Union */}
+        <div className="mt-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-7xl mx-auto">
           <a
             href="https://www.instagram.com/ehs_her.education.required/"
             target="_blank"
@@ -234,6 +234,14 @@ export default function Home() {
               Coming soon
             </p>
           </a>
+          <div className="rounded-2xl bg-gradient-to-br from-[#FFF6FB] to-[#FFEAF4] shadow-md shadow-[#EB89B5]/10 p-6 md:p-7 text-center min-h-[160px] flex flex-col items-center justify-center">
+            <h3 className="font-serif text-xl md:text-2xl font-bold text-[#7A2454] leading-tight">
+              Meet the students at Vergennes Union High School
+            </h3>
+            <p className="mt-3 text-sm font-semibold text-gray-700 tracking-[0.12em] uppercase">
+              Coming soon
+            </p>
+          </div>
         </div>
 
         {/* Petition Notice */}
