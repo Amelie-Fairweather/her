@@ -8,13 +8,13 @@ export default function HarwickUnionHighSchoolGirlsPage() {
           <Link href="/" className="inline-block mb-4 text-pink-100 hover:text-white transition-colors">
             ← Back to Home
           </Link>
-          <h1 className="text-3xl md:text-4xl font-bold">Meet the girls at Harwick Union High School</h1>
+          <h1 className="text-3xl md:text-4xl font-bold">Meet the students at Harwood Union High School</h1>
         </div>
       </header>
 
       <main className="max-w-4xl mx-auto px-4 py-16 text-center">
         <p className="text-xl text-gray-700 font-semibold">Coming soon</p>
-        <p className="mt-2 text-gray-600 mb-6">Follow HER at Harwick Union High School on Instagram for updates.</p>
+        <p className="mt-2 text-gray-600 mb-6">Follow HER at Harwood Union High School on Instagram for updates.</p>
         <a
           href="https://www.instagram.com/huhs_hereducationrequired/"
           target="_blank"

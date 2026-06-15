@@ -73,7 +73,19 @@ export default function Events() {
   // Removed hearts and stars animation
   const weeklyMeetings = getNextWeeklyMeetings(2)
 
-  const upcomingEvents: Event[] = [...weeklyMeetings]
+  const steveStecklowAma: Event = {
+    id: 203,
+    title: 'AMA with 3-time Pulitzer Prize-winning journalist Steve Stecklow',
+    date: 'Coming soon',
+    time: 'TBA',
+    location: 'Details from HER at your school or via DM',
+    description:
+      'Join HER for an AMA with Steve Stecklow, a 3-time Pulitzer Prize-winning investigative journalist at Reuters. Reach out to HER at your school to participate, or message us about involvement.',
+    type: 'Special Event',
+    rsvpRequired: false,
+  }
+
+  const upcomingEvents: Event[] = [steveStecklowAma, ...weeklyMeetings]
 
   const pastEvents: Event[] = [
     {

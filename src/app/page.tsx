@@ -164,7 +164,7 @@ export default function Home() {
           </p>
         </div>
 
-        {/* Meet the students: Essex, South Burlington, Burlington, Stowe, Harwick Union, Vergennes Union */}
+        {/* Meet the students: Essex, South Burlington, Burlington, Stowe, Harwood Union, Vergennes Union, Rice Memorial, Peoples Academy */}
         <div className="mt-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-7xl mx-auto">
           <a
             href="https://www.instagram.com/ehs_her.education.required/"
@@ -228,7 +228,20 @@ export default function Home() {
             className="group block rounded-2xl bg-gradient-to-br from-[#FFF6FB] to-[#FFEAF4] shadow-md shadow-[#EB89B5]/10 p-6 md:p-7 text-center min-h-[160px] flex flex-col items-center justify-center transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-[#EB89B5]/20"
           >
             <h3 className="font-serif text-xl md:text-2xl font-bold text-[#7A2454] leading-tight group-hover:text-[#EB89B5] transition-colors">
-              Meet the girls at Harwick Union High School
+              Meet the students at Harwood Union High School
+            </h3>
+            <p className="mt-3 text-sm font-semibold text-gray-700 tracking-[0.12em] uppercase">
+              Coming soon
+            </p>
+          </a>
+          <a
+            href="https://www.instagram.com/vuhs.hereducationrequired/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group block rounded-2xl bg-gradient-to-br from-[#FFF6FB] to-[#FFEAF4] shadow-md shadow-[#EB89B5]/10 p-6 md:p-7 text-center min-h-[160px] flex flex-col items-center justify-center transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-[#EB89B5]/20"
+          >
+            <h3 className="font-serif text-xl md:text-2xl font-bold text-[#7A2454] leading-tight group-hover:text-[#EB89B5] transition-colors">
+              Meet the students at Vergennes Union High School
             </h3>
             <p className="mt-3 text-sm font-semibold text-gray-700 tracking-[0.12em] uppercase">
               Coming soon
@@ -236,7 +249,15 @@ export default function Home() {
           </a>
           <div className="rounded-2xl bg-gradient-to-br from-[#FFF6FB] to-[#FFEAF4] shadow-md shadow-[#EB89B5]/10 p-6 md:p-7 text-center min-h-[160px] flex flex-col items-center justify-center">
             <h3 className="font-serif text-xl md:text-2xl font-bold text-[#7A2454] leading-tight">
-              Meet the students at Vergennes Union High School
+              Meet the students at Rice Memorial High School
+            </h3>
+            <p className="mt-3 text-sm font-semibold text-gray-700 tracking-[0.12em] uppercase">
+              Coming soon
+            </p>
+          </div>
+          <div className="rounded-2xl bg-gradient-to-br from-[#FFF6FB] to-[#FFEAF4] shadow-md shadow-[#EB89B5]/10 p-6 md:p-7 text-center min-h-[160px] flex flex-col items-center justify-center">
+            <h3 className="font-serif text-xl md:text-2xl font-bold text-[#7A2454] leading-tight">
+              Meet the students at Peoples Academy
             </h3>
             <p className="mt-3 text-sm font-semibold text-gray-700 tracking-[0.12em] uppercase">
               Coming soon
