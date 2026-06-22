@@ -158,14 +158,18 @@ export default function Home() {
           </Link>
         </div>
 
-        {/* CVU page context — above school chapters */}
-        <div className="mt-10 max-w-7xl mx-auto mb-4 rounded-xl bg-[#FFF8D2] border border-[#EB89B5]/30 py-3 px-4 text-center shadow-sm">
-          <p className="text-sm md:text-base font-semibold text-[#7A2454] tracking-wide uppercase">
-            You are viewing the CVU page
-          </p>
-        </div>
-
         <HerChapterMapLoader />
+
+        <div className="mt-6 max-w-7xl mx-auto text-center">
+          <a
+            href="https://docs.google.com/forms/d/1uCjsP-O7k6S3d_As3J2pampyR4RJQ0K7z5-txtg6EfA/viewform"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center rounded-xl bg-[#EB89B5] px-6 py-3 md:px-8 md:py-4 text-white text-base md:text-lg font-bold shadow-lg shadow-[#EB89B5]/25 hover:bg-[#d977a5] transition-colors"
+          >
+            Apply to start one today!
+          </a>
+        </div>
 
         {/* Meet the students: Essex, South Burlington, Burlington, Stowe, Harwood Union, Vergennes Union, Rice Memorial, Peoples Academy */}
         <div className="mt-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-7xl mx-auto">
@@ -347,6 +351,13 @@ export default function Home() {
               Coming soon
             </p>
           </a>
+        </div>
+
+        {/* CVU page context */}
+        <div className="mt-8 max-w-7xl mx-auto mb-4 rounded-xl bg-[#FFF8D2] border border-[#EB89B5]/30 py-3 px-4 text-center shadow-sm">
+          <p className="text-sm md:text-base font-semibold text-[#7A2454] tracking-wide uppercase">
+            You are viewing the CVU page
+          </p>
         </div>
 
         {/* Petition Notice */}
