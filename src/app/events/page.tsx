@@ -311,7 +311,7 @@ export default function Events() {
                     )}
                     {event.title === 'COUNTY WIDE EVENT TO INCLUDE WOMEN IN THE CURRICULUM' && (
                       <p className="text-sm text-[#EB89B5] font-semibold mb-3">
-                        $500 was raised for PPNE at this event.
+                        $1,000 was raised for PPNE at this event.
                       </p>
                     )}
                     {event.catering && (

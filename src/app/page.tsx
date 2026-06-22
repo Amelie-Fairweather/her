@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import HerChapterMapLoader from '@/components/HerChapterMapLoader'
 // import HeroTitle from '@/components/HeroTitle' // Removed hearts and stars animation
 
 export default function Home() {
@@ -26,7 +27,7 @@ export default function Home() {
       </header>
 
       {/* Main Content */}
-      <main className="max-w-4xl mx-auto px-4 pt-0 pb-16">
+      <main className="max-w-7xl mx-auto px-4 pt-0 pb-16">
         {/* Mission Section with Surrounding Statistics */}
         <div className="mb-16 max-w-7xl mx-auto">
           {/* Statistics Bubbles Around Mission */}
@@ -163,6 +164,8 @@ export default function Home() {
             You are viewing the CVU page
           </p>
         </div>
+
+        <HerChapterMapLoader />
 
         {/* Meet the students: Essex, South Burlington, Burlington, Stowe, Harwood Union, Vergennes Union, Rice Memorial, Peoples Academy */}
         <div className="mt-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-7xl mx-auto">
@@ -326,6 +329,19 @@ export default function Home() {
           >
             <h3 className="font-serif text-xl md:text-2xl font-bold text-[#7A2454] leading-tight group-hover:text-[#EB89B5] transition-colors">
               Meet the students at Mt Mansfield Union High School
+            </h3>
+            <p className="mt-3 text-sm font-semibold text-gray-700 tracking-[0.12em] uppercase">
+              Coming soon
+            </p>
+          </a>
+          <a
+            href="https://www.instagram.com/hhs_hereducationrequired/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group block rounded-2xl bg-gradient-to-br from-[#FFF6FB] to-[#FFEAF4] shadow-md shadow-[#EB89B5]/10 p-6 md:p-7 text-center min-h-[160px] flex flex-col items-center justify-center transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-[#EB89B5]/20"
+          >
+            <h3 className="font-serif text-xl md:text-2xl font-bold text-[#7A2454] leading-tight group-hover:text-[#EB89B5] transition-colors">
+              Meet the students at Hopkins High School
             </h3>
             <p className="mt-3 text-sm font-semibold text-gray-700 tracking-[0.12em] uppercase">
               Coming soon
