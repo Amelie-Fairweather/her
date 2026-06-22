@@ -160,19 +160,20 @@ export default function Home() {
 
         <HerChapterMapLoader />
 
-        <div className="mt-6 max-w-7xl mx-auto text-center">
-          <a
-            href="https://docs.google.com/forms/d/1uCjsP-O7k6S3d_As3J2pampyR4RJQ0K7z5-txtg6EfA/viewform"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center rounded-xl bg-[#EB89B5] px-6 py-3 md:px-8 md:py-4 text-white text-base md:text-lg font-bold shadow-lg shadow-[#EB89B5]/25 hover:bg-[#d977a5] transition-colors"
+        <section className="mt-14 md:mt-20 mb-14 md:mb-20 max-w-3xl mx-auto px-4 text-center">
+          <h2 className="text-2xl md:text-4xl font-bold text-[#7A2454] leading-tight mb-8 md:mb-10">
+            Start a Her Education Required today
+          </h2>
+          <Link
+            href="/apply"
+            className="group inline-flex items-center justify-center w-full max-w-md mx-auto min-h-[88px] md:min-h-[100px] px-10 py-6 rounded-none bg-[#EB89B5] text-white text-lg md:text-2xl font-bold tracking-[0.08em] uppercase shadow-lg shadow-[#EB89B5]/25 border-2 border-[#EB89B5] transition-all duration-300 hover:bg-[#7A2454] hover:border-[#7A2454] hover:shadow-[#7A2454]/30"
           >
-            Apply to start one today!
-          </a>
-        </div>
+            Applications are now open
+          </Link>
+        </section>
 
         {/* Meet the students: Essex, South Burlington, Burlington, Stowe, Harwood Union, Vergennes Union, Rice Memorial, Peoples Academy */}
-        <div className="mt-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-7xl mx-auto">
           <a
             href="https://www.instagram.com/ehs_her.education.required/"
             target="_blank"
