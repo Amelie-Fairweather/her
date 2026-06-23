@@ -141,6 +141,9 @@ export default function ApplyPage() {
             <p className="mt-2 text-gray-600 max-w-xl mx-auto">
               Tell us about yourself, your school, and your co-leaders. We&apos;ll be in touch about next steps.
             </p>
+            <p className="mt-4 text-sm md:text-base text-[#7A2454] font-semibold max-w-xl mx-auto">
+              Applications are viewed on a rolling basis. Please continue to check your email.
+            </p>
           </div>
           <div className="w-full bg-white">
             <iframe

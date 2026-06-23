@@ -383,19 +383,10 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Event Image */}
-        <div className="my-12 md:my-16 max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#EB89B5] text-center mb-8 md:mb-10">
-            OUR CLUB THANKS YOU FOR YOUR SUPPORT!
+        <div className="my-12 md:my-16 max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#EB89B5]">
+            Thank you for your support
           </h2>
-          <Image
-            src="/event1.JPG"
-            alt="HER Club event - students on stage"
-            width={800}
-            height={600}
-            className="w-full h-auto rounded-lg object-cover shadow-lg"
-            style={{ aspectRatio: '4/3' }}
-          />
         </div>
 
       </main>
