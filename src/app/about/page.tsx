@@ -199,7 +199,7 @@ export default function About() {
           <div className="bg-white rounded-lg shadow-lg p-8">
             <h2 className="text-3xl font-bold text-gray-800 mb-6">Our Mission</h2>
             <p className="text-lg text-gray-600 leading-relaxed mb-6">
-              HER (Her Education Required) is a student-led club at Champlain Valley Union High School 
+              HER (Her Education Required) is a student led movement across the country
               dedicated to addressing the total lack of women&apos;s history and current rights in the curriculum.
             </p>
             <p className="text-lg text-gray-600 leading-relaxed">
