@@ -21,7 +21,7 @@ export default function Home() {
           </div>
           <h2 className="text-2xl font-semibold mb-2">Her Education Required</h2>
           <p className="text-lg opacity-90">
-            The largest student-led network for women&apos;s rights in Vermont.
+            The national youth network for women&apos;s rights.
           </p>
         </div>
       </header>

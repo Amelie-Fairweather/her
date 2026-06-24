@@ -15,7 +15,7 @@ const coiny = Coiny({
 
 export const metadata: Metadata = {
   title: "Her Education Required",
-  description: "HER - Her Education Required | The largest student-led network for women's rights in Vermont",
+  description: "HER - Her Education Required | The national youth network for women's rights",
   icons: {
     icon: [
       { url: '/logo.png', sizes: 'any' },
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Her Education Required",
-    description: "HER - Her Education Required | The largest student-led network for women's rights in Vermont",
+    description: "HER - Her Education Required | The national youth network for women's rights",
     url: "https://www.hereducation.org",
     siteName: "Her Education Required",
     images: [
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Her Education Required",
-    description: "HER - Her Education Required | The largest student-led network for women's rights in Vermont",
+    description: "HER - Her Education Required | The national youth network for women's rights",
     images: ["https://www.hereducation.org/logo.png"], // Must be an absolute URL
   },
   metadataBase: new URL('https://www.hereducation.org'),
