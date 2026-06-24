@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet'
 import L from 'leaflet'
 import { herChapters, type HerChapter } from '@/data/herChapters'
@@ -38,17 +38,93 @@ function FlyToChapter({ chapter }: { chapter: HerChapter | null }) {
   return null
 }
 
+function cappedScrollDrift(offsetY: number, anchor: number) {
+  return Math.max(0, Math.min(30, (offsetY - anchor) * 0.05))
+}
+
 export default function HerChapterMap() {
   const [selectedId, setSelectedId] = useState<string | null>(null)
+  const [offsetY, setOffsetY] = useState(0)
+  const [isHeaderVisible, setIsHeaderVisible] = useState(false)
+  const [isMapVisible, setIsMapVisible] = useState(false)
+  const [sectionTop, setSectionTop] = useState(0)
+  const headerRef = useRef<HTMLDivElement>(null)
+  const mapRef = useRef<HTMLDivElement>(null)
 
   const selectedChapter = useMemo(
     () => herChapters.find((chapter) => chapter.id === selectedId) ?? null,
     [selectedId]
   )
 
+  useEffect(() => {
+    const handleScroll = () => setOffsetY(window.scrollY)
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll()
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  useEffect(() => {
+    const updateSectionTop = () => {
+      if (headerRef.current) {
+        setSectionTop(headerRef.current.getBoundingClientRect().top + window.scrollY)
+      }
+    }
+
+    updateSectionTop()
+    window.addEventListener('resize', updateSectionTop)
+    return () => window.removeEventListener('resize', updateSectionTop)
+  }, [])
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.target === headerRef.current && entry.isIntersecting) {
+            setIsHeaderVisible(true)
+          }
+          if (entry.target === mapRef.current && entry.isIntersecting) {
+            setIsMapVisible(true)
+          }
+        })
+      },
+      { threshold: 0.1, rootMargin: '100px' }
+    )
+
+    const timeout = window.setTimeout(() => {
+      if (headerRef.current) {
+        observer.observe(headerRef.current)
+        const rect = headerRef.current.getBoundingClientRect()
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          setIsHeaderVisible(true)
+        }
+      }
+      if (mapRef.current) {
+        observer.observe(mapRef.current)
+        const rect = mapRef.current.getBoundingClientRect()
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          setIsMapVisible(true)
+        }
+      }
+    }, 100)
+
+    return () => {
+      window.clearTimeout(timeout)
+      if (headerRef.current) observer.unobserve(headerRef.current)
+      if (mapRef.current) observer.unobserve(mapRef.current)
+    }
+  }, [])
+
   return (
     <section className="mt-10 max-w-7xl mx-auto">
-      <div className="text-center mb-6 md:mb-8">
+      <div
+        ref={headerRef}
+        className="text-center mb-6 md:mb-8"
+        style={{
+          transform: `translateY(${isHeaderVisible ? cappedScrollDrift(offsetY, sectionTop - 300) : 60}px)`,
+          opacity: isHeaderVisible ? 1 : 0,
+          transition: 'opacity 1s ease-out, transform 1s ease-out',
+        }}
+      >
         <h2 className="text-2xl md:text-4xl font-bold text-[#EB89B5] mb-2">
           HER Chapters Across the Country
         </h2>
@@ -57,7 +133,15 @@ export default function HerChapterMap() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_280px] gap-4 md:gap-6">
+      <div
+        ref={mapRef}
+        className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_280px] gap-4 md:gap-6"
+        style={{
+          transform: `translateY(${isMapVisible ? cappedScrollDrift(offsetY, sectionTop) : 60}px)`,
+          opacity: isMapVisible ? 1 : 0,
+          transition: 'opacity 1.2s ease-out, transform 1.2s ease-out',
+        }}
+      >
         <div className="her-map-shell rounded-2xl overflow-hidden shadow-lg shadow-[#EB89B5]/15 border border-[#EB89B5]/20">
           <MapContainer
             center={[39.8, -98.5]}

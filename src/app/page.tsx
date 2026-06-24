@@ -1,101 +1,15 @@
 import Link from 'next/link'
-import Image from 'next/image'
 import HerChapterMapLoader from '@/components/HerChapterMapLoader'
+import HomeParallaxHero from '@/components/HomeParallaxHero'
 // import HeroTitle from '@/components/HeroTitle' // Removed hearts and stars animation
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#FFFBF3] to-[#FFF8D2]">
-      {/* Header */}
-      <header className="bg-[#EB89B5] text-white py-8 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="her-logo-container mb-4">
-            <Image
-              src="/logo.png"
-              alt="HER Logo"
-              width={224}
-              height={224}
-              className="mx-auto w-44 h-44 md:w-56 md:h-56 rounded-xl border-[3px] border-white"
-              priority
-            />
-          </div>
-          <h2 className="text-2xl font-semibold mb-2">Her Education Required</h2>
-          <p className="text-lg opacity-90">
-            The national youth network for women&apos;s rights.
-          </p>
-        </div>
-      </header>
+      <HomeParallaxHero />
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 pt-0 pb-16">
-        {/* Mission Section with Surrounding Statistics */}
-        <div className="mb-16 max-w-7xl mx-auto">
-          {/* Statistics Bubbles Around Mission */}
-          <div className="relative">
-            {/* Top Statistics Row */}
-            <div className="grid grid-cols-1 md:grid-cols-3 justify-center mt-9 mb-12 max-w-6xl mx-auto gap-4 md:gap-6 px-4 md:px-0">
-              {/* Left Statistic */}
-              <div className="w-full">
-                <div className="bg-white rounded-2xl p-4 md:p-8 shadow-lg shadow-[#EB89B5]/20 transform hover:scale-110 transition-transform duration-300 h-[200px] md:h-[240px] flex items-center">
-                  <div className="text-center w-full">
-                    <div className="text-2xl md:text-4xl font-bold text-[#EB89B5] mb-2 md:mb-3">85%</div>
-                    <p className="text-xs md:text-sm text-gray-700 font-semibold px-1 md:px-4 leading-tight">
-                      of students grades 9-12 did not know what the suffrage movement was, Title 7 or 8 or ERA, pay and gender gap, or what year women gained the right to vote.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Middle Statistic */}
-              <div className="w-full">
-                <div className="bg-white rounded-2xl p-4 md:p-8 shadow-lg shadow-[#EB89B5]/20 transform hover:scale-110 transition-transform duration-300 h-[200px] md:h-[240px] flex items-center">
-                  <div className="text-center w-full">
-                    <div className="text-2xl md:text-4xl font-bold text-[#EB89B5] mb-2 md:mb-3">90%</div>
-                    <p className="text-xs md:text-sm text-gray-700 font-semibold px-1 md:px-4 leading-tight">
-                      of students grades 9-12 said they had received no education around women&apos;s rights from school.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Right Statistic */}
-              <div className="w-full">
-                <div className="bg-white rounded-2xl p-4 md:p-8 shadow-lg shadow-[#EB89B5]/20 transform hover:scale-110 transition-transform duration-300 h-[200px] md:h-[240px] flex items-center">
-                  <div className="text-center w-full">
-                    <div className="text-2xl md:text-4xl font-bold text-[#EB89B5] mb-2 md:mb-3">81%</div>
-                    <p className="text-xs md:text-sm text-gray-700 font-semibold px-1 md:px-4 leading-tight">
-                      of students grades 9-12 reported they had experienced sexism.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Main Mission Bubble */}
-            <div className="relative bg-[#FFD7E9] rounded-full py-8 md:py-16 px-6 md:px-16 max-w-5xl mx-auto shadow-xl border-4 border-[#EB89B5]">
-              {/* Heart decoration at top */}
-              <div className="absolute -top-3 md:-top-6 left-1/2 transform -translate-x-1/2">
-                <svg className="w-8 h-8 md:w-12 md:h-12 drop-shadow-md" viewBox="0 0 24 24" fill="#EB89B5">
-                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                </svg>
-              </div>
-              
-              <div className="text-center pt-4 md:pt-6 pb-2 md:pb-4">
-                <h3 className="text-xl md:text-3xl font-bold text-[#EB89B5] mb-4 md:mb-6">
-                  Support our mission to implement a required unit into the curriculum
-                </h3>
-                <p className="text-sm md:text-lg text-gray-700 max-w-3xl mx-auto mb-3 md:mb-4">
-                  A required unit is absolutely essential to ensuring students have a well-rounded understanding of American history. Today, students have no idea the struggle women faced and the work needed to overcome them. Lack of role models for young girls, lack of representation, and lack of knowledge limits the inclusion and success of your daughters, mothers, sisters, etc. Furthermore, men lack this education too. How can students vote on new policies surrounding women&apos;s rights without basic understanding of them?
-                </p>
-                <p className="text-sm md:text-lg text-gray-700 max-w-3xl mx-auto font-semibold">
-                  To not require this education is to suggest women&apos;s history as secondary, as optional, as unimportant.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Navigation Buttons */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-5xl mx-auto">
           {/* About Us Button */}
           <Link href="/about" className="group">
@@ -158,7 +72,9 @@ export default function Home() {
           </Link>
         </div>
 
-        <HerChapterMapLoader />
+        <div id="chapters-map" className="scroll-mt-8">
+          <HerChapterMapLoader />
+        </div>
 
         <section className="mt-14 md:mt-20 mb-14 md:mb-20 max-w-3xl mx-auto px-4 text-center">
           <h2 className="text-2xl md:text-4xl font-bold text-[#7A2454] leading-tight mb-8 md:mb-10">
