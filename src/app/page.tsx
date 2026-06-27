@@ -289,14 +289,19 @@ export default function Home() {
               Coming soon
             </p>
           </a>
-          <div className="rounded-2xl bg-gradient-to-br from-[#FFF6FB] to-[#FFEAF4] shadow-md shadow-[#EB89B5]/10 p-6 md:p-7 text-center min-h-[160px] flex flex-col items-center justify-center">
-            <h3 className="font-serif text-xl md:text-2xl font-bold text-[#7A2454] leading-tight">
+          <a
+            href="https://www.instagram.com/montpelierhighschool_her/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group block rounded-2xl bg-gradient-to-br from-[#FFF6FB] to-[#FFEAF4] shadow-md shadow-[#EB89B5]/10 p-6 md:p-7 text-center min-h-[160px] flex flex-col items-center justify-center transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-[#EB89B5]/20"
+          >
+            <h3 className="font-serif text-xl md:text-2xl font-bold text-[#7A2454] leading-tight group-hover:text-[#EB89B5] transition-colors">
               Meet the students at Montpelier High School
             </h3>
             <p className="mt-3 text-sm font-semibold text-gray-700 tracking-[0.12em] uppercase">
               Coming soon
             </p>
-          </div>
+          </a>
         </div>
 
         {/* CVU page context */}
