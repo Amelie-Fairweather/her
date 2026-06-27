@@ -27,4 +27,5 @@ export const herChapters: HerChapter[] = [
   { id: 'deer-park', name: 'Deer Park High School', city: 'Deer Park', state: 'TX', lat: 29.682, lng: -95.137 },
   { id: 'giis-punggol', name: 'Global Indian International School', city: 'Punggol', state: 'Singapore', lat: 1.4092, lng: 103.9063 },
   { id: 'montpelier', name: 'Montpelier High School', city: 'Montpelier', state: 'VT', lat: 44.2478, lng: -72.5819 },
+  { id: 'southwest-minneapolis', name: 'Southwest High School', city: 'Minneapolis', state: 'MN', lat: 44.917, lng: -93.3247 },
 ]
