@@ -28,4 +28,7 @@ export const herChapters: HerChapter[] = [
   { id: 'giis-punggol', name: 'Global Indian International School', city: 'Punggol', state: 'Singapore', lat: 1.4092, lng: 103.9063 },
   { id: 'montpelier', name: 'Montpelier High School', city: 'Montpelier', state: 'VT', lat: 44.2478, lng: -72.5819 },
   { id: 'southwest-minneapolis', name: 'Southwest High School', city: 'Minneapolis', state: 'MN', lat: 44.917, lng: -93.3247 },
+  { id: 'north-eugene', name: 'North Eugene High School', city: 'Eugene', state: 'OR', lat: 44.0872, lng: -123.1345 },
+  { id: 'atkins', name: 'Atkins High School', city: 'Winston-Salem', state: 'NC', lat: 36.0634, lng: -80.2889 },
+  { id: 'irvington', name: 'Irvington High School', city: 'Irvington', state: 'CA', lat: 37.5221, lng: -121.9592 },
 ]
