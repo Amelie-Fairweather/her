@@ -32,4 +32,5 @@ export const herChapters: HerChapter[] = [
   { id: 'atkins', name: 'Atkins High School', city: 'Winston-Salem', state: 'NC', lat: 36.0634, lng: -80.2889 },
   { id: 'irvington', name: 'Irvington High School', city: 'Irvington', state: 'CA', lat: 37.5221, lng: -121.9592 },
   { id: 'suffield-academy', name: 'Suffield Academy', city: 'Suffield', state: 'CT', lat: 41.9817, lng: -72.6503 },
+  { id: 'woodcreek', name: 'Woodcreek High School', city: 'Roseville', state: 'CA', lat: 38.7653, lng: -121.3078 },
 ]
