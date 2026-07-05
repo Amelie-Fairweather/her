@@ -36,4 +36,5 @@ export const herChapters: HerChapter[] = [
   { id: 'la-cueva', name: 'La Cueva High School', city: 'Albuquerque', state: 'NM', lat: 35.1294, lng: -106.4982 },
   { id: 'theodore-roosevelt', name: 'Theodore Roosevelt Senior High School', city: 'Los Angeles', state: 'CA', lat: 34.0419, lng: -118.2068 },
   { id: 'saint-johnsbury-academy', name: 'Saint Johnsbury Academy', city: 'Saint Johnsbury', state: 'VT', lat: 44.4192, lng: -72.0151 },
+  { id: 'colchester', name: 'Colchester High School', city: 'Colchester', state: 'VT', lat: 44.5586, lng: -73.1892 },
 ]
