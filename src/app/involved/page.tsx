@@ -300,7 +300,7 @@ export default function Involved() {
                 </p>
                 <div className="text-center">
                   <p className="text-gray-700 font-semibold mb-2">Money can be accepted via Venmo to:</p>
-                  <p className="text-[#EB89B5] font-bold text-lg">@Ameliefairweather7</p>
+                  <p className="text-[#EB89B5] font-bold text-lg">@hereducationrequired</p>
                   <p className="text-gray-600 text-sm">Please specify &quot;donation&quot; in the message</p>
                 </div>
               </div>
