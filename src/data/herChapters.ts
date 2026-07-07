@@ -38,4 +38,5 @@ export const herChapters: HerChapter[] = [
   { id: 'saint-johnsbury-academy', name: 'Saint Johnsbury Academy', city: 'Saint Johnsbury', state: 'VT', lat: 44.4192, lng: -72.0151 },
   { id: 'colchester', name: 'Colchester High School', city: 'Colchester', state: 'VT', lat: 44.5586, lng: -73.1892 },
   { id: 'east-brunswick', name: 'East Brunswick High School', city: 'East Brunswick', state: 'NJ', lat: 40.4453, lng: -74.4152 },
+  { id: 'haddon-township', name: 'Haddon Township High School', city: 'Haddon Township', state: 'NJ', lat: 39.9074, lng: -75.0531 },
 ]
