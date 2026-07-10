@@ -42,4 +42,5 @@ export const herChapters: HerChapter[] = [
   { id: 'marymount', name: 'Marymount High School', city: 'Los Angeles', state: 'CA', lat: 34.0776, lng: -118.4636 },
   { id: 'pac-sao-paulo', name: 'Pan American Christian Academy', city: 'São Paulo', state: 'Brazil', lat: -23.6234, lng: -46.5537 },
   { id: 'casa-roble', name: 'Casa Roble High School', city: 'Orangevale', state: 'CA', lat: 38.6769, lng: -121.2247 },
+  { id: 'aga-khan-nairobi', name: 'Aga Khan Academy Nairobi', city: 'Nairobi', state: 'Kenya', lat: -1.2625, lng: 36.8125 },
 ]
