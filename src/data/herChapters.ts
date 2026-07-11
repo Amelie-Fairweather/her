@@ -46,4 +46,5 @@ export const herChapters: HerChapter[] = [
   { id: 'mission-san-jose', name: 'Mission San Jose High School', city: 'Fremont', state: 'CA', lat: 37.5336, lng: -121.9208 },
   { id: 'wethersfield', name: 'Wethersfield High School', city: 'Wethersfield', state: 'CT', lat: 41.7142, lng: -72.6526 },
   { id: 'bonita-vista', name: 'Bonita Vista High School', city: 'Chula Vista', state: 'CA', lat: 32.6401, lng: -117.0345 },
+  { id: 'woodward-academy', name: 'Woodward Academy', city: 'College Park', state: 'GA', lat: 33.6465, lng: -84.4421 },
 ]
