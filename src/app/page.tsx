@@ -470,6 +470,62 @@ export default function Home() {
               Coming soon
             </p>
           </div>
+          <div className="rounded-2xl bg-gradient-to-br from-[#FFF6FB] to-[#FFEAF4] shadow-md shadow-[#EB89B5]/10 p-6 md:p-7 text-center min-h-[160px] flex flex-col items-center justify-center">
+            <h3 className="font-serif text-xl md:text-2xl font-bold text-[#7A2454] leading-tight">
+              Meet the students at Maria Carrillo High School
+            </h3>
+            <p className="mt-3 text-sm font-semibold text-gray-700 tracking-[0.12em] uppercase">
+              Coming soon
+            </p>
+          </div>
+          <div className="rounded-2xl bg-gradient-to-br from-[#FFF6FB] to-[#FFEAF4] shadow-md shadow-[#EB89B5]/10 p-6 md:p-7 text-center min-h-[160px] flex flex-col items-center justify-center">
+            <h3 className="font-serif text-xl md:text-2xl font-bold text-[#7A2454] leading-tight">
+              Meet the students at Mesa Verde High School
+            </h3>
+            <p className="mt-3 text-sm font-semibold text-gray-700 tracking-[0.12em] uppercase">
+              Coming soon
+            </p>
+          </div>
+          <div className="rounded-2xl bg-gradient-to-br from-[#FFF6FB] to-[#FFEAF4] shadow-md shadow-[#EB89B5]/10 p-6 md:p-7 text-center min-h-[160px] flex flex-col items-center justify-center">
+            <h3 className="font-serif text-xl md:text-2xl font-bold text-[#7A2454] leading-tight">
+              Meet the students at Bella Vista High School
+            </h3>
+            <p className="mt-3 text-sm font-semibold text-gray-700 tracking-[0.12em] uppercase">
+              Coming soon
+            </p>
+          </div>
+          <div className="rounded-2xl bg-gradient-to-br from-[#FFF6FB] to-[#FFEAF4] shadow-md shadow-[#EB89B5]/10 p-6 md:p-7 text-center min-h-[160px] flex flex-col items-center justify-center">
+            <h3 className="font-serif text-xl md:text-2xl font-bold text-[#7A2454] leading-tight">
+              Meet the students at El Camino Fundamental High School
+            </h3>
+            <p className="mt-3 text-sm font-semibold text-gray-700 tracking-[0.12em] uppercase">
+              Coming soon
+            </p>
+          </div>
+          <div className="rounded-2xl bg-gradient-to-br from-[#FFF6FB] to-[#FFEAF4] shadow-md shadow-[#EB89B5]/10 p-6 md:p-7 text-center min-h-[160px] flex flex-col items-center justify-center">
+            <h3 className="font-serif text-xl md:text-2xl font-bold text-[#7A2454] leading-tight">
+              Meet the students at Rio Americano High School
+            </h3>
+            <p className="mt-3 text-sm font-semibold text-gray-700 tracking-[0.12em] uppercase">
+              Coming soon
+            </p>
+          </div>
+          <div className="rounded-2xl bg-gradient-to-br from-[#FFF6FB] to-[#FFEAF4] shadow-md shadow-[#EB89B5]/10 p-6 md:p-7 text-center min-h-[160px] flex flex-col items-center justify-center">
+            <h3 className="font-serif text-xl md:text-2xl font-bold text-[#7A2454] leading-tight">
+              Meet the students at Rocklin High School
+            </h3>
+            <p className="mt-3 text-sm font-semibold text-gray-700 tracking-[0.12em] uppercase">
+              Coming soon
+            </p>
+          </div>
+          <div className="rounded-2xl bg-gradient-to-br from-[#FFF6FB] to-[#FFEAF4] shadow-md shadow-[#EB89B5]/10 p-6 md:p-7 text-center min-h-[160px] flex flex-col items-center justify-center">
+            <h3 className="font-serif text-xl md:text-2xl font-bold text-[#7A2454] leading-tight">
+              Meet the students at Saint Francis Catholic High School
+            </h3>
+            <p className="mt-3 text-sm font-semibold text-gray-700 tracking-[0.12em] uppercase">
+              Coming soon
+            </p>
+          </div>
         </div>
 
         {/* CVU page context */}

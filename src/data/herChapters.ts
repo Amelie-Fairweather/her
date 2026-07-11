@@ -48,4 +48,11 @@ export const herChapters: HerChapter[] = [
   { id: 'bonita-vista', name: 'Bonita Vista High School', city: 'Chula Vista', state: 'CA', lat: 32.6401, lng: -117.0345 },
   { id: 'woodward-academy', name: 'Woodward Academy', city: 'College Park', state: 'GA', lat: 33.6465, lng: -84.4421 },
   { id: 'millard-north', name: 'Millard North High School', city: 'Omaha', state: 'NE', lat: 41.2664, lng: -96.1481 },
+  { id: 'maria-carrillo', name: 'Maria Carrillo High School', city: 'Santa Rosa', state: 'CA', lat: 38.4712, lng: -122.6714 },
+  { id: 'mesa-verde', name: 'Mesa Verde High School', city: 'Citrus Heights', state: 'CA', lat: 38.6945, lng: -121.2813 },
+  { id: 'bella-vista', name: 'Bella Vista High School', city: 'Fair Oaks', state: 'CA', lat: 38.6631, lng: -121.2558 },
+  { id: 'el-camino-fundamental', name: 'El Camino Fundamental High School', city: 'Sacramento', state: 'CA', lat: 38.6034, lng: -121.4152 },
+  { id: 'rio-americano', name: 'Rio Americano High School', city: 'Sacramento', state: 'CA', lat: 38.5951, lng: -121.3712 },
+  { id: 'rocklin', name: 'Rocklin High School', city: 'Rocklin', state: 'CA', lat: 38.8021, lng: -121.2345 },
+  { id: 'saint-francis-sacramento', name: 'Saint Francis Catholic High School', city: 'Sacramento', state: 'CA', lat: 38.5672, lng: -121.4281 },
 ]
