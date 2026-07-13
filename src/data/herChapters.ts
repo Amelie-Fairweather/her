@@ -58,4 +58,10 @@ export const herChapters: HerChapter[] = [
   { id: 'richard-montgomery', name: 'Richard Montgomery High School', city: 'Rockville', state: 'MD', lat: 39.0837, lng: -77.1525 },
   { id: 'christian-brothers-sacramento', name: 'Christian Brothers High School', city: 'Sacramento', state: 'CA', lat: 38.5412, lng: -121.4695 },
   { id: 'harper-jr-high', name: 'Harper Junior High School', city: 'Davis', state: 'CA', lat: 38.5534, lng: -121.7382 },
+  { id: 'john-adams-academy-roseville', name: 'John Adams Academy', city: 'Roseville', state: 'CA', lat: 38.7892, lng: -121.2714 },
+  { id: 'pleasant-grove', name: 'Pleasant Grove High School', city: 'Elk Grove', state: 'CA', lat: 38.4086, lng: -121.3703 },
+  { id: 'del-oro', name: 'Del Oro High School', city: 'Loomis', state: 'CA', lat: 38.8189, lng: -121.1931 },
+  { id: 'west-campus', name: 'West Campus High School', city: 'Sacramento', state: 'CA', lat: 38.5397, lng: -121.4905 },
+  { id: 'el-sereno', name: 'El Sereno Alternative Education', city: 'Fair Oaks', state: 'CA', lat: 38.6419, lng: -121.3379 },
+  { id: 'clement', name: 'Clement High School', city: 'Sacramento', state: 'CA', lat: 38.5816, lng: -121.4944 },
 ]
