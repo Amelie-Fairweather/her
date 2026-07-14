@@ -64,4 +64,5 @@ export const herChapters: HerChapter[] = [
   { id: 'west-campus', name: 'West Campus High School', city: 'Sacramento', state: 'CA', lat: 38.5397, lng: -121.4905 },
   { id: 'el-sereno', name: 'El Sereno Alternative Education', city: 'Fair Oaks', state: 'CA', lat: 38.6419, lng: -121.3379 },
   { id: 'clement', name: 'Clement High School', city: 'Sacramento', state: 'CA', lat: 38.5816, lng: -121.4944 },
+  { id: 'north-farmington', name: 'North Farmington High School', city: 'Farmington Hills', state: 'MI', lat: 42.5074, lng: -83.3635 },
 ]
