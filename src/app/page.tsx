@@ -606,6 +606,38 @@ export default function Home() {
               Coming soon
             </p>
           </div>
+          <div className="rounded-2xl bg-gradient-to-br from-[#FFF6FB] to-[#FFEAF4] shadow-md shadow-[#EB89B5]/10 p-6 md:p-7 text-center min-h-[160px] flex flex-col items-center justify-center">
+            <h3 className="font-serif text-xl md:text-2xl font-bold text-[#7A2454] leading-tight">
+              Meet the students at Visions in Education
+            </h3>
+            <p className="mt-3 text-sm font-semibold text-gray-700 tracking-[0.12em] uppercase">
+              Coming soon
+            </p>
+          </div>
+          <div className="rounded-2xl bg-gradient-to-br from-[#FFF6FB] to-[#FFEAF4] shadow-md shadow-[#EB89B5]/10 p-6 md:p-7 text-center min-h-[160px] flex flex-col items-center justify-center">
+            <h3 className="font-serif text-xl md:text-2xl font-bold text-[#7A2454] leading-tight">
+              Meet the students at Del Campo High School
+            </h3>
+            <p className="mt-3 text-sm font-semibold text-gray-700 tracking-[0.12em] uppercase">
+              Coming soon
+            </p>
+          </div>
+          <div className="rounded-2xl bg-gradient-to-br from-[#FFF6FB] to-[#FFEAF4] shadow-md shadow-[#EB89B5]/10 p-6 md:p-7 text-center min-h-[160px] flex flex-col items-center justify-center">
+            <h3 className="font-serif text-xl md:text-2xl font-bold text-[#7A2454] leading-tight">
+              Meet the students at C.K. McClatchy High School
+            </h3>
+            <p className="mt-3 text-sm font-semibold text-gray-700 tracking-[0.12em] uppercase">
+              Coming soon
+            </p>
+          </div>
+          <div className="rounded-2xl bg-gradient-to-br from-[#FFF6FB] to-[#FFEAF4] shadow-md shadow-[#EB89B5]/10 p-6 md:p-7 text-center min-h-[160px] flex flex-col items-center justify-center">
+            <h3 className="font-serif text-xl md:text-2xl font-bold text-[#7A2454] leading-tight">
+              Meet the students at Twelve Bridges High School
+            </h3>
+            <p className="mt-3 text-sm font-semibold text-gray-700 tracking-[0.12em] uppercase">
+              Coming soon
+            </p>
+          </div>
         </div>
 
         {/* CVU page context */}

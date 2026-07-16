@@ -65,4 +65,8 @@ export const herChapters: HerChapter[] = [
   { id: 'el-sereno', name: 'El Sereno Alternative Education', city: 'Fair Oaks', state: 'CA', lat: 38.6419, lng: -121.3379 },
   { id: 'clement', name: 'Clement High School', city: 'Sacramento', state: 'CA', lat: 38.5816, lng: -121.4944 },
   { id: 'north-farmington', name: 'North Farmington High School', city: 'Farmington Hills', state: 'MI', lat: 42.5074, lng: -83.3635 },
+  { id: 'visions-in-education', name: 'Visions in Education', city: 'Carmichael', state: 'CA', lat: 38.6115, lng: -121.3283 },
+  { id: 'del-campo', name: 'Del Campo High School', city: 'Fair Oaks', state: 'CA', lat: 38.6521, lng: -121.2708 },
+  { id: 'ck-mcclatchy', name: 'C.K. McClatchy High School', city: 'Sacramento', state: 'CA', lat: 38.541, lng: -121.4972 },
+  { id: 'twelve-bridges', name: 'Twelve Bridges High School', city: 'Lincoln', state: 'CA', lat: 38.8912, lng: -121.2924 },
 ]
