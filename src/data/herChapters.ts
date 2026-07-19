@@ -30,7 +30,7 @@ export const herChapters: HerChapter[] = [
   { id: 'southwest-minneapolis', name: 'Southwest High School', city: 'Minneapolis', state: 'MN', lat: 44.917, lng: -93.3247 },
   { id: 'north-eugene', name: 'North Eugene High School', city: 'Eugene', state: 'OR', lat: 44.0872, lng: -123.1345 },
   { id: 'atkins', name: 'Atkins High School', city: 'Winston-Salem', state: 'NC', lat: 36.0634, lng: -80.2889 },
-  { id: 'irvington', name: 'Irvington High School', city: 'Irvington', state: 'CA', lat: 37.5221, lng: -121.9592 },
+  { id: 'irvington', name: 'Irvington High School', city: 'Fremont', state: 'CA', lat: 37.5221, lng: -121.9592 },
   { id: 'suffield-academy', name: 'Suffield Academy', city: 'Suffield', state: 'CT', lat: 41.9817, lng: -72.6503 },
   { id: 'woodcreek', name: 'Woodcreek High School', city: 'Roseville', state: 'CA', lat: 38.7653, lng: -121.3078 },
   { id: 'la-cueva', name: 'La Cueva High School', city: 'Albuquerque', state: 'NM', lat: 35.1294, lng: -106.4982 },
@@ -69,4 +69,7 @@ export const herChapters: HerChapter[] = [
   { id: 'del-campo', name: 'Del Campo High School', city: 'Fair Oaks', state: 'CA', lat: 38.6521, lng: -121.2708 },
   { id: 'ck-mcclatchy', name: 'C.K. McClatchy High School', city: 'Sacramento', state: 'CA', lat: 38.541, lng: -121.4972 },
   { id: 'twelve-bridges', name: 'Twelve Bridges High School', city: 'Lincoln', state: 'CA', lat: 38.8912, lng: -121.2924 },
+  { id: 'crean-lutheran', name: 'Crean Lutheran High School', city: 'Irvine', state: 'CA', lat: 33.70213, lng: -117.73195 },
+  { id: 'immanuel-reedley', name: 'Immanuel High School', city: 'Reedley', state: 'CA', lat: 36.586583, lng: -119.457361 },
+  { id: 'ukiah', name: 'Ukiah High School', city: 'Ukiah', state: 'CA', lat: 39.164, lng: -123.224 },
 ]
