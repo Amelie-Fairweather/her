@@ -75,4 +75,6 @@ export const herChapters: HerChapter[] = [
   { id: 'lower-dauphin', name: 'Lower Dauphin High School', city: 'Hummelstown', state: 'PA', lat: 40.2595, lng: -76.7054 },
   { id: 'walt-whitman', name: 'Walt Whitman High School', city: 'Huntington Station', state: 'NY', lat: 40.827, lng: -73.4244 },
   { id: 'middlebury-union', name: 'Middlebury Union High School', city: 'Middlebury', state: 'VT', lat: 44.0071, lng: -73.1645 },
+  { id: 'pokhariya-biratnagar', name: 'Pokhariya', city: 'Biratnagar', state: 'Nepal', lat: 26.4836, lng: 87.2828 },
+  { id: 'hayat-hyderabad', name: 'Hayat School', city: 'Hyderabad', state: 'Sindh, Pakistan', lat: 25.4075, lng: 68.3613 },
 ]
