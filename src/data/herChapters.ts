@@ -77,4 +77,5 @@ export const herChapters: HerChapter[] = [
   { id: 'middlebury-union', name: 'Middlebury Union High School', city: 'Middlebury', state: 'VT', lat: 44.0071, lng: -73.1645 },
   { id: 'pokhariya-biratnagar', name: 'Pokhariya', city: 'Biratnagar', state: 'Nepal', lat: 26.4836, lng: 87.2828 },
   { id: 'hayat-hyderabad', name: 'Hayat School', city: 'Hyderabad', state: 'Sindh, Pakistan', lat: 25.4075, lng: 68.3613 },
+  { id: 'chaparral-temecula', name: 'Chaparral High School', city: 'Temecula', state: 'CA', lat: 33.537, lng: -117.1479 },
 ]
