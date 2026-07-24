@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
+import ScholarshipTracker from '@/components/ScholarshipTracker'
 
 const stats = [
   {
@@ -174,6 +175,8 @@ export default function HomeParallaxHero() {
               </p>
             </div>
           </div>
+
+          <ScholarshipTracker />
         </div>
       </div>
     </>

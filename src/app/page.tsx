@@ -55,6 +55,20 @@ export default function Home() {
               </p>
             </div>
           </Link>
+            {/* Scholarship Button */}
+            <Link href="/scholarship" className="group">
+            <div className="bg-white rounded-lg shadow-lg p-5 md:p-8 text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-transparent hover:border-[#EB89B5] h-[200px] md:h-[260px] flex flex-col justify-center">
+              <div className="w-12 h-12 md:w-16 md:h-16 bg-[#FFD7E9] rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4 group-hover:bg-[#EB89B5] transition-colors">
+                <svg className="w-6 h-6 md:w-8 md:h-8 text-[#EB89B5] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+              </div>
+              <h3 className="text-sm md:text-xl font-bold text-gray-800 mb-2 md:mb-3">Scholarship Fund</h3>
+              <p className="text-xs md:text-base text-gray-600 group-hover:text-gray-700 leading-tight">
+                Support our efforts to advance high school girls' access to higher education
+              </p>
+            </div>
+          </Link>
 
           {/* Media Coverage Button */}
           <Link href="/media" className="group">
