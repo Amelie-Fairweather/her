@@ -126,7 +126,7 @@ export default function ScholarshipTracker({
       <div className="rounded-[2rem] border-2 border-[#EB89B5]/40 bg-white/90 shadow-lg shadow-[#EB89B5]/15 px-6 py-8 md:px-10 md:py-10">
         <div className="text-center mb-6 md:mb-8">
           <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.18em] text-[#EB89B5] mb-2">
-            Scholarship Fund
+            HER Education Required Scholarship Fund
           </p>
           <h3 className="font-serif text-2xl md:text-3xl font-bold text-[#7A2454] leading-tight">
             Help fund scholarships for high school girls

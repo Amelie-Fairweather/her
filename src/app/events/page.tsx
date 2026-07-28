@@ -22,28 +22,28 @@ interface Event {
 
 export default function Events() {
   const [expandedPhoto, setExpandedPhoto] = useState<string | null>(null)
-  // Function to get next weekly meeting dates (Thursdays)
+  // Function to get next weekly meeting dates (Sundays at 8:00 PM EST)
   const getNextWeeklyMeetings = (count: number = 2): Event[] => {
     const meetings: Event[] = []
     const today = new Date()
     today.setHours(0, 0, 0, 0)
-    const currentDay = today.getDay() // 0 = Sunday, 4 = Thursday
+    const currentDay = today.getDay() // 0 = Sunday
     
-    // Calculate days until next Thursday
-    let daysUntilThursday = (4 - currentDay + 7) % 7
-    if (daysUntilThursday === 0) {
-      // Today is Thursday, check if it's before 10:30 AM
+    // Calculate days until next Sunday
+    let daysUntilSunday = (0 - currentDay + 7) % 7
+    if (daysUntilSunday === 0) {
+      // Today is Sunday — include it if still before 8:00 PM local (EST meetings)
       const now = new Date()
-      if (now.getHours() < 10 || (now.getHours() === 10 && now.getMinutes() <= 30)) {
-        daysUntilThursday = 0 // Include today
+      if (now.getHours() < 20) {
+        daysUntilSunday = 0
       } else {
-        daysUntilThursday = 7 // Next Thursday
+        daysUntilSunday = 7
       }
     }
     
     // Start from the next meeting date
     const nextMeeting = new Date(today)
-    nextMeeting.setDate(today.getDate() + daysUntilThursday)
+    nextMeeting.setDate(today.getDate() + daysUntilSunday)
     
     for (let i = 0; i < count; i++) {
       const meetingDate = new Date(nextMeeting)
@@ -59,8 +59,8 @@ export default function Events() {
         id: 100 + i, // Use high IDs to avoid conflicts
         title: "Weekly HER Club Meeting",
         date: formattedDate,
-        time: "10:00 AM - 10:30 AM",
-        location: "CVU Room 134",
+        time: "8:00 PM EST",
+        location: "Virtual access is only for HER members",
         description: "Regular club meeting to discuss upcoming initiatives and plan future events.",
         type: "Club Meeting",
         rsvpRequired: false
