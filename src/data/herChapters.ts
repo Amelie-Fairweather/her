@@ -94,4 +94,5 @@ export const herChapters: HerChapter[] = [
   { id: 'northwest-jackson', name: 'Jackson Northwest High School', city: 'Jackson', state: 'MI', lat: 42.33, lng: -84.4675 },
   { id: 'bethany', name: 'Bethany High School', city: 'Bethany', state: 'OK', lat: 35.5143, lng: -97.6315 },
   { id: 'shawnee-mission-north', name: 'Shawnee Mission North High School', city: 'Overland Park', state: 'KS', lat: 39.0204, lng: -94.6716 },
+  { id: 'braswell', name: 'Braswell High School', city: 'Denton', state: 'TX', lat: 33.2171, lng: -96.9262 },
 ]
