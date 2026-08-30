@@ -98,4 +98,13 @@ export const herChapters: HerChapter[] = [
   { id: 'philip-pocock', name: 'Philip Pocock Catholic Secondary School', city: 'Mississauga', state: 'Ontario, Canada', lat: 43.6251, lng: -79.6253 },
   { id: 'little-flower-hyderabad', name: 'Little Flower Junior College', city: 'Hyderabad', state: 'Telangana, India', lat: 17.4044, lng: 78.5578 },
   { id: 'jr-tucker', name: 'J.R. Tucker High School', city: 'Henrico', state: 'VA', lat: 37.6293, lng: -77.5484 },
+  { id: 'parnassus', name: 'Parnassus Preparatory School', city: 'Maple Grove', state: 'MN', lat: 45.1289, lng: -93.4247 },
+  { id: 'soldan', name: 'Soldan International Studies High School', city: 'St. Louis', state: 'MO', lat: 38.6551, lng: -90.2732 },
+  { id: 'blue-valley-north', name: 'Blue Valley North High School', city: 'Leawood', state: 'KS', lat: 38.9074, lng: -94.6584 },
+  { id: 'hoover', name: 'Hoover High School', city: 'Hoover', state: 'AL', lat: 33.3437, lng: -86.8378 },
+  { id: 'bartlett', name: 'Bartlett High School', city: 'Bartlett', state: 'TN', lat: 35.209, lng: -89.8739 },
+  { id: 'blair-academy', name: 'Blair Academy', city: 'Blairstown', state: 'NJ', lat: 40.987, lng: -74.9666 },
+  { id: 'everett', name: 'Everett High School', city: 'Everett', state: 'WA', lat: 47.9852, lng: -122.2078 },
+  { id: 'holly-springs', name: 'Holly Springs High School', city: 'Holly Springs', state: 'NC', lat: 35.6278, lng: -78.8492 },
+  { id: 'wwp-north', name: 'West Windsor-Plainsboro High School North', city: 'Plainsboro', state: 'NJ', lat: 40.3224, lng: -74.6003 },
 ]
