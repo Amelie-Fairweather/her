@@ -97,4 +97,5 @@ export const herChapters: HerChapter[] = [
   { id: 'braswell', name: 'Braswell High School', city: 'Denton', state: 'TX', lat: 33.2171, lng: -96.9262 },
   { id: 'philip-pocock', name: 'Philip Pocock Catholic Secondary School', city: 'Mississauga', state: 'Ontario, Canada', lat: 43.6251, lng: -79.6253 },
   { id: 'little-flower-hyderabad', name: 'Little Flower Junior College', city: 'Hyderabad', state: 'Telangana, India', lat: 17.4044, lng: 78.5578 },
+  { id: 'jr-tucker', name: 'J.R. Tucker High School', city: 'Henrico', state: 'VA', lat: 37.6293, lng: -77.5484 },
 ]
