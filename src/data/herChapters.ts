@@ -107,4 +107,6 @@ export const herChapters: HerChapter[] = [
   { id: 'everett', name: 'Everett High School', city: 'Everett', state: 'WA', lat: 47.9852, lng: -122.2078 },
   { id: 'holly-springs', name: 'Holly Springs High School', city: 'Holly Springs', state: 'NC', lat: 35.6278, lng: -78.8492 },
   { id: 'wwp-north', name: 'West Windsor-Plainsboro High School North', city: 'Plainsboro', state: 'NJ', lat: 40.3224, lng: -74.6003 },
+  { id: 'glenbrook-north', name: 'Glenbrook North High School', city: 'Northbrook', state: 'IL', lat: 42.1119, lng: -87.8337 },
+  { id: 'mountain-ridge', name: 'Mountain Ridge High School', city: 'Glendale', state: 'AZ', lat: 33.6916, lng: -112.2056 },
 ]
