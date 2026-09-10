@@ -4,8 +4,8 @@
   --medium-pink: #EB89B5;
   --light-pink: #FFD7E9;
   --very-light-cream: #FFFBF3;
-  --light-yellow-cream: #FFF8D2;
-  --pale-yellow: #FFF2AF;
+  --light-yellow-cream: #FFFBF3;
+  --pale-yellow: #FFD7E9;
   --background: var(--very-light-cream);
   --foreground: #171717;
   --font-pt-serif: "PT Serif", serif;
@@ -86,7 +86,7 @@ body {
   position: absolute;
   width: 4px;
   height: 4px;
-  background: #FFF2AF;
+  background: #FFD7E9;
   border-radius: 50%;
   animation: sparkle 1.5s ease-in-out infinite;
 }
@@ -255,4 +255,74 @@ body {
   border-radius: 12px;
   overflow: hidden;
   position: relative;
+}
+
+@keyframes her-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-her-marquee {
+  animation: her-marquee 110s linear infinite;
+}
+
+@keyframes her-sheen {
+  0% {
+    transform: translateX(-120%) skewX(-12deg);
+  }
+  100% {
+    transform: translateX(220%) skewX(-12deg);
+  }
+}
+
+@keyframes her-soft-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.55;
+    transform: scale(1.08);
+  }
+}
+
+.her-sheen::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.18) 50%,
+    transparent 60%
+  );
+  transform: translateX(-120%) skewX(-12deg);
+  pointer-events: none;
+}
+
+.group\/herstory:hover .her-sheen::after {
+  animation: her-sheen 1.1s ease-out;
+}
+
+.her-glow-orb {
+  animation: her-soft-pulse 5.5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-her-marquee {
+    animation: none;
+  }
+
+  .her-glow-orb {
+    animation: none;
+  }
+
+  .group\/herstory:hover .her-sheen::after {
+    animation: none;
+  }
 }

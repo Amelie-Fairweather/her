@@ -12,7 +12,7 @@ const herOffers = [
   {
     title: 'A powerful network',
     description:
-      'Connect with student leaders, journalists, educators, and activists across the country who share your commitment to women’s rights.',
+      'Connect with student leaders, journalists, educators, and activists around the world who share your commitment to women’s rights.',
   },
   {
     title: 'Real-world leadership',
@@ -55,7 +55,7 @@ const youOffer = [
   {
     title: 'Represent HER',
     description:
-      'Show up at conferences, collaborate with other chapters, and help expand the network nationwide.',
+      'Show up at conferences, collaborate with other chapters, and help expand the network worldwide.',
   },
   {
     title: 'Lead with integrity',
@@ -65,13 +65,13 @@ const youOffer = [
   {
     title: 'Drive the movement forward',
     description:
-      'Your energy, ideas, and persistence are what turn one school’s effort into a national student-led force.',
+      'Your energy, ideas, and persistence are what turn one school’s effort into a global student-led force.',
   },
 ]
 
 export default function ApplyPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#FFFBF3] to-[#FFF8D2]">
+    <div className="min-h-screen bg-[#FFFBF3]">
       <header className="bg-[#EB89B5] text-white py-10 md:py-14 px-4">
         <div className="max-w-6xl mx-auto">
           <Link href="/" className="inline-block mb-5 text-pink-100 hover:text-white transition-colors text-sm font-semibold tracking-wide">
@@ -84,7 +84,7 @@ export default function ApplyPage() {
             Start a HER Chapter at Your School
           </h1>
           <p className="mt-4 text-lg md:text-xl opacity-95 max-w-2xl leading-relaxed">
-            Join student leaders across the country fighting for women&apos;s history in the classroom.
+            Join student leaders around the world fighting for women&apos;s history in the classroom.
           </p>
         </div>
       </header>

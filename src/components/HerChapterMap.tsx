@@ -126,7 +126,7 @@ export default function HerChapterMap() {
         }}
       >
         <h2 className="text-2xl md:text-4xl font-bold text-[#EB89B5] mb-2">
-          HER Chapters Across the Country
+          HER Chapters Around the World
         </h2>
         <p className="text-sm md:text-lg text-gray-700 max-w-2xl mx-auto">
           Click a pin or school name to explore where student-led HER chapters are growing.

@@ -163,7 +163,7 @@ Application submitted at: ${new Date().toLocaleString()}
                 value={formData.phone}
                 onChange={handleInputChange}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#EB89B5] focus:border-transparent"
-                placeholder="(802) 123-4567"
+                placeholder="Your phone number"
               />
             </div>
 

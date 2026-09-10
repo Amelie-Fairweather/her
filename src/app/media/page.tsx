@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 const mediaArticles = [
   {
@@ -91,7 +92,7 @@ const mediaArticles = [
 
 export default function MediaCoverage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#FFFBF3] to-[#FFF8D2]">
+    <div className="min-h-screen bg-[#FFFBF3]">
       {/* Header */}
       <header className="bg-[#EB89B5] text-white py-8 px-4">
         <div className="max-w-4xl mx-auto">
@@ -105,6 +106,49 @@ export default function MediaCoverage() {
 
       {/* Main Content */}
       <main className="max-w-4xl mx-auto px-4 py-8 md:py-16">
+        <a
+          href="https://www.instagram.com/hereducationrequired/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mb-10 block rounded-2xl bg-white border border-[#EB89B5]/20 shadow-lg shadow-[#EB89B5]/10 p-6 md:p-8 hover:border-[#EB89B5]/50 hover:shadow-xl transition-all"
+        >
+          <div className="flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-8">
+            <div className="flex-1 min-w-0">
+              <p className="text-xs font-bold uppercase tracking-[0.28em] text-[#EB89B5] mb-2">Follow us</p>
+              <p className="text-2xl md:text-3xl font-bold text-[#7A2454]">@hereducationrequired</p>
+              <div className="mt-5 grid grid-cols-3 gap-3 md:gap-4">
+                <div>
+                  <p className="text-xl md:text-3xl font-bold text-[#EB89B5] tabular-nums">6,000+</p>
+                  <p className="text-[10px] md:text-sm font-semibold uppercase tracking-[0.14em] text-[#7A2454]/70 mt-1">
+                    Followers
+                  </p>
+                </div>
+                <div>
+                  <p className="text-xl md:text-3xl font-bold text-[#EB89B5] tabular-nums">55k+</p>
+                  <p className="text-[10px] md:text-sm font-semibold uppercase tracking-[0.14em] text-[#7A2454]/70 mt-1">
+                    Outreach
+                  </p>
+                </div>
+                <div>
+                  <p className="text-xl md:text-3xl font-bold text-[#EB89B5] tabular-nums">200k</p>
+                  <p className="text-[10px] md:text-sm font-semibold uppercase tracking-[0.14em] text-[#7A2454]/70 mt-1">
+                    Monthly views
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="relative mx-auto sm:mx-0 w-28 h-28 md:w-36 md:h-36 shrink-0 overflow-hidden rounded-2xl border border-[#EB89B5]/20 bg-[#FFD7E9]">
+              <Image
+                src="/her-logo-media.jpg"
+                alt="HER logo"
+                fill
+                className="object-cover object-center"
+                sizes="144px"
+              />
+            </div>
+          </div>
+        </a>
+
         <div className="mb-8">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4">In The News</h2>
           <p className="text-gray-600">
@@ -172,10 +216,10 @@ export default function MediaCoverage() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-[#FFF8D2] text-gray-800 py-8 px-4">
+      <footer className="bg-[#FFFBF3] text-gray-800 py-8 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-gray-700">
-            © 2024 HER - Her Education Required | CVU Student Club
+            © 2026 HER — Her Education Required | Global Youth Network
           </p>
         </div>
       </footer>

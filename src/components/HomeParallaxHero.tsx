@@ -4,32 +4,16 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 import ScholarshipTracker from '@/components/ScholarshipTracker'
-
-const stats = [
-  {
-    value: '85%',
-    text: "of students grades 9-12 did not know what the suffrage movement was, Title 7 or 8 or ERA, pay and gender gap, or what year women gained the right to vote.",
-  },
-  {
-    value: '90%',
-    text: "of students grades 9-12 said they had received no education around women's rights from school.",
-  },
-  {
-    value: '81%',
-    text: 'of students grades 9-12 reported they had experienced sexism.',
-  },
-]
+import ImpactStats from '@/components/ImpactStats'
 
 export default function HomeParallaxHero() {
   const [offsetY, setOffsetY] = useState(0)
-  const [isStatsVisible, setIsStatsVisible] = useState(false)
   const [isMissionVisible, setIsMissionVisible] = useState(false)
-  const statsRef = useRef<HTMLDivElement>(null)
   const missionRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const handleScroll = () => setOffsetY(window.scrollY)
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
@@ -37,117 +21,97 @@ export default function HomeParallaxHero() {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.target === statsRef.current && entry.isIntersecting) {
-            setIsStatsVisible(true)
-          }
           if (entry.target === missionRef.current && entry.isIntersecting) {
             setIsMissionVisible(true)
           }
         })
       },
-      { threshold: 0.1, rootMargin: '100px' }
+      { threshold: 0.15, rootMargin: '80px' }
     )
 
     const timeout = window.setTimeout(() => {
-      if (statsRef.current) {
-        observer.observe(statsRef.current)
-        const rect = statsRef.current.getBoundingClientRect()
-        if (rect.top < window.innerHeight && rect.bottom > 0) {
-          setIsStatsVisible(true)
-        }
-      }
-      if (missionRef.current) {
-        observer.observe(missionRef.current)
-        const rect = missionRef.current.getBoundingClientRect()
-        if (rect.top < window.innerHeight && rect.bottom > 0) {
-          setIsMissionVisible(true)
-        }
-      }
-    }, 100)
+      if (missionRef.current) observer.observe(missionRef.current)
+    }, 80)
 
     return () => {
       window.clearTimeout(timeout)
-      if (statsRef.current) observer.unobserve(statsRef.current)
-      if (missionRef.current) observer.unobserve(missionRef.current)
+      observer.disconnect()
     }
   }, [])
 
+  const textOpacity = Math.max(1 - offsetY / 520, 0)
+  const textLift = offsetY * 0.22
+
   return (
     <>
-      <header
-        className="relative z-10 flex min-h-[100dvh] flex-col items-center justify-center bg-[#EB89B5] text-white px-4 py-12"
-        style={{
-          transform: `translateY(-${offsetY * 0.3}px)`,
-          opacity: Math.max(1 - offsetY / 600, 0),
-        }}
-      >
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="her-logo-container mb-6 md:mb-8">
-            <Image
-              src="/logo.png"
-              alt="HER Logo"
-              width={224}
-              height={224}
-              className="mx-auto w-48 h-48 md:w-56 md:h-56 rounded-xl border-[3px] border-white"
-              priority
-            />
-          </div>
-          <h2 className="text-3xl md:text-4xl font-semibold mb-3">Her Education Required</h2>
-          <p className="text-lg md:text-xl opacity-90 max-w-xl mx-auto">
-            National Youth Network for women&apos;s rights.
-          </p>
-          <div className="mt-8 flex flex-col items-center gap-4">
-            <Link
-              href="/apply"
-              className="inline-flex items-center justify-center min-h-[56px] px-8 py-3 rounded-none bg-white text-[#EB89B5] text-sm md:text-base font-bold tracking-[0.1em] uppercase border-2 border-white shadow-lg transition-all duration-300 hover:bg-[#7A2454] hover:text-white hover:border-[#7A2454]"
-            >
-              Applications are now open
-            </Link>
-            <a
-              href="#chapters-map"
-              onClick={(e) => {
-                e.preventDefault()
-                document.getElementById('chapters-map')?.scrollIntoView({ behavior: 'smooth' })
-              }}
-              className="text-sm text-white/80 underline-offset-4 hover:text-white hover:underline transition-colors"
-            >
-              Explore chapters across the nation
-            </a>
-          </div>
-        </div>
-        <p className="absolute bottom-8 left-1/2 -translate-x-1/2 text-sm uppercase tracking-[0.2em] text-white/70">
-          Scroll
-        </p>
-      </header>
-
-      <div className="relative z-20 mb-16 max-w-7xl mx-auto px-4 md:px-0 bg-gradient-to-br from-[#FFFBF3] to-[#FFF8D2]">
+      {/* One continuous backdrop for hero + impact — never parallaxed */}
+      <div className="relative">
         <div
-          ref={statsRef}
-          className="grid grid-cols-1 md:grid-cols-3 justify-center pt-12 md:pt-16 mb-12 max-w-6xl mx-auto gap-4 md:gap-6"
+          aria-hidden
+          className="pointer-events-none absolute inset-0 z-0"
           style={{
-            transform: `translateY(${isStatsVisible ? Math.max(0, Math.min(30, (offsetY - 500) * 0.05)) : 60}px)`,
-            opacity: isStatsVisible ? 1 : 0,
-            transition: 'opacity 1s ease-out, transform 1s ease-out',
+            background:
+              'linear-gradient(180deg, #EB89B5 0%, #EB89B5 32%, #F0A0C4 48%, #F7C8D8 62%, #FFE8F0 78%, #FFFBF3 100%)',
           }}
-        >
-          {stats.map((stat) => (
-            <div key={stat.value} className="w-full">
-              <div className="bg-white rounded-2xl p-4 md:p-8 shadow-lg shadow-[#EB89B5]/20 transform hover:scale-110 transition-transform duration-300 h-[200px] md:h-[240px] flex items-center">
-                <div className="text-center w-full">
-                  <div className="text-2xl md:text-4xl font-bold text-[#EB89B5] mb-2 md:mb-3">
-                    {stat.value}
-                  </div>
-                  <p className="text-xs md:text-sm text-gray-700 font-semibold px-1 md:px-4 leading-tight">
-                    {stat.text}
-                  </p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+        />
 
+        <header className="relative z-10 flex min-h-[100dvh] flex-col items-center justify-center px-4 py-16 md:py-20 bg-transparent">
+          <div
+            className="max-w-4xl mx-auto text-center text-white will-change-transform"
+            style={{
+              transform: `translate3d(0, -${textLift}px, 0)`,
+              opacity: textOpacity,
+            }}
+          >
+            <div className="her-logo-container mb-6 md:mb-8">
+              <Image
+                src="/logo.png"
+                alt="HER Logo"
+                width={224}
+                height={224}
+                className="mx-auto w-48 h-48 md:w-56 md:h-56 rounded-xl border-[3px] border-white"
+                priority
+              />
+            </div>
+            <h2 className="text-3xl md:text-5xl font-semibold mb-3 tracking-tight">Her Education Required</h2>
+            <p className="text-lg md:text-xl opacity-90 max-w-xl mx-auto">
+              Global Youth Network for women&apos;s rights.
+            </p>
+            <div className="mt-8 flex flex-col items-center gap-4">
+              <Link
+                href="/apply"
+                className="inline-flex items-center justify-center min-h-[56px] px-8 py-3 rounded-none bg-white text-[#EB89B5] text-sm md:text-base font-bold tracking-[0.1em] uppercase border-2 border-white shadow-lg transition-all duration-300 hover:bg-[#7A2454] hover:text-white hover:border-[#7A2454]"
+              >
+                Applications are now open
+              </Link>
+              <a
+                href="#chapters-map"
+                onClick={(e) => {
+                  e.preventDefault()
+                  document.getElementById('chapters-map')?.scrollIntoView({ behavior: 'smooth' })
+                }}
+                className="text-sm text-white/90 underline-offset-4 hover:text-white hover:underline transition-colors"
+              >
+                Explore chapters around the world
+              </a>
+            </div>
+          </div>
+
+          <p
+            className="absolute bottom-10 left-1/2 -translate-x-1/2 text-sm uppercase tracking-[0.2em] text-white/65 will-change-transform"
+            style={{ opacity: textOpacity }}
+          >
+            Scroll
+          </p>
+        </header>
+
+        <ImpactStats />
+      </div>
+
+      <div className="relative z-20 mb-16 max-w-7xl mx-auto px-4 md:px-0 bg-[#FFFBF3]">
         <div
           ref={missionRef}
+          className="pt-8 md:pt-12"
           style={{
             transform: `translateY(${isMissionVisible ? Math.max(0, Math.min(30, (offsetY - 900) * 0.05)) : 60}px)`,
             opacity: isMissionVisible ? 1 : 0,
@@ -163,15 +127,21 @@ export default function HomeParallaxHero() {
 
             <div className="text-center pt-4 md:pt-6 pb-2 md:pb-4">
               <h3 className="text-xl md:text-3xl font-bold text-[#EB89B5] mb-4 md:mb-6">
-                Support our mission to implement a required unit into the curriculum
+                Empowering the Next Generation Through Complete History
               </h3>
+              <p className="text-sm md:text-lg font-semibold text-[#7A2454] max-w-3xl mx-auto mb-4 md:mb-5">
+                Across the world, students consistently report next to no education.
+              </p>
               <p className="text-sm md:text-lg text-gray-700 max-w-3xl mx-auto mb-3 md:mb-4">
-                A required unit is absolutely essential to ensuring students have a well-rounded understanding of
-                American history. Today, students have no idea the struggle women faced and the work needed to overcome
-                them. Lack of role models for young girls, lack of representation, and lack of knowledge limits the
-                inclusion and success of your daughters, mothers, sisters, etc. Furthermore, men lack this education
-                too. How can students vote on new policies surrounding women&apos;s rights without basic understanding
-                of them?
+                A well-rounded education is impossible without understanding the full scope of history. Today, millions of
+                students graduate without learning about the historical struggles for women&apos;s rights or the leaders
+                who shaped our world.
+              </p>
+              <p className="text-sm md:text-lg text-gray-700 max-w-3xl mx-auto mb-3 md:mb-4">
+                This gap in knowledge leaves young girls without visible role models and leaves future voters unprepared
+                to evaluate policies that impact everyone. By integrating a mandatory Women&apos;s History unit into school
+                curricula, we ensure that every student—regardless of gender—builds empathy, civic awareness, and an
+                appreciation for the path to equality.
               </p>
             </div>
           </div>

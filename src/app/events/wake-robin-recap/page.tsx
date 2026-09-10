@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 export default function WakeRobinRecap() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#FFFBF3] to-[#FFF8D2]">
+    <div className="min-h-screen bg-[#FFFBF3]">
       {/* Header */}
       <header className="bg-[#EB89B5] text-white py-8 px-4">
         <div className="max-w-4xl mx-auto">
@@ -154,10 +154,10 @@ export default function WakeRobinRecap() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-[#FFF8D2] text-gray-800 py-8 px-4">
+      <footer className="bg-[#FFFBF3] text-gray-800 py-8 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-gray-700">
-            © 2024 HER - Her Education Required | CVU Student Club
+            © 2026 HER — Her Education Required | Global Youth Network
           </p>
         </div>
       </footer>

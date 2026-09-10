@@ -73,21 +73,22 @@ export default function Events() {
   // Removed hearts and stars animation
   const weeklyMeetings = getNextWeeklyMeetings(2)
 
-  const steveStecklowAma: Event = {
-    id: 203,
-    title: 'AMA with 3-time Pulitzer Prize-winning journalist Steve Stecklow',
-    date: 'Coming soon',
-    time: 'TBA',
-    location: 'Details from HER at your school or via DM',
-    description:
-      'Join HER for an AMA with Steve Stecklow, a 3-time Pulitzer Prize-winning investigative journalist at Reuters. Reach out to HER at your school to participate, or message us about involvement.',
-    type: 'Special Event',
-    rsvpRequired: false,
-  }
-
-  const upcomingEvents: Event[] = [steveStecklowAma, ...weeklyMeetings]
+  const upcomingEvents: Event[] = [...weeklyMeetings]
 
   const pastEvents: Event[] = [
+    {
+      id: 203,
+      title: 'AMA with 3-time Pulitzer Prize-winning journalist Steve Stecklow',
+      date: 'September 2026',
+      time: 'Virtual AMA',
+      location: 'Virtual / HER chapters',
+      description:
+        'High schoolers across HER chapters joined a live Ask Me Anything with Steve Stecklow, three-time Pulitzer Prize–winning investigative journalist at Reuters.',
+      type: 'Special Event',
+      rsvpRequired: false,
+      photoUrl: '/steve-stecklow-ama.png',
+      photoAlt: 'HER students in a virtual AMA with Steve Stecklow',
+    },
     {
       id: 202,
       title: 'AMA with Rubina Fillion, Head of AI Initiatives at The New York Times',
@@ -189,7 +190,7 @@ export default function Events() {
   // Removed handleSpecialEventHover function
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#FFFBF3] to-[#FFF8D2]">
+    <div className="min-h-screen bg-[#FFFBF3]">
       {/* Header */}
       <header className="bg-[#EB89B5] text-white py-8 px-4">
         <div className="max-w-4xl mx-auto">
@@ -404,10 +405,10 @@ export default function Events() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-[#FFF8D2] text-gray-800 py-8 px-4">
+      <footer className="bg-[#FFFBF3] text-gray-800 py-8 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-gray-700">
-            © 2024 HER - Her Education Required | CVU Student Club
+            © 2026 HER — Her Education Required | Global Youth Network
           </p>
         </div>
       </footer>

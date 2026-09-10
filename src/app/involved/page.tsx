@@ -10,7 +10,7 @@ export default function Involved() {
   const involvementOptions = [
     {
       title: "Join Our Club",
-      description: "Become an official HER member and participate in regular meetings and activities. This is open to ALL CVU students, room 134 on Wednesdays!!",
+      description: "Become an official HER member at your school chapter and take part in regular meetings, advocacy, and activities with students worldwide.",
       icon: (
         <svg className="w-8 h-8 text-[#EB89B5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
@@ -53,7 +53,7 @@ export default function Involved() {
   // Removed unused leadershipRoles array
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#FFFBF3] to-[#FFF8D2]">
+    <div className="min-h-screen bg-[#FFFBF3]">
       {/* Header */}
       <header className="bg-[#EB89B5] text-white py-8 px-4">
         <div className="max-w-4xl mx-auto">
@@ -126,7 +126,7 @@ export default function Involved() {
               <div className="space-y-4">
                 <div>
                   <h4 className="text-lg font-bold text-gray-800 mb-2">Join Our Club</h4>
-                  <p className="text-gray-600 mb-3">Become an official HER member and participate in regular meetings and activities. This is open to ALL CVU students, room 134 on Wednesdays!!</p>
+                  <p className="text-gray-600 mb-3">Become an official HER member at your school chapter and take part in regular meetings, advocacy, and activities with students worldwide.</p>
                   <ul className="space-y-1 text-sm text-gray-600">
                     <li className="flex items-center gap-2">
                       <svg className="w-4 h-4 text-[#EB89B5] flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -141,6 +141,13 @@ export default function Involved() {
                       YOUR SUPPORT IS CRUCIAL TO OUR CAUSE
                     </li>
                   </ul>
+                  <Link
+                    href="/apply"
+                    className="mt-4 inline-flex items-center gap-2 text-sm md:text-base font-bold text-[#EB89B5] underline underline-offset-4 hover:text-[#7A2454] transition-colors"
+                  >
+                    Apply to start a chapter
+                    <span aria-hidden="true">→</span>
+                  </Link>
                 </div>
                 <div>
                   <h4 className="text-lg font-bold text-gray-800 mb-2">Volunteer at Events</h4>
@@ -192,7 +199,7 @@ export default function Involved() {
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
                     <div>
-                      <span>Write emails to state representatives, senators and Becca Balint&apos;s office</span>
+                      <span>Write emails to your local representatives, senators, and education leaders</span>
                       <br />
                       <span className="text-[#EB89B5] font-semibold">(CC hereducationrequired@gmail.com)</span>
                     </div>
@@ -211,7 +218,7 @@ export default function Involved() {
                     <svg className="w-5 h-5 text-[#EB89B5] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
-                    <span>Post about us on Front Porch Forum, Instagram, and write op eds</span>
+                    <span>Post about us on social media, community forums, and write op-eds</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <svg className="w-5 h-5 text-[#EB89B5] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
@@ -230,81 +237,22 @@ export default function Involved() {
             </div>
           </div>
 
-          <div className="mt-8 flex justify-center">
-            <Link
-              href="/involved/community-supporters"
-              className="group inline-flex max-w-full items-center justify-center gap-3 rounded-lg border border-[#EB89B5]/40 bg-white px-12 md:px-20 py-5 md:py-6 text-lg md:text-2xl font-semibold text-[#7A2454] shadow-sm transition-all hover:-translate-y-0.5 hover:border-[#EB89B5]/70 hover:shadow-md focus:outline-none focus-visible:ring-4 focus-visible:ring-[#EB89B5]/20"
-            >
-              <span className="text-center leading-tight tracking-tight">
-                MEET OUR SPONSORS
-              </span>
-              <span className="inline-block transition-transform group-hover:translate-x-0.5" aria-hidden="true">
-                →
-              </span>
-            </Link>
-          </div>
-        </section>
-
-        {/* How to Support */}
-        <section className="mb-16">
-          <div className="max-w-4xl mx-auto">
-            {/* How to Support */}
-            <div className="bg-white rounded-lg shadow-lg p-8">
-              <h2 className="text-3xl font-bold text-[#EB89B5] mb-6">How to Support</h2>
-              <div className="space-y-4 mb-6">
-                <p className="text-gray-700">
-                  If you are an adult who would like to support, please reach out to the club email. 
-                  Refer as many people as possible, as students, your support is so inspiring. We are also accepting donations!
-                </p>
-              </div>
-              
-              {/* Fundraising Progress */}
-              <div className="bg-[#FFFBF3] rounded-lg p-6">
-                <h3 className="text-xl font-bold text-gray-800 mb-4 text-center">Fundraising Progress</h3>
-                <div className="flex items-center justify-center mb-4">
-                  <div className="relative w-32 h-32">
-                    {/* Pie Chart */}
-                    <svg className="w-32 h-32 transform -rotate-90" viewBox="0 0 100 100">
-                      {/* Background circle */}
-                      <circle
-                        cx="50"
-                        cy="50"
-                        r="40"
-                        fill="none"
-                        stroke="#FFD7E9"
-                        strokeWidth="8"
-                      />
-                      {/* Progress circle */}
-                      <circle
-                        cx="50"
-                        cy="50"
-                        r="40"
-                        fill="none"
-                        stroke="#EB89B5"
-                        strokeWidth="8"
-                        strokeDasharray={`${2 * Math.PI * 40}`}
-                        strokeDashoffset={`${2 * Math.PI * 40 * (1 - 730 / 1000)}`}
-                        strokeLinecap="round"
-                      />
-                    </svg>
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="text-center">
-                        <div className="text-2xl font-bold text-[#EB89B5]">$730</div>
-                        <div className="text-sm text-gray-600">of $1000</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <p className="text-center text-gray-600 text-sm mb-4">
-                  This money helps us organize more events to help promote the inclusion of women&apos;s rights.
-                </p>
-                <div className="text-center">
-                  <p className="text-gray-700 font-semibold mb-2">Money can be accepted via Venmo to:</p>
-                  <p className="text-[#EB89B5] font-bold text-lg">@hereducationrequired</p>
-                  <p className="text-gray-600 text-sm">Please specify &quot;donation&quot; in the message</p>
-                </div>
-              </div>
-            </div>
+          <div className="mt-10 md:mt-12 max-w-2xl mx-auto text-center">
+            <p className="text-lg md:text-2xl font-bold text-[#7A2454] leading-snug mb-6">
+              Directly endorsed by Madeleine Kunin — first female Governor of Vermont and U.S. Deputy Secretary of Education under President Bill Clinton
+            </p>
+            <figure className="overflow-hidden rounded-2xl border border-[#EB89B5]/25 shadow-[0_20px_50px_-28px_rgba(122,36,84,0.45)] bg-white">
+              <Image
+                src="/amelie-madeleine-kunin.png"
+                alt="Founder Amelie Fairweather with Madeleine Kunin"
+                width={900}
+                height={700}
+                className="w-full h-auto object-cover"
+              />
+              <figcaption className="px-4 py-3 text-xs md:text-sm text-[#7A2454]/70 tracking-wide">
+                Founder Amelie Fairweather and Madeleine Kunin
+              </figcaption>
+            </figure>
           </div>
         </section>
 
@@ -364,10 +312,10 @@ export default function Involved() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-[#FFF8D2] text-gray-800 py-8 px-4">
+      <footer className="bg-[#FFFBF3] text-gray-800 py-8 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-gray-700">
-            © 2024 HER - Her Education Required | CVU Student Club
+            © {new Date().getFullYear()} HER — Her Education Required | Global Youth Network
           </p>
         </div>
       </footer>

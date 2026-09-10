@@ -117,7 +117,7 @@ export default function CommunitySupportersPage() {
               Our Sponsors
             </h1>
             <p className="mt-4 text-base md:text-lg text-[#7A2454]/80">
-              Scroll to meet adults in Vermont&apos;s community who have supported us.
+              Scroll to meet adults in our community who have supported us.
             </p>
           </div>
         </section>

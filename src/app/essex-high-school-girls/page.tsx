@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export default function EssexHighSchoolGirlsPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#FFFBF3] to-[#FFF8D2]">
+    <div className="min-h-screen bg-[#FFFBF3]">
       <header className="bg-[#EB89B5] text-white py-8 px-4">
         <div className="max-w-4xl mx-auto">
           <Link href="/" className="inline-block mb-4 text-pink-100 hover:text-white transition-colors">

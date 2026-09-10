@@ -9,7 +9,7 @@ const INSTAGRAM_URL = 'https://www.instagram.com/her_scholarshipfund/'
 
 export default function ScholarshipPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#FFFBF3] to-[#FFF8D2]">
+    <div className="min-h-screen bg-[#FFFBF3]">
       <ScholarshipHero />
 
       <main className="max-w-4xl mx-auto px-4 py-10 md:py-16">
