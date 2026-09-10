@@ -5,13 +5,12 @@ import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 import ScholarshipTracker from '@/components/ScholarshipTracker'
 import ImpactStats from '@/components/ImpactStats'
+import FounderQuoteParallax from '@/components/FounderQuoteParallax'
 
 export default function HomeParallaxHero() {
   const [offsetY, setOffsetY] = useState(0)
   const [isMissionVisible, setIsMissionVisible] = useState(false)
-  const [isFounderVisible, setIsFounderVisible] = useState(false)
   const missionRef = useRef<HTMLDivElement>(null)
-  const founderRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const handleScroll = () => setOffsetY(window.scrollY)
@@ -26,9 +25,6 @@ export default function HomeParallaxHero() {
           if (entry.target === missionRef.current && entry.isIntersecting) {
             setIsMissionVisible(true)
           }
-          if (entry.target === founderRef.current && entry.isIntersecting) {
-            setIsFounderVisible(true)
-          }
         })
       },
       { threshold: 0.15, rootMargin: '80px' }
@@ -36,7 +32,6 @@ export default function HomeParallaxHero() {
 
     const timeout = window.setTimeout(() => {
       if (missionRef.current) observer.observe(missionRef.current)
-      if (founderRef.current) observer.observe(founderRef.current)
     }, 80)
 
     return () => {
@@ -48,9 +43,6 @@ export default function HomeParallaxHero() {
   const textOpacity = Math.max(1 - offsetY / 520, 0)
   const textLift = offsetY * 0.22
   const missionParallax = isMissionVisible ? Math.max(-12, Math.min(36, (offsetY - 700) * 0.04)) : 70
-  const founderParallax = isFounderVisible ? Math.max(-18, Math.min(28, (offsetY - 1100) * 0.055)) : 80
-  const photoParallax = isFounderVisible ? Math.max(-10, Math.min(18, (offsetY - 1100) * 0.03)) : 0
-  const quoteParallax = isFounderVisible ? Math.max(-6, Math.min(22, (offsetY - 1100) * 0.045)) : 0
 
   return (
     <>
@@ -118,10 +110,10 @@ export default function HomeParallaxHero() {
         <ImpactStats />
       </div>
 
-      <div className="relative z-20 mb-20 md:mb-28 max-w-7xl mx-auto px-4 md:px-6 bg-[#FFFBF3]">
+      <div className="relative z-20 max-w-7xl mx-auto px-4 md:px-6 bg-[#FFFBF3]">
         <div
           ref={missionRef}
-          className="pt-10 md:pt-16 pb-6 md:pb-10"
+          className="pt-10 md:pt-16 pb-8 md:pb-12"
           style={{
             transform: `translate3d(0, ${missionParallax}px, 0)`,
             opacity: isMissionVisible ? 1 : 0,
@@ -156,49 +148,12 @@ export default function HomeParallaxHero() {
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Founder quote — outside the pink oval */}
-        <div
-          ref={founderRef}
-          className="relative max-w-4xl mx-auto px-2 pt-10 md:pt-16 pb-14 md:pb-20 will-change-transform"
-          style={{
-            transform: `translate3d(0, ${founderParallax}px, 0)`,
-            opacity: isFounderVisible ? 1 : 0,
-            transition: 'opacity 1s ease-out',
-          }}
-        >
-          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-7 md:gap-10 text-left">
-            <div
-              className="relative h-36 w-36 md:h-44 md:w-44 shrink-0 overflow-hidden rounded-full border-4 border-[#EB89B5]/50 shadow-[0_18px_40px_-18px_rgba(122,36,84,0.45)] ring-4 ring-white will-change-transform"
-              style={{ transform: `translate3d(0, ${photoParallax}px, 0)` }}
-            >
-              <Image
-                src="/amelie-fairweather.jpg"
-                alt="Amelie Fairweather, Founder & President of HER"
-                fill
-                className="object-cover object-[center_20%]"
-                sizes="176px"
-              />
-            </div>
-            <blockquote
-              className="flex-1 will-change-transform"
-              style={{ transform: `translate3d(0, ${quoteParallax}px, 0)` }}
-            >
-              <p className="text-base md:text-xl lg:text-2xl text-[#7A2454] leading-relaxed italic">
-                &ldquo;I wish I had learned about women&apos;s history in school. I founded this club because most of
-                all, students deserve this education, and this education deserves being required. Women&apos;s history
-                is American history, it is human history, and it is our history.&rdquo;
-              </p>
-              <footer className="mt-4 md:mt-5 text-sm md:text-base font-bold text-[#EB89B5] not-italic tracking-wide">
-                — Amelie Fairweather, Founder &amp; President
-              </footer>
-            </blockquote>
-          </div>
-        </div>
+      <FounderQuoteParallax />
 
-        <div className="pt-4 md:pt-8">
-          <ScholarshipTracker />
-        </div>
+      <div className="relative z-20 mb-20 md:mb-28 max-w-7xl mx-auto px-4 md:px-6 bg-[#FFFBF3] pt-6 md:pt-10">
+        <ScholarshipTracker />
       </div>
     </>
   )
