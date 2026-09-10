@@ -6,6 +6,7 @@ const SLIDES = [
   { src: '/community-booth.jpg', alt: 'HER students at a club outreach table' },
   { src: '/community-photo-booth.jpg', alt: 'HER students with a photo booth frame' },
   { src: '/steve-stecklow-ama.png', alt: 'HER AMA with Steve Stecklow and student chapters' },
+  { src: '/jodi-kantor-ama.png', alt: 'HER AMA with Jodi Kantor of The New York Times' },
   { src: '/rubina-ama-screenshot.png', alt: 'HER AMA with Rubina Fillion of The New York Times' },
   { src: '/community-her-cam-1.png', alt: 'HER students posing in a H.E.R. CAM photo frame' },
   { src: '/community-her-cam-2.png', alt: 'HER chapter students with H.E.R. CAM frame' },

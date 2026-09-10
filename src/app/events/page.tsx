@@ -112,6 +112,8 @@ export default function Events() {
         'HER co-hosted an AMA with Pulitzer Prize-winning journalist Jodi Kantor (The New York Times).',
       type: 'Special Event',
       rsvpRequired: false,
+      photoUrl: '/jodi-kantor-ama.png',
+      photoAlt: 'HER students in a virtual AMA with Jodi Kantor',
       instagramWatchUrl: 'https://www.instagram.com/hereducationrequired/',
     },
     {

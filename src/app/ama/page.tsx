@@ -26,6 +26,8 @@ const pastAmas = [
     date: 'May 12, 2026',
     detail:
       'HER co-hosted an AMA with Jodi Kantor on investigative reporting, women in leadership, and what it takes to tell stories that change institutions.',
+    photoUrl: '/jodi-kantor-ama.png',
+    photoAlt: 'HER students in a virtual AMA with Jodi Kantor',
     instagramUrl: 'https://www.instagram.com/hereducationrequired/',
   },
 ]
