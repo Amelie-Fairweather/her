@@ -152,7 +152,7 @@ export default function HomeParallaxHero() {
 
       <FounderQuoteParallax />
 
-      <div className="relative z-20 mb-20 md:mb-28 max-w-7xl mx-auto px-4 md:px-6 bg-[#FFFBF3] pt-6 md:pt-10">
+      <div className="relative z-20 mb-16 md:mb-20 max-w-7xl mx-auto px-4 md:px-6 bg-[#FFFBF3] pt-8 md:pt-12">
         <ScholarshipTracker />
       </div>
     </>
