@@ -8,6 +8,7 @@ const supportersImages = [
   '/community-supporters/02.png',
   '/community-supporters/03.png',
   '/community-supporters/04.png',
+  '/community-supporters/Her-4.png',
   '/community-supporters/05.png',
   '/community-supporters/07.png',
   '/community-supporters/08.png',

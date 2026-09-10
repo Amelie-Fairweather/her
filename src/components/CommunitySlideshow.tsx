@@ -10,6 +10,8 @@ const SLIDES = [
   { src: '/community-her-cam-1.png', alt: 'HER students posing in a H.E.R. CAM photo frame' },
   { src: '/community-her-cam-2.png', alt: 'HER chapter students with H.E.R. CAM frame' },
   { src: '/community-classroom.png', alt: 'HER students together in a classroom' },
+  { src: '/community-img-0217.jpg', alt: 'HER community photo' },
+  { src: '/community-img-3713.jpg', alt: 'HER community photo' },
   { src: '/17.JPG', alt: 'HER students speaking on a panel' },
   { src: '/scholarship-group-icecream.png', alt: 'HER students together' },
   { src: '/scholarship-group-sunset.png', alt: 'HER students at sunset' },
