@@ -143,6 +143,28 @@ export default function HomeParallaxHero() {
                 curricula, we ensure that every student—regardless of gender—builds empathy, civic awareness, and an
                 appreciation for the path to equality.
               </p>
+
+              <div className="mt-8 md:mt-10 max-w-3xl mx-auto flex flex-col sm:flex-row items-center sm:items-start gap-5 md:gap-7 text-left">
+                <div className="relative h-28 w-28 md:h-36 md:w-36 shrink-0 overflow-hidden rounded-full border-4 border-white shadow-lg ring-2 ring-[#EB89B5]/40">
+                  <Image
+                    src="/amelie-fairweather.jpg"
+                    alt="Amelie Fairweather, Founder & President of HER"
+                    fill
+                    className="object-cover object-[center_20%]"
+                    sizes="144px"
+                  />
+                </div>
+                <blockquote className="flex-1">
+                  <p className="text-sm md:text-base text-[#7A2454] leading-relaxed italic">
+                    &ldquo;I wish I had learned about women&apos;s history in school. I founded this club because most of
+                    all, students deserve this education, and this education deserves being required. Women&apos;s
+                    history is American history, it is human history, and it is our history.&rdquo;
+                  </p>
+                  <footer className="mt-3 text-xs md:text-sm font-bold text-[#EB89B5] not-italic tracking-wide">
+                    — Amelie Fairweather, Founder &amp; President
+                  </footer>
+                </blockquote>
+              </div>
             </div>
           </div>
 
