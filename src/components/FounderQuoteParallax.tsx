@@ -82,7 +82,7 @@ export default function FounderQuoteParallax() {
   return (
     <section
       ref={sectionRef}
-      className="relative z-20 overflow-hidden bg-[#FFFBF3] py-16 md:py-24 pb-24 md:pb-32"
+      className="relative z-20 overflow-hidden bg-[#FFFBF3] py-16 md:py-24 pb-16 md:pb-24"
       aria-label="Founder quote"
     >
       <div
@@ -145,9 +145,9 @@ export default function FounderQuoteParallax() {
             }}
           >
             <p className="text-xl sm:text-2xl md:text-3xl lg:text-[2.15rem] text-[#7A2454] leading-[1.45] italic font-medium">
-              &ldquo;I wish I had learned about women&apos;s history in school. I founded this club because most of
-              all, students deserve this education, and this education deserves being required. Women&apos;s history
-              is American history, it is human history, and it is our history.&rdquo;
+              &ldquo;I wish I had learned about women&apos;s history in school. I founded Her Education Required
+              because most of all, students deserve this education, and this education deserves being required.
+              Women&apos;s history is American history, it is human history, and it is our history.&rdquo;
             </p>
             <footer
               className="mt-6 md:mt-8 text-sm md:text-lg font-bold text-[#EB89B5] not-italic tracking-[0.04em] will-change-transform"

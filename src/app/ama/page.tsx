@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import AmaSpeakerForm from '@/components/AmaSpeakerForm'
 
 const pastAmas = [
   {
@@ -146,24 +147,12 @@ export default function AmaPage() {
               Apply to be an AMA speaker
             </h2>
             <p className="text-lg md:text-xl text-white/95 leading-relaxed mb-10 max-w-2xl mx-auto">
-              Journalists, founders, advocates, and leaders: spend an hour mentoring high schoolers in
-              HER chapters worldwide. Share your story. Answer their questions. Help shape the next
-              generation.
+              Be part of HER&apos;s Ask Me Anything initiative — fill out this application and hear back within
+              the following week. We welcome all ages and backgrounds, and we&apos;re looking for changemakers
+              and innovators with experience across different fields.
             </p>
 
-            {/* TODO: drop your form embed here */}
-            <div className="rounded-3xl bg-white/15 border border-white/35 backdrop-blur-sm px-6 py-12 md:px-10 md:py-16">
-              <p className="text-white/90 text-base md:text-lg mb-8">
-                Speaker application form coming soon.
-              </p>
-              <a
-                href="mailto:hereducationrequired@gmail.com?subject=AMA%20Speaker%20Application"
-                className="inline-flex min-h-[56px] items-center justify-center rounded-2xl bg-white px-10 py-4 text-base md:text-lg font-bold uppercase tracking-wide text-[#7A2454] hover:bg-[#FFD7E9] transition-colors"
-              >
-                Email to apply
-              </a>
-              <p className="mt-5 text-sm text-white/75">hereducationrequired@gmail.com</p>
-            </div>
+            <AmaSpeakerForm />
           </div>
         </section>
       </main>

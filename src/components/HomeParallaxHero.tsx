@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from 'react'
 import ScholarshipTracker from '@/components/ScholarshipTracker'
 import ImpactStats from '@/components/ImpactStats'
 import FounderQuoteParallax from '@/components/FounderQuoteParallax'
+import StudentVoicesSection from '@/components/StudentVoicesSection'
 
 export default function HomeParallaxHero() {
   const [offsetY, setOffsetY] = useState(0)
@@ -152,7 +153,9 @@ export default function HomeParallaxHero() {
 
       <FounderQuoteParallax />
 
-      <div className="relative z-20 mb-16 md:mb-20 max-w-7xl mx-auto px-4 md:px-6 bg-[#FFFBF3] pt-8 md:pt-12">
+      <StudentVoicesSection />
+
+      <div className="relative z-20 mb-16 md:mb-20 max-w-7xl mx-auto px-4 md:px-6 bg-[#FFFBF3] pt-2 md:pt-4">
         <ScholarshipTracker />
       </div>
     </>

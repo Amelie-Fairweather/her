@@ -1,7 +1,5 @@
 import Link from 'next/link'
-
-const HER_FORM_EMBED_URL =
-  'https://docs.google.com/forms/d/1uCjsP-O7k6S3d_As3J2pampyR4RJQ0K7z5-txtg6EfA/viewform?embedded=true'
+import ChapterApplyForm from '@/components/ChapterApplyForm'
 
 const herOffers = [
   {
@@ -145,20 +143,7 @@ export default function ApplyPage() {
               Applications are viewed on a rolling basis. Please continue to check your email.
             </p>
           </div>
-          <div className="w-full bg-white">
-            <iframe
-              src={HER_FORM_EMBED_URL}
-              width="100%"
-              height="1100"
-              frameBorder="0"
-              marginHeight={0}
-              marginWidth={0}
-              title="Her Education Required club registration form"
-              className="w-full min-h-[900px] md:min-h-[1100px]"
-            >
-              Loading…
-            </iframe>
-          </div>
+          <ChapterApplyForm />
         </section>
       </main>
     </div>

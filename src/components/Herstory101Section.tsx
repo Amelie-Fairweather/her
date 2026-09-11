@@ -9,7 +9,6 @@ export default function Herstory101Section() {
   const [reducedMotion, setReducedMotion] = useState(false)
   const [formData, setFormData] = useState({
     name: '',
-    email: '',
     suggestion: '',
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -51,36 +50,25 @@ export default function Herstory101Section() {
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
     setSubmitStatus('idle')
 
     try {
-      const emailContent = `
-HERstory 101 Suggestion
+      const res = await fetch('/api/herstory-suggestion', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      })
 
-Name: ${formData.name || 'Anonymous'}
-Email: ${formData.email || 'Not provided'}
-
-Suggested woman / topic:
-${formData.suggestion}
-
-Submitted at: ${new Date().toLocaleString()}
-      `.trim()
-
-      window.location.href = `mailto:hereducationrequired@gmail.com?subject=${encodeURIComponent(
-        `HERstory 101 Suggestion${formData.name ? ` — ${formData.name}` : ''}`
-      )}&body=${encodeURIComponent(emailContent)}`
+      if (!res.ok) throw new Error('submit failed')
 
       setSubmitStatus('success')
-      setTimeout(() => {
-        setFormData({ name: '', email: '', suggestion: '' })
-        setIsSubmitting(false)
-        setSubmitStatus('idle')
-      }, 2500)
+      setFormData({ name: '', suggestion: '' })
     } catch {
       setSubmitStatus('error')
+    } finally {
       setIsSubmitting(false)
     }
   }
@@ -166,48 +154,46 @@ Submitted at: ${new Date().toLocaleString()}
                   Submit a HERstory suggestion
                 </h3>
                 <p className="text-[10px] text-white/80 mt-1 leading-snug">
-                  Know a woman whose story deserves the spotlight? Send her name or topic —{' '}
-                  <span className="font-semibold text-white">hereducationrequired@gmail.com</span>
+                  Who or what should we teach? Must relate to women&apos;s history (global) — we don&apos;t
+                  affiliate with or condone political nominations.
                 </p>
               </div>
 
               {submitStatus === 'success' && (
                 <div className="mb-2 rounded-md bg-white/15 border border-white/25 text-white px-2 py-1 text-[10px]">
-                  Email opened — hit send to finish.
+                  Suggestion received — thank you.
                 </div>
               )}
               {submitStatus === 'error' && (
                 <div className="mb-2 rounded-md bg-black/25 border border-white/25 text-white px-2 py-1 text-[10px]">
-                  Something went wrong. Email hereducationrequired@gmail.com.
+                  Something went wrong.{' '}
+                  <a
+                    href="https://docs.google.com/forms/d/e/1FAIpQLScG0NjWpotCGYTK4mvtLeIRtmxKSOBgRv-F0sbFk-VZbITYmg/viewform"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline font-semibold"
+                  >
+                    Open the form
+                  </a>
                 </div>
               )}
 
               <form onSubmit={handleSubmit} className="space-y-1.5">
-                <div className="grid grid-cols-2 gap-1.5">
-                  <input
-                    name="name"
-                    type="text"
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder="Your name"
-                    className="w-full px-2 py-1.5 rounded-md bg-white/95 border border-white/30 text-[11px] text-[#7A2454] placeholder:text-[#7A2454]/45 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/80"
-                  />
-                  <input
-                    name="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="Email (optional)"
-                    className="w-full px-2 py-1.5 rounded-md bg-white/95 border border-white/30 text-[11px] text-[#7A2454] placeholder:text-[#7A2454]/45 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/80"
-                  />
-                </div>
+                <input
+                  name="name"
+                  type="text"
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="Full name (optional for credit)"
+                  className="w-full px-2 py-1.5 rounded-md bg-white/95 border border-white/30 text-[11px] text-[#7A2454] placeholder:text-[#7A2454]/45 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/80"
+                />
                 <input
                   name="suggestion"
                   type="text"
                   required
                   value={formData.suggestion}
                   onChange={handleChange}
-                  placeholder="Woman or topic to feature…"
+                  placeholder="Who or what should we teach?"
                   className="w-full px-2 py-1.5 rounded-md bg-white/95 border border-white/30 text-[11px] text-[#7A2454] placeholder:text-[#7A2454]/45 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/80"
                 />
                 <button
@@ -215,7 +201,7 @@ Submitted at: ${new Date().toLocaleString()}
                   disabled={isSubmitting || !formData.suggestion.trim()}
                   className="w-full min-h-[28px] rounded-md bg-white text-[#7A2454] font-bold tracking-wide uppercase text-[10px] transition-all duration-300 hover:bg-[#FFD7E9] hover:scale-[1.01] active:scale-[0.98] disabled:bg-white/40 disabled:text-white/70 disabled:cursor-not-allowed disabled:hover:scale-100"
                 >
-                  {isSubmitting ? 'Opening…' : 'Submit'}
+                  {isSubmitting ? 'Submitting…' : 'Submit'}
                 </button>
               </form>
             </div>

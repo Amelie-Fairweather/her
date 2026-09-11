@@ -5,7 +5,6 @@ import { useState } from 'react'
 export default function IdeaSubmissionForm() {
   const [formData, setFormData] = useState({
     name: '',
-    email: '',
     idea: '',
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -16,37 +15,25 @@ export default function IdeaSubmissionForm() {
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
     setSubmitStatus('idle')
 
     try {
-      const emailContent = `
-New Idea Submission
+      const res = await fetch('/api/idea-pitch', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      })
 
-Name: ${formData.name || 'Anonymous'}
-Email: ${formData.email || 'Not provided'}
+      if (!res.ok) throw new Error('submit failed')
 
-Idea:
-${formData.idea}
-
-Submitted at: ${new Date().toLocaleString()}
-      `.trim()
-
-      const mailtoLink = `mailto:hereducationrequired@gmail.com?subject=${encodeURIComponent(
-        `HER Idea Submission${formData.name ? ` — ${formData.name}` : ''}`
-      )}&body=${encodeURIComponent(emailContent)}`
-
-      window.location.href = mailtoLink
       setSubmitStatus('success')
-      setTimeout(() => {
-        setFormData({ name: '', email: '', idea: '' })
-        setIsSubmitting(false)
-        setSubmitStatus('idle')
-      }, 2500)
+      setFormData({ name: '', idea: '' })
     } catch {
       setSubmitStatus('error')
+    } finally {
       setIsSubmitting(false)
     }
   }
@@ -61,57 +48,44 @@ Submitted at: ${new Date().toLocaleString()}
           Got an idea for HER?
         </h2>
         <p className="text-sm md:text-base text-gray-600 text-center max-w-xl mx-auto mb-8">
-          Club activities, curriculum ideas, events, partnerships — send anything. Your idea goes straight to{' '}
-          <a
-            href="mailto:hereducationrequired@gmail.com"
-            className="text-[#EB89B5] font-semibold underline underline-offset-2 hover:text-[#7A2454]"
-          >
-            hereducationrequired@gmail.com
-          </a>
-          .
+          Pitch us your ideas for upcoming HER initiatives — club activities, curriculum ideas, events,
+          partnerships, and more.
         </p>
 
         {submitStatus === 'success' && (
           <div className="mb-6 rounded-xl bg-green-50 border border-green-300 text-green-800 px-4 py-3 text-sm">
-            Email opened — hit send in your mail app to finish submitting your idea.
+            Idea received — thank you for pitching us.
           </div>
         )}
         {submitStatus === 'error' && (
           <div className="mb-6 rounded-xl bg-red-50 border border-red-300 text-red-800 px-4 py-3 text-sm">
-            Something went wrong. Email us directly at hereducationrequired@gmail.com.
+            Something went wrong. Try again or{' '}
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSeEfY5Ssd0Ya_YgqveeD5l9WMYiqtb4ks1wjldAajrN7Xd3vA/viewform"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline font-semibold"
+            >
+              open the responder form
+            </a>
+            .
           </div>
         )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label htmlFor="idea-name" className="block text-sm font-medium text-gray-700 mb-1">
-                Name
-              </label>
-              <input
-                id="idea-name"
-                name="name"
-                type="text"
-                value={formData.name}
-                onChange={handleChange}
-                className="w-full px-3 py-2.5 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#EB89B5] focus:border-transparent"
-                placeholder="Your name"
-              />
-            </div>
-            <div>
-              <label htmlFor="idea-email" className="block text-sm font-medium text-gray-700 mb-1">
-                Email
-              </label>
-              <input
-                id="idea-email"
-                name="email"
-                type="email"
-                value={formData.email}
-                onChange={handleChange}
-                className="w-full px-3 py-2.5 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#EB89B5] focus:border-transparent"
-                placeholder="you@example.com"
-              />
-            </div>
+          <div>
+            <label htmlFor="idea-name" className="block text-sm font-medium text-gray-700 mb-1">
+              Full name <span className="text-gray-400 font-normal">(optional if you want to be credited)</span>
+            </label>
+            <input
+              id="idea-name"
+              name="name"
+              type="text"
+              value={formData.name}
+              onChange={handleChange}
+              className="w-full px-3 py-2.5 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#EB89B5] focus:border-transparent"
+              placeholder="Your name"
+            />
           </div>
           <div>
             <label htmlFor="idea-text" className="block text-sm font-medium text-gray-700 mb-1">
@@ -133,8 +107,19 @@ Submitted at: ${new Date().toLocaleString()}
             disabled={isSubmitting || !formData.idea.trim()}
             className="w-full min-h-[52px] rounded-xl bg-[#EB89B5] text-white font-bold tracking-wide uppercase text-sm md:text-base hover:bg-[#7A2454] disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
           >
-            {isSubmitting ? 'Opening email…' : 'Submit idea'}
+            {isSubmitting ? 'Submitting…' : 'Submit idea'}
           </button>
+          <p className="text-center text-xs text-gray-500">
+            Prefer Google Forms?{' '}
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSeEfY5Ssd0Ya_YgqveeD5l9WMYiqtb4ks1wjldAajrN7Xd3vA/viewform"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#EB89B5] font-semibold underline underline-offset-2 hover:text-[#7A2454]"
+            >
+              Open the responder form
+            </a>
+          </p>
         </form>
       </div>
     </section>

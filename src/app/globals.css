@@ -313,6 +313,47 @@ body {
   animation: her-soft-pulse 5.5s ease-in-out infinite;
 }
 
+@keyframes student-voice-drift {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -10px;
+  }
+}
+
+@keyframes student-voice-twinkle {
+  0%,
+  100% {
+    transform: scale(0.85) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.2) rotate(20deg);
+  }
+}
+
+.student-voices-float .student-voice-bubble {
+  animation: student-voice-drift 7s ease-in-out infinite;
+}
+
+.student-voices-float > *:nth-child(2n) .student-voice-bubble {
+  animation-duration: 8.5s;
+  animation-direction: reverse;
+}
+
+.student-voices-float > *:nth-child(3n) .student-voice-bubble {
+  animation-duration: 6.4s;
+}
+
+.student-voices-float > *:nth-child(4n) .student-voice-bubble {
+  animation-duration: 9.2s;
+}
+
+.student-voice-star {
+  animation: student-voice-twinkle 3.6s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-her-marquee {
     animation: none;
@@ -323,6 +364,14 @@ body {
   }
 
   .group\/herstory:hover .her-sheen::after {
+    animation: none;
+  }
+
+  .student-voices-float .student-voice-bubble {
+    animation: none;
+  }
+
+  .student-voice-star {
     animation: none;
   }
 }
