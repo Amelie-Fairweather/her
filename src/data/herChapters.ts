@@ -97,7 +97,7 @@ export const herChapters: HerChapter[] = [
   { id: 'braswell', name: 'Braswell High School', city: 'Denton', state: 'TX', lat: 33.2171, lng: -96.9262 },
   { id: 'philip-pocock', name: 'Philip Pocock Catholic Secondary School', city: 'Mississauga', state: 'Ontario, Canada', lat: 43.6251, lng: -79.6253 },
   { id: 'little-flower-hyderabad', name: 'Little Flower Junior College', city: 'Hyderabad', state: 'Telangana, India', lat: 17.4044, lng: 78.5578 },
-  { id: 'jr-tucker', name: 'J.R. Tucker High School', city: 'Henrico', state: 'VA', lat: 37.6293, lng: -77.5484 },
+  { id: 'jr-tucker', name: 'J.R. Tucker High School', city: 'Glen Allen', state: 'VA', lat: 37.6293, lng: -77.5484 },
   { id: 'parnassus', name: 'Parnassus Preparatory School', city: 'Maple Grove', state: 'MN', lat: 45.1289, lng: -93.4247 },
   { id: 'soldan', name: 'Soldan International Studies High School', city: 'St. Louis', state: 'MO', lat: 38.6551, lng: -90.2732 },
   { id: 'blue-valley-north', name: 'Blue Valley North High School', city: 'Leawood', state: 'KS', lat: 38.9074, lng: -94.6584 },
@@ -109,4 +109,5 @@ export const herChapters: HerChapter[] = [
   { id: 'wwp-north', name: 'West Windsor-Plainsboro High School North', city: 'Plainsboro', state: 'NJ', lat: 40.3224, lng: -74.6003 },
   { id: 'glenbrook-north', name: 'Glenbrook North High School', city: 'Northbrook', state: 'IL', lat: 42.1119, lng: -87.8337 },
   { id: 'mountain-ridge', name: 'Mountain Ridge High School', city: 'Glendale', state: 'AZ', lat: 33.6916, lng: -112.2056 },
+  { id: 'decatur', name: 'Decatur High School', city: 'Decatur', state: 'GA', lat: 33.7706, lng: -84.2979 },
 ]
