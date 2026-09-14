@@ -110,4 +110,5 @@ export const herChapters: HerChapter[] = [
   { id: 'glenbrook-north', name: 'Glenbrook North High School', city: 'Northbrook', state: 'IL', lat: 42.1119, lng: -87.8337 },
   { id: 'mountain-ridge', name: 'Mountain Ridge High School', city: 'Glendale', state: 'AZ', lat: 33.6916, lng: -112.2056 },
   { id: 'decatur', name: 'Decatur High School', city: 'Decatur', state: 'GA', lat: 33.7706, lng: -84.2979 },
+  { id: 'hanford', name: 'Hanford', city: 'Hanford', state: 'CA', lat: 36.3446, lng: -119.6438 },
 ]
