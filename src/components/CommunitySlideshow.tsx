@@ -3,6 +3,9 @@
 import Image from 'next/image'
 
 const SLIDES = [
+  { src: '/community-img-2759.jpg', alt: 'HER students in pink shirts at a Welcome Back meeting' },
+  { src: '/community-img-2745.jpg', alt: 'HER students engaged in a classroom discussion' },
+  { src: '/community-img-2732.jpg', alt: 'HER student in Education Required shirt with chapter members' },
   { src: '/community-booth.jpg', alt: 'HER students at a club outreach table' },
   { src: '/community-photo-booth.jpg', alt: 'HER students with a photo booth frame' },
   { src: '/steve-stecklow-ama.png', alt: 'HER AMA with Steve Stecklow and student chapters' },
