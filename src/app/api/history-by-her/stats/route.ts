@@ -7,10 +7,11 @@ import {
 export const revalidate = 60
 
 /**
- * Manual correction when a report form entry under-counted places.
+ * Manual corrections when report form entries are incomplete/wrong.
  * Set to null to use the live sheet sum only.
  */
 const LOCATIONS_OVERRIDE: number | null = 11
+const BOOKMARKS_OVERRIDE: number | null = 1000
 
 function toNonNegInt(value: unknown): number {
   const n = typeof value === 'number' ? value : Number(value)
@@ -202,11 +203,21 @@ function parseCsv(text: string): string[][] {
 }
 
 function applyOverrides(stats: HistoryByHerStats): HistoryByHerStats {
-  if (LOCATIONS_OVERRIDE == null) return stats
+  let next = { ...stats }
+  const notes: string[] = [stats.reason || 'live']
+
+  if (BOOKMARKS_OVERRIDE != null) {
+    next.bookmarks = BOOKMARKS_OVERRIDE
+    notes.push('bookmarks_override')
+  }
+  if (LOCATIONS_OVERRIDE != null) {
+    next.educationalInstitutions = LOCATIONS_OVERRIDE
+    notes.push('locations_override')
+  }
+
   return {
-    ...stats,
-    educationalInstitutions: LOCATIONS_OVERRIDE,
-    reason: `${stats.reason || 'live'}+locations_override`,
+    ...next,
+    reason: notes.join('+'),
   }
 }
 

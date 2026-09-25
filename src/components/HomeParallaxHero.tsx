@@ -78,7 +78,7 @@ export default function HomeParallaxHero() {
             </div>
             <h2 className="text-3xl md:text-5xl font-semibold mb-3 tracking-tight">Her Education Required</h2>
             <p className="text-lg md:text-xl opacity-90 max-w-xl mx-auto">
-              Global Youth Network for women&apos;s rights.
+              Bringing Women&apos;s History into Classrooms
             </p>
             <div className="mt-8 flex flex-col items-center gap-4">
               <Link
