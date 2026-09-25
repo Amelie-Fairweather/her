@@ -143,58 +143,70 @@ export default function HistoryByHerPage() {
             </div>
           </div>
 
-          <div className="relative z-[1]">
-            <p className="text-xs font-bold uppercase tracking-[0.34em] text-[#EB89B5] mb-8 md:mb-10">
-              What is it?
-            </p>
+          <div className="relative z-[1] space-y-14 md:space-y-20">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.34em] text-[#EB89B5] mb-5 md:mb-6">
+                What is it?
+              </p>
+              <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#7A2454] leading-[1.2] max-w-2xl mx-auto">
+                History by HER
+              </p>
+              <p className="mt-5 md:mt-6 text-lg sm:text-xl md:text-2xl text-[#7A2454]/85 leading-relaxed max-w-xl mx-auto font-medium">
+                An educational bookmark initiative launching women&apos;s history into the world —
+                one bookmark at a time.
+              </p>
+            </div>
 
-            <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#7A2454] leading-[1.25] max-w-2xl mx-auto">
-              History by HER
-            </p>
-            <p className="mt-4 md:mt-5 text-lg sm:text-xl md:text-2xl text-[#7A2454]/85 leading-relaxed max-w-2xl mx-auto font-medium">
-              An educational bookmark initiative launching women&apos;s history into the world —
-              one bookmark at a time.
-            </p>
-
-            <p className="mt-8 md:mt-10 text-base md:text-lg text-[#7A2454]/75 leading-relaxed max-w-xl mx-auto">
+            <p className="text-base md:text-lg text-[#7A2454]/70 leading-relaxed max-w-md mx-auto">
               Built to grow international understanding of pivotal figures in the women&apos;s rights
               movements around the globe.
             </p>
 
-            <div className="mt-10 md:mt-12 mx-auto max-w-lg rounded-[2rem] bg-gradient-to-b from-[#FFD7E9]/70 to-[#FFF6FB] border border-[#EB89B5]/25 px-6 py-8 md:px-10 md:py-10">
-              <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-[#EB89B5] mb-3">
+            <div className="mx-auto max-w-xl rounded-[2rem] bg-gradient-to-b from-[#FFD7E9]/70 to-[#FFF6FB] border border-[#EB89B5]/25 px-6 py-9 md:px-10 md:py-12">
+              <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-[#EB89B5] mb-8">
                 Happening this fall
               </p>
-              <p className="text-base md:text-lg text-[#7A2454] leading-relaxed font-semibold">
-                Students print &amp; assemble ready-to-go bookmarks, then donate them locally.
-              </p>
-              <div className="mt-6 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-sm md:text-base font-bold text-[#EB89B5]">
-                <span>Libraries</span>
-                <span className="text-[#EB89B5]/35" aria-hidden>
-                  ·
-                </span>
-                <span>Bookstores</span>
-                <span className="text-[#EB89B5]/35" aria-hidden>
-                  ·
-                </span>
-                <span>Middle schools</span>
-                <span className="text-[#EB89B5]/35" aria-hidden>
-                  ·
-                </span>
-                <span>High schools</span>
+
+              <ol className="space-y-6 text-left max-w-sm mx-auto">
+                <li className="flex gap-4">
+                  <span className="shrink-0 w-8 h-8 rounded-full bg-[#EB89B5] text-white text-sm font-bold flex items-center justify-center">
+                    1
+                  </span>
+                  <p className="text-base md:text-lg text-[#7A2454] leading-snug pt-1 font-semibold">
+                    Print ready-to-go bookmarks
+                  </p>
+                </li>
+                <li className="flex gap-4">
+                  <span className="shrink-0 w-8 h-8 rounded-full bg-[#EB89B5] text-white text-sm font-bold flex items-center justify-center">
+                    2
+                  </span>
+                  <p className="text-base md:text-lg text-[#7A2454] leading-snug pt-1 font-semibold">
+                    Donate them locally
+                  </p>
+                </li>
+              </ol>
+
+              <div className="mt-10 pt-8 border-t border-[#EB89B5]/20">
+                <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#EB89B5]/80 mb-4">
+                  Where to donate
+                </p>
+                <ul className="grid grid-cols-2 gap-3 max-w-xs mx-auto text-sm md:text-base font-bold text-[#7A2454]">
+                  <li>Libraries</li>
+                  <li>Bookstores</li>
+                  <li>Middle schools</li>
+                  <li>High schools</li>
+                </ul>
               </div>
             </div>
 
-            <p className="mt-10 md:mt-12 text-base md:text-lg text-[#7A2454]/80 leading-relaxed max-w-xl mx-auto">
-              You get the print files, a short how-to, and a clear mission: put stories of trailblazing
-              women into the hands of readers where you live.
-            </p>
-            <p className="mt-5 text-sm md:text-base font-bold tracking-[0.06em] text-[#EB89B5]">
-              Open to everyone — worldwide.
-            </p>
+            <div className="max-w-md mx-auto">
+              <p className="text-sm md:text-base font-bold tracking-[0.06em] text-[#EB89B5]">
+                Open to everyone — worldwide.
+              </p>
+            </div>
 
-            <div className="mt-12 md:mt-14">
-              <p className="text-xs font-bold uppercase tracking-[0.34em] text-[#EB89B5] mb-6">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.34em] text-[#EB89B5] mb-6 md:mb-8">
                 Impact so far
               </p>
               <HistoryByHerImpactStats variant="page" />
