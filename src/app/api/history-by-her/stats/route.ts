@@ -7,13 +7,18 @@ import {
 export const revalidate = 60
 
 /**
- * Manual corrections when report form entries are incomplete/wrong.
- * Bookmarks: 650 + 90 + 90 + 100 = 930 → display rounded to 1,000
- * Locations: corrected to 11 for an incomplete places entry
- * Set either to null to use the live sheet sum only.
+ * Corrected baselines when some report-form rows were wrong/incomplete.
+ * New submissions still increase the public totals:
+ *   display = BASELINE_DISPLAY + max(0, liveSheetSum - SHEET_BASELINE)
+ *
+ * Bookmarks verified: 650 + 90 + 90 + 100 = 930 → show 1,000
+ * Sheet summed to 1430 at that moment (includes bad rows).
+ * Locations corrected to 11 when sheet showed 9.
  */
-const LOCATIONS_OVERRIDE: number | null = 11
-const BOOKMARKS_OVERRIDE: number | null = 1000
+const BOOKMARKS_DISPLAY_BASELINE = 1000
+const BOOKMARKS_SHEET_BASELINE = 1430
+const LOCATIONS_DISPLAY_BASELINE = 11
+const LOCATIONS_SHEET_BASELINE = 9
 
 function toNonNegInt(value: unknown): number {
   const n = typeof value === 'number' ? value : Number(value)
@@ -204,22 +209,21 @@ function parseCsv(text: string): string[][] {
   return rows
 }
 
-function applyOverrides(stats: HistoryByHerStats): HistoryByHerStats {
-  let next = { ...stats }
-  const notes: string[] = [stats.reason || 'live']
+function applyBaselines(stats: HistoryByHerStats): HistoryByHerStats {
+  // Already adjusted upstream (e.g. production mirrored in local dev)
+  if (stats.reason?.includes('baseline_adjusted')) return stats
 
-  if (BOOKMARKS_OVERRIDE != null) {
-    next.bookmarks = BOOKMARKS_OVERRIDE
-    notes.push('bookmarks_override')
-  }
-  if (LOCATIONS_OVERRIDE != null) {
-    next.educationalInstitutions = LOCATIONS_OVERRIDE
-    notes.push('locations_override')
-  }
+  const liveBookmarks = stats.bookmarks
+  const liveLocations = stats.educationalInstitutions
 
   return {
-    ...next,
-    reason: notes.join('+'),
+    ...stats,
+    bookmarks:
+      BOOKMARKS_DISPLAY_BASELINE + Math.max(0, liveBookmarks - BOOKMARKS_SHEET_BASELINE),
+    educationalInstitutions:
+      LOCATIONS_DISPLAY_BASELINE + Math.max(0, liveLocations - LOCATIONS_SHEET_BASELINE),
+    live: true,
+    reason: `${stats.reason || 'live'}+baseline_adjusted`,
   }
 }
 
@@ -240,9 +244,10 @@ export async function GET() {
           if (prod.ok) {
             const data = (await prod.json()) as HistoryByHerStats
             if (data?.live) {
-              return NextResponse.json(
-                applyOverrides({ ...data, reason: 'dev_fallback_production' })
-              )
+              return NextResponse.json({
+                ...data,
+                reason: `dev_fallback_production+${data.reason || 'live'}`,
+              })
             }
           }
         } catch {
@@ -250,11 +255,12 @@ export async function GET() {
         }
       }
       return NextResponse.json(
-        applyOverrides({
+        applyBaselines({
           ...EMPTY_HISTORY_BY_HER_STATS,
-          educationalInstitutions: LOCATIONS_OVERRIDE ?? 0,
-          live: LOCATIONS_OVERRIDE != null,
-          reason: 'missing_HISTORY_BY_HER_STATS_URL',
+          bookmarks: BOOKMARKS_SHEET_BASELINE,
+          educationalInstitutions: LOCATIONS_SHEET_BASELINE,
+          live: true,
+          reason: 'missing_env_using_baseline',
         })
       )
     }
@@ -263,22 +269,23 @@ export async function GET() {
 
     if (appsScriptUrl) {
       const result = await fetchFromAppsScript(appsScriptUrl)
-      if (result.ok) return NextResponse.json(applyOverrides(result.stats))
+      if (result.ok) return NextResponse.json(applyBaselines(result.stats))
       reasons.push(result.reason)
     }
 
     if (csvUrl) {
       const result = await fetchFromPublishedCsv(csvUrl)
-      if (result.ok) return NextResponse.json(applyOverrides(result.stats))
+      if (result.ok) return NextResponse.json(applyBaselines(result.stats))
       reasons.push(result.reason)
     }
 
     return NextResponse.json(
-      applyOverrides({
+      applyBaselines({
         ...EMPTY_HISTORY_BY_HER_STATS,
-        educationalInstitutions: LOCATIONS_OVERRIDE ?? 0,
-        live: LOCATIONS_OVERRIDE != null,
-        reason: reasons.join('|') || 'unknown',
+        bookmarks: BOOKMARKS_SHEET_BASELINE,
+        educationalInstitutions: LOCATIONS_SHEET_BASELINE,
+        live: true,
+        reason: reasons.join('|') || 'feed_failed_using_baseline',
       })
     )
   } catch {

@@ -92,7 +92,7 @@ export default function HistoryByHerPage() {
             An educational bookmark campaign spreading women&apos;s history — one library shelf, bookstore
             counter, and classroom at a time.
           </p>
-          <div className="mt-8 md:mt-10">
+          <div className="mt-10 md:mt-12">
             <HistoryByHerImpactStats variant="banner" />
           </div>
         </div>
