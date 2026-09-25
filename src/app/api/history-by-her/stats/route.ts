@@ -6,6 +6,12 @@ import {
 
 export const revalidate = 60
 
+/**
+ * Manual correction when a report form entry under-counted places.
+ * Set to null to use the live sheet sum only.
+ */
+const LOCATIONS_OVERRIDE: number | null = 11
+
 function toNonNegInt(value: unknown): number {
   const n = typeof value === 'number' ? value : Number(value)
   if (!Number.isFinite(n)) return 0
@@ -195,6 +201,15 @@ function parseCsv(text: string): string[][] {
   return rows
 }
 
+function applyOverrides(stats: HistoryByHerStats): HistoryByHerStats {
+  if (LOCATIONS_OVERRIDE == null) return stats
+  return {
+    ...stats,
+    educationalInstitutions: LOCATIONS_OVERRIDE,
+    reason: `${stats.reason || 'live'}+locations_override`,
+  }
+}
+
 export async function GET() {
   try {
     const appsScriptUrl = process.env.HISTORY_BY_HER_STATS_URL?.trim()
@@ -212,37 +227,47 @@ export async function GET() {
           if (prod.ok) {
             const data = (await prod.json()) as HistoryByHerStats
             if (data?.live) {
-              return NextResponse.json({ ...data, reason: 'dev_fallback_production' })
+              return NextResponse.json(
+                applyOverrides({ ...data, reason: 'dev_fallback_production' })
+              )
             }
           }
         } catch {
           // fall through
         }
       }
-      return NextResponse.json({
-        ...EMPTY_HISTORY_BY_HER_STATS,
-        reason: 'missing_HISTORY_BY_HER_STATS_URL',
-      })
+      return NextResponse.json(
+        applyOverrides({
+          ...EMPTY_HISTORY_BY_HER_STATS,
+          educationalInstitutions: LOCATIONS_OVERRIDE ?? 0,
+          live: LOCATIONS_OVERRIDE != null,
+          reason: 'missing_HISTORY_BY_HER_STATS_URL',
+        })
+      )
     }
 
     const reasons: string[] = []
 
     if (appsScriptUrl) {
       const result = await fetchFromAppsScript(appsScriptUrl)
-      if (result.ok) return NextResponse.json(result.stats)
+      if (result.ok) return NextResponse.json(applyOverrides(result.stats))
       reasons.push(result.reason)
     }
 
     if (csvUrl) {
       const result = await fetchFromPublishedCsv(csvUrl)
-      if (result.ok) return NextResponse.json(result.stats)
+      if (result.ok) return NextResponse.json(applyOverrides(result.stats))
       reasons.push(result.reason)
     }
 
-    return NextResponse.json({
-      ...EMPTY_HISTORY_BY_HER_STATS,
-      reason: reasons.join('|') || 'unknown',
-    })
+    return NextResponse.json(
+      applyOverrides({
+        ...EMPTY_HISTORY_BY_HER_STATS,
+        educationalInstitutions: LOCATIONS_OVERRIDE ?? 0,
+        live: LOCATIONS_OVERRIDE != null,
+        reason: reasons.join('|') || 'unknown',
+      })
+    )
   } catch {
     return NextResponse.json({
       ...EMPTY_HISTORY_BY_HER_STATS,
