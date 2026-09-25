@@ -201,6 +201,24 @@ export async function GET() {
     const csvUrl = process.env.HISTORY_BY_HER_SHEET_CSV_URL?.trim()
 
     if (!appsScriptUrl && !csvUrl) {
+      // Local `npm run dev` has no Vercel env vars — mirror production totals.
+      const isLocalDev = process.env.NODE_ENV !== 'production' || !process.env.VERCEL
+      if (isLocalDev) {
+        try {
+          const prod = await fetch('https://www.hereducation.org/api/history-by-her/stats', {
+            cache: 'no-store',
+            headers: { Accept: 'application/json' },
+          })
+          if (prod.ok) {
+            const data = (await prod.json()) as HistoryByHerStats
+            if (data?.live) {
+              return NextResponse.json({ ...data, reason: 'dev_fallback_production' })
+            }
+          }
+        } catch {
+          // fall through
+        }
+      }
       return NextResponse.json({
         ...EMPTY_HISTORY_BY_HER_STATS,
         reason: 'missing_HISTORY_BY_HER_STATS_URL',

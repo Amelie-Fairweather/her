@@ -157,6 +157,11 @@ export default function HistoryByHerImpactStats({
           </p>
         </div>
       </div>
+      {!stats?.live && (
+        <p className="mt-4 text-center text-xs text-[#7A2454]/55">
+          Live totals are reconnecting — check back in a moment.
+        </p>
+      )}
     </div>
   )
 }
