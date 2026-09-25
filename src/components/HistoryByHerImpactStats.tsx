@@ -11,10 +11,8 @@ function easeOutCubic(t: number) {
 
 function useCountUp(target: number, active: boolean, durationMs = 1600) {
   const [n, setN] = useState(0)
-  const doneRef = useRef(false)
 
   useEffect(() => {
-    doneRef.current = false
     setN(0)
     if (!active || target <= 0) {
       setN(target)
@@ -29,7 +27,6 @@ function useCountUp(target: number, active: boolean, durationMs = 1600) {
       if (t < 1) {
         frame = requestAnimationFrame(tick)
       } else {
-        doneRef.current = true
         setN(target)
       }
     }
@@ -55,7 +52,7 @@ export default function HistoryByHerImpactStats({
 
   useEffect(() => {
     let cancelled = false
-    fetch('/api/history-by-her/stats')
+    fetch('/api/history-by-her/stats', { cache: 'no-store' })
       .then((res) => res.json())
       .then((data: HistoryByHerStats) => {
         if (!cancelled) setStats(data)
@@ -83,16 +80,16 @@ export default function HistoryByHerImpactStats({
       ([entry]) => {
         if (entry.isIntersecting) setVisible(true)
       },
-      { threshold: 0.25 }
+      { threshold: 0.2 }
     )
     io.observe(el)
     return () => io.disconnect()
   }, [])
 
   const bookmarks = stats?.bookmarks ?? 0
-  const institutions = stats?.educationalInstitutions ?? 0
+  const locations = stats?.educationalInstitutions ?? 0
   const bookmarksDisplay = useCountUp(bookmarks, visible && !!stats)
-  const institutionsDisplay = useCountUp(institutions, visible && !!stats)
+  const locationsDisplay = useCountUp(locations, visible && !!stats)
 
   if (variant === 'banner') {
     return (
@@ -111,9 +108,9 @@ export default function HistoryByHerImpactStats({
         </span>
         <p>
           <span className="font-bold tabular-nums text-white">
-            {formatNumber(institutionsDisplay)}
+            {formatNumber(locationsDisplay)}
           </span>{' '}
-          <span className="text-white/85">educational institutions</span>
+          <span className="text-white/85">locations</span>
         </p>
       </div>
     )
@@ -127,14 +124,14 @@ export default function HistoryByHerImpactStats({
       >
         <span>
           <strong className="tabular-nums text-[#EB89B5]">{formatNumber(bookmarksDisplay)}</strong>{' '}
-          bookmarks
+          bookmarks donated
         </span>
         <span className="text-[#EB89B5]/35" aria-hidden>
           ·
         </span>
         <span>
-          <strong className="tabular-nums text-[#EB89B5]">{formatNumber(institutionsDisplay)}</strong>{' '}
-          institutions
+          <strong className="tabular-nums text-[#EB89B5]">{formatNumber(locationsDisplay)}</strong>{' '}
+          locations
         </span>
       </div>
     )
@@ -142,29 +139,24 @@ export default function HistoryByHerImpactStats({
 
   return (
     <div ref={rootRef} className="relative z-[1]">
-      <div className="grid grid-cols-2 gap-4 md:gap-6 max-w-xl mx-auto">
-        <div className="rounded-3xl bg-white border border-[#EB89B5]/20 px-4 py-6 md:px-6 md:py-8 text-center shadow-lg shadow-[#EB89B5]/10">
-          <p className="text-3xl md:text-5xl font-bold tabular-nums text-[#EB89B5] leading-none">
+      <div className="grid grid-cols-2 gap-4 md:gap-8 max-w-2xl mx-auto">
+        <div className="rounded-3xl bg-white border border-[#EB89B5]/20 px-4 py-7 md:px-8 md:py-10 text-center shadow-lg shadow-[#EB89B5]/10">
+          <p className="text-4xl md:text-6xl font-bold tabular-nums text-[#EB89B5] leading-none">
             {formatNumber(bookmarksDisplay)}
           </p>
           <p className="mt-3 text-xs md:text-sm font-bold uppercase tracking-[0.18em] text-[#7A2454]">
             Bookmarks donated
           </p>
         </div>
-        <div className="rounded-3xl bg-white border border-[#EB89B5]/20 px-4 py-6 md:px-6 md:py-8 text-center shadow-lg shadow-[#EB89B5]/10">
-          <p className="text-3xl md:text-5xl font-bold tabular-nums text-[#EB89B5] leading-none">
-            {formatNumber(institutionsDisplay)}
+        <div className="rounded-3xl bg-white border border-[#EB89B5]/20 px-4 py-7 md:px-8 md:py-10 text-center shadow-lg shadow-[#EB89B5]/10">
+          <p className="text-4xl md:text-6xl font-bold tabular-nums text-[#EB89B5] leading-none">
+            {formatNumber(locationsDisplay)}
           </p>
           <p className="mt-3 text-xs md:text-sm font-bold uppercase tracking-[0.18em] text-[#7A2454]">
-            Educational institutions
+            Locations
           </p>
         </div>
       </div>
-      {!stats?.live && (
-        <p className="mt-4 text-center text-xs text-[#7A2454]/55">
-          Totals update as volunteers submit the report form.
-        </p>
-      )}
     </div>
   )
 }
