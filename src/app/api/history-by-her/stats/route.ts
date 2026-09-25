@@ -8,8 +8,9 @@ export const revalidate = 60
 
 /**
  * Corrected baselines when some report-form rows were wrong/incomplete.
- * New submissions still increase the public totals:
- *   display = BASELINE_DISPLAY + max(0, liveSheetSum - SHEET_BASELINE)
+ * Public totals track the live sheet, including deletes:
+ *   display = BASELINE_DISPLAY + (liveSheetSum - SHEET_BASELINE)
+ *   (floored at 0)
  *
  * Bookmarks verified: 650 + 90 + 90 + 100 = 930 → show 1,000
  * Sheet summed to 1430 at that moment (includes bad rows).
@@ -218,10 +219,14 @@ function applyBaselines(stats: HistoryByHerStats): HistoryByHerStats {
 
   return {
     ...stats,
-    bookmarks:
-      BOOKMARKS_DISPLAY_BASELINE + Math.max(0, liveBookmarks - BOOKMARKS_SHEET_BASELINE),
-    educationalInstitutions:
-      LOCATIONS_DISPLAY_BASELINE + Math.max(0, liveLocations - LOCATIONS_SHEET_BASELINE),
+    bookmarks: Math.max(
+      0,
+      BOOKMARKS_DISPLAY_BASELINE + liveBookmarks - BOOKMARKS_SHEET_BASELINE
+    ),
+    educationalInstitutions: Math.max(
+      0,
+      LOCATIONS_DISPLAY_BASELINE + liveLocations - LOCATIONS_SHEET_BASELINE
+    ),
     live: true,
     reason: `${stats.reason || 'live'}+baseline_adjusted`,
   }
