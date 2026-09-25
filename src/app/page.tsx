@@ -5,6 +5,7 @@ import IdeaSubmissionForm from '@/components/IdeaSubmissionForm'
 import CommunitySlideshow from '@/components/CommunitySlideshow'
 import Herstory101Section from '@/components/Herstory101Section'
 import HistoryByHerAnnouncement from '@/components/HistoryByHerAnnouncement'
+import HistoryByHerImpactStats from '@/components/HistoryByHerImpactStats'
 
 export default function Home() {
   return (
@@ -39,6 +40,7 @@ export default function Home() {
               <p className="text-sm md:text-lg text-gray-600 group-hover:text-gray-700 leading-snug px-1">
                 New volunteer initiative — print bookmarks and donate them to local schools and libraries.
               </p>
+              <HistoryByHerImpactStats variant="card" />
             </div>
           </Link>
 

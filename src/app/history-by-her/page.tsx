@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import HistoryByHerForm from '@/components/HistoryByHerForm'
+import HistoryByHerImpactStats from '@/components/HistoryByHerImpactStats'
 
 const GAINS = [
   {
@@ -68,7 +69,7 @@ const STICKERS = [
     alt: 'History by HER bookmark — Tarabai Shinde',
     aspect: 'aspect-[352/994]',
     className:
-      'hidden md:block left-2 lg:left-0 top-[72rem] w-[5.75rem] lg:w-[6.5rem] rotate-[4deg] z-10',
+      'hidden md:block left-2 lg:left-0 top-[86rem] w-[5.75rem] lg:w-[6.5rem] rotate-[4deg] z-10',
   },
 ]
 
@@ -188,6 +189,13 @@ export default function HistoryByHerPage() {
             <p className="mt-5 text-sm md:text-base font-bold tracking-[0.06em] text-[#EB89B5]">
               Open to everyone — worldwide.
             </p>
+
+            <div className="mt-12 md:mt-14">
+              <p className="text-xs font-bold uppercase tracking-[0.34em] text-[#EB89B5] mb-6">
+                Impact so far
+              </p>
+              <HistoryByHerImpactStats variant="page" />
+            </div>
           </div>
         </section>
 
