@@ -4,7 +4,8 @@ import {
   type HistoryByHerStats,
 } from '@/lib/historyByHerStats'
 
-export const revalidate = 60
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
 
 /**
  * Corrected baselines when some report-form rows were wrong/incomplete.
@@ -15,6 +16,9 @@ export const revalidate = 60
  * Bookmarks verified: 650 + 90 + 90 + 100 = 930 → show 1,000
  * Sheet summed to 1430 at that moment (includes bad rows).
  * Locations corrected to 11 when sheet showed 9.
+ *
+ * IMPORTANT: HISTORY_BY_HER_STATS_URL must stay a working Apps Script /exec
+ * web app (Anyone access). If it 404s, deletes/adds cannot update the site.
  */
 const BOOKMARKS_DISPLAY_BASELINE = 1000
 const BOOKMARKS_SHEET_BASELINE = 1430
@@ -39,7 +43,7 @@ async function fetchFromAppsScript(url: string): Promise<FetchResult> {
         'User-Agent': 'HEREducationBot/1.0 (+https://hereducation.org)',
       },
       redirect: 'follow',
-      next: { revalidate: 60 },
+      cache: 'no-store',
     })
 
     const text = await res.text()
@@ -88,7 +92,7 @@ async function fetchFromPublishedCsv(url: string): Promise<FetchResult> {
     const res = await fetch(url, {
       headers: { Accept: 'text/csv' },
       redirect: 'follow',
-      next: { revalidate: 60 },
+      cache: 'no-store',
     })
     if (!res.ok) {
       return { ok: false, reason: `csv_http_${res.status}` }
@@ -232,6 +236,25 @@ function applyBaselines(stats: HistoryByHerStats): HistoryByHerStats {
   }
 }
 
+function frozenBaselineStats(reason: string): HistoryByHerStats {
+  return {
+    bookmarks: BOOKMARKS_DISPLAY_BASELINE,
+    educationalInstitutions: LOCATIONS_DISPLAY_BASELINE,
+    responses: 0,
+    updatedAt: null,
+    live: false,
+    reason,
+  }
+}
+
+function jsonStats(stats: HistoryByHerStats) {
+  return NextResponse.json(stats, {
+    headers: {
+      'Cache-Control': 'no-store, max-age=0',
+    },
+  })
+}
+
 export async function GET() {
   try {
     const appsScriptUrl = process.env.HISTORY_BY_HER_STATS_URL?.trim()
@@ -248,8 +271,9 @@ export async function GET() {
           })
           if (prod.ok) {
             const data = (await prod.json()) as HistoryByHerStats
-            if (data?.live) {
-              return NextResponse.json({
+            // Only trust production when its Apps Script feed is actually live
+            if (data?.live && !String(data.reason || '').includes('http_404')) {
+              return jsonStats({
                 ...data,
                 reason: `dev_fallback_production+${data.reason || 'live'}`,
               })
@@ -259,44 +283,29 @@ export async function GET() {
           // fall through
         }
       }
-      return NextResponse.json(
-        applyBaselines({
-          ...EMPTY_HISTORY_BY_HER_STATS,
-          bookmarks: BOOKMARKS_SHEET_BASELINE,
-          educationalInstitutions: LOCATIONS_SHEET_BASELINE,
-          live: true,
-          reason: 'missing_env_using_baseline',
-        })
-      )
+      return jsonStats(frozenBaselineStats('missing_HISTORY_BY_HER_STATS_URL'))
     }
 
     const reasons: string[] = []
 
     if (appsScriptUrl) {
       const result = await fetchFromAppsScript(appsScriptUrl)
-      if (result.ok) return NextResponse.json(applyBaselines(result.stats))
+      if (result.ok) return jsonStats(applyBaselines(result.stats))
       reasons.push(result.reason)
     }
 
     if (csvUrl) {
       const result = await fetchFromPublishedCsv(csvUrl)
-      if (result.ok) return NextResponse.json(applyBaselines(result.stats))
+      if (result.ok) return jsonStats(applyBaselines(result.stats))
       reasons.push(result.reason)
     }
 
-    return NextResponse.json(
-      applyBaselines({
-        ...EMPTY_HISTORY_BY_HER_STATS,
-        bookmarks: BOOKMARKS_SHEET_BASELINE,
-        educationalInstitutions: LOCATIONS_SHEET_BASELINE,
-        live: true,
-        reason: reasons.join('|') || 'feed_failed_using_baseline',
-      })
+    // Feed down — show verified baseline (cannot see sheet deletes/adds until URL works)
+    return jsonStats(
+      frozenBaselineStats(`${reasons.join('|') || 'feed_failed'}_using_frozen_baseline`)
     )
   } catch {
-    return NextResponse.json({
-      ...EMPTY_HISTORY_BY_HER_STATS,
-      reason: 'unhandled_error',
-    })
+    return jsonStats(frozenBaselineStats('unhandled_error'))
   }
 }
+
