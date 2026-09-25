@@ -8,7 +8,9 @@ export const revalidate = 60
 
 /**
  * Manual corrections when report form entries are incomplete/wrong.
- * Set to null to use the live sheet sum only.
+ * Bookmarks: 650 + 90 + 90 + 100 = 930 → display rounded to 1,000
+ * Locations: corrected to 11 for an incomplete places entry
+ * Set either to null to use the live sheet sum only.
  */
 const LOCATIONS_OVERRIDE: number | null = 11
 const BOOKMARKS_OVERRIDE: number | null = 1000
