@@ -5,6 +5,16 @@ import type { HistoryByHerStats } from '@/lib/historyByHerStats'
 
 type Variant = 'banner' | 'page' | 'card'
 
+/** Verified display baseline — never flash 0 while the API loads */
+const BASELINE: HistoryByHerStats = {
+  bookmarks: 1000,
+  educationalInstitutions: 11,
+  responses: 0,
+  updatedAt: null,
+  live: false,
+  reason: 'client_baseline',
+}
+
 function formatNumber(n: number) {
   return n.toLocaleString('en-US')
 }
@@ -14,43 +24,40 @@ export default function HistoryByHerImpactStats({
 }: {
   variant?: Variant
 }) {
-  const [stats, setStats] = useState<HistoryByHerStats | null>(null)
+  const [stats, setStats] = useState<HistoryByHerStats>(BASELINE)
 
   useEffect(() => {
     let cancelled = false
+    const controller = new AbortController()
+    const timeout = window.setTimeout(() => controller.abort(), 8000)
 
-    const load = () => {
-      fetch('/api/history-by-her/stats', { cache: 'no-store' })
-        .then((res) => res.json())
-        .then((data: HistoryByHerStats) => {
-          if (!cancelled) setStats(data)
-        })
-        .catch(() => {
-          if (!cancelled) {
-            // Verified baseline if the request fails
-            setStats({
-              bookmarks: 1000,
-              educationalInstitutions: 11,
-              responses: 0,
-              updatedAt: null,
-              live: false,
-              reason: 'client_fallback_baseline',
-            })
-          }
-        })
-    }
+    fetch('/api/history-by-her/stats', {
+      cache: 'no-store',
+      signal: controller.signal,
+    })
+      .then((res) => res.json())
+      .then((data: HistoryByHerStats) => {
+        if (cancelled) return
+        if ((data.bookmarks ?? 0) > 0 || (data.educationalInstitutions ?? 0) > 0) {
+          setStats(data)
+        }
+      })
+      .catch(() => {
+        // Keep baseline on timeout / network error
+      })
+      .finally(() => {
+        window.clearTimeout(timeout)
+      })
 
-    load()
-    // Refresh periodically so add/delete on the sheet shows up
-    const id = window.setInterval(load, 30_000)
     return () => {
       cancelled = true
-      window.clearInterval(id)
+      controller.abort()
+      window.clearTimeout(timeout)
     }
   }, [])
 
-  const bookmarks = stats?.bookmarks ?? 0
-  const locations = stats?.educationalInstitutions ?? 0
+  const bookmarks = stats.bookmarks
+  const locations = stats.educationalInstitutions
 
   if (variant === 'banner') {
     return (
