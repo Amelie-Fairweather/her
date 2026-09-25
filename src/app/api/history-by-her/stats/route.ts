@@ -12,67 +12,123 @@ function toNonNegInt(value: unknown): number {
   return Math.max(0, Math.round(n))
 }
 
-async function fetchFromAppsScript(url: string): Promise<HistoryByHerStats | null> {
-  const res = await fetch(url, {
-    headers: { Accept: 'application/json' },
-    next: { revalidate: 60 },
-  })
-  if (!res.ok) return null
+type FetchResult =
+  | { ok: true; stats: HistoryByHerStats }
+  | { ok: false; reason: string }
 
-  const data = (await res.json()) as Record<string, unknown>
-  return {
-    bookmarks: toNonNegInt(data.bookmarks),
-    educationalInstitutions: toNonNegInt(data.educationalInstitutions),
-    responses: toNonNegInt(data.responses),
-    updatedAt: typeof data.updatedAt === 'string' ? data.updatedAt : null,
-    live: true,
+async function fetchFromAppsScript(url: string): Promise<FetchResult> {
+  try {
+    const res = await fetch(url, {
+      headers: {
+        Accept: 'application/json,text/plain,*/*',
+        'User-Agent': 'HEREducationBot/1.0 (+https://hereducation.org)',
+      },
+      redirect: 'follow',
+      next: { revalidate: 60 },
+    })
+
+    const text = await res.text()
+    if (!res.ok) {
+      return { ok: false, reason: `apps_script_http_${res.status}` }
+    }
+
+    // Apps Script sometimes returns HTML login / permission pages
+    if (text.trimStart().startsWith('<')) {
+      return {
+        ok: false,
+        reason:
+          'apps_script_returned_html_not_json_redeploy_webapp_as_Anyone_access',
+      }
+    }
+
+    let data: Record<string, unknown>
+    try {
+      data = JSON.parse(text) as Record<string, unknown>
+    } catch {
+      return { ok: false, reason: 'apps_script_invalid_json' }
+    }
+
+    return {
+      ok: true,
+      stats: {
+        bookmarks: toNonNegInt(data.bookmarks),
+        educationalInstitutions: toNonNegInt(data.educationalInstitutions),
+        responses: toNonNegInt(data.responses),
+        updatedAt: typeof data.updatedAt === 'string' ? data.updatedAt : null,
+        live: true,
+        reason: 'apps_script',
+      },
+    }
+  } catch (err) {
+    return {
+      ok: false,
+      reason: `apps_script_fetch_error_${err instanceof Error ? err.name : 'unknown'}`,
+    }
   }
 }
 
 /** Parse a published Google Sheet CSV and sum Places + Bookmarks columns. */
-async function fetchFromPublishedCsv(url: string): Promise<HistoryByHerStats | null> {
-  const res = await fetch(url, {
-    headers: { Accept: 'text/csv' },
-    next: { revalidate: 60 },
-  })
-  if (!res.ok) return null
-
-  const text = await res.text()
-  const rows = parseCsv(text)
-  if (rows.length < 2) {
-    return {
-      ...EMPTY_HISTORY_BY_HER_STATS,
-      live: true,
-      updatedAt: new Date().toISOString(),
+async function fetchFromPublishedCsv(url: string): Promise<FetchResult> {
+  try {
+    const res = await fetch(url, {
+      headers: { Accept: 'text/csv' },
+      redirect: 'follow',
+      next: { revalidate: 60 },
+    })
+    if (!res.ok) {
+      return { ok: false, reason: `csv_http_${res.status}` }
     }
-  }
 
-  const headers = rows[0].map((h) => h.toLowerCase().replace(/\s+/g, ' ').trim())
-  const bookmarkCol = findCol(headers, ['bookmark'])
-  const placesCol = findCol(headers, [
-    'places you donated',
-    'number of places',
-    'places',
-  ])
+    const text = await res.text()
+    const rows = parseCsv(text)
+    if (rows.length < 2) {
+      return {
+        ok: true,
+        stats: {
+          ...EMPTY_HISTORY_BY_HER_STATS,
+          live: true,
+          updatedAt: new Date().toISOString(),
+          reason: 'csv_empty',
+        },
+      }
+    }
 
-  let bookmarks = 0
-  let places = 0
-  let responses = 0
+    const headers = rows[0].map((h) => h.toLowerCase().replace(/\s+/g, ' ').trim())
+    const bookmarkCol = findCol(headers, ['bookmark'])
+    const placesCol = findCol(headers, [
+      'places you donated',
+      'number of places',
+      'places',
+    ])
 
-  for (let i = 1; i < rows.length; i++) {
-    const row = rows[i]
-    if (!row.some((cell) => cell.trim())) continue
-    responses++
-    if (bookmarkCol >= 0) bookmarks += parseLooseNumber(row[bookmarkCol])
-    if (placesCol >= 0) places += parseLooseNumber(row[placesCol])
-  }
+    let bookmarks = 0
+    let places = 0
+    let responses = 0
 
-  return {
-    bookmarks,
-    educationalInstitutions: places,
-    responses,
-    updatedAt: new Date().toISOString(),
-    live: true,
+    for (let i = 1; i < rows.length; i++) {
+      const row = rows[i]
+      if (!row.some((cell) => cell.trim())) continue
+      responses++
+      if (bookmarkCol >= 0) bookmarks += parseLooseNumber(row[bookmarkCol])
+      if (placesCol >= 0) places += parseLooseNumber(row[placesCol])
+    }
+
+    return {
+      ok: true,
+      stats: {
+        bookmarks,
+        educationalInstitutions: places,
+        responses,
+        updatedAt: new Date().toISOString(),
+        live: true,
+        reason: 'csv',
+      },
+    }
+  } catch (err) {
+    return {
+      ok: false,
+      reason: `csv_fetch_error_${err instanceof Error ? err.name : 'unknown'}`,
+    }
   }
 }
 
@@ -144,18 +200,35 @@ export async function GET() {
     const appsScriptUrl = process.env.HISTORY_BY_HER_STATS_URL?.trim()
     const csvUrl = process.env.HISTORY_BY_HER_SHEET_CSV_URL?.trim()
 
+    if (!appsScriptUrl && !csvUrl) {
+      return NextResponse.json({
+        ...EMPTY_HISTORY_BY_HER_STATS,
+        reason: 'missing_HISTORY_BY_HER_STATS_URL',
+      })
+    }
+
+    const reasons: string[] = []
+
     if (appsScriptUrl) {
-      const stats = await fetchFromAppsScript(appsScriptUrl)
-      if (stats) return NextResponse.json(stats)
+      const result = await fetchFromAppsScript(appsScriptUrl)
+      if (result.ok) return NextResponse.json(result.stats)
+      reasons.push(result.reason)
     }
 
     if (csvUrl) {
-      const stats = await fetchFromPublishedCsv(csvUrl)
-      if (stats) return NextResponse.json(stats)
+      const result = await fetchFromPublishedCsv(csvUrl)
+      if (result.ok) return NextResponse.json(result.stats)
+      reasons.push(result.reason)
     }
 
-    return NextResponse.json(EMPTY_HISTORY_BY_HER_STATS)
+    return NextResponse.json({
+      ...EMPTY_HISTORY_BY_HER_STATS,
+      reason: reasons.join('|') || 'unknown',
+    })
   } catch {
-    return NextResponse.json(EMPTY_HISTORY_BY_HER_STATS)
+    return NextResponse.json({
+      ...EMPTY_HISTORY_BY_HER_STATS,
+      reason: 'unhandled_error',
+    })
   }
 }
