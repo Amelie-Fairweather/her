@@ -261,7 +261,7 @@ export async function GET() {
     const csvUrl = process.env.HISTORY_BY_HER_SHEET_CSV_URL?.trim()
 
     if (!appsScriptUrl && !csvUrl) {
-      // Local `npm run dev` has no Vercel env vars — mirror production totals.
+      // Local `npm run dev` has no Vercel env vars — mirror production, or use baseline.
       const isLocalDev = process.env.NODE_ENV !== 'production' || !process.env.VERCEL
       if (isLocalDev) {
         try {
@@ -271,8 +271,8 @@ export async function GET() {
           })
           if (prod.ok) {
             const data = (await prod.json()) as HistoryByHerStats
-            // Only trust production when its Apps Script feed is actually live
-            if (data?.live && !String(data.reason || '').includes('http_404')) {
+            // Use production numbers whenever it returns a positive total
+            if ((data?.bookmarks ?? 0) > 0 || (data?.educationalInstitutions ?? 0) > 0) {
               return jsonStats({
                 ...data,
                 reason: `dev_fallback_production+${data.reason || 'live'}`,
