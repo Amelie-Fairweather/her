@@ -4,7 +4,7 @@ import HistoryByHerImpactStats from '@/components/HistoryByHerImpactStats'
 export default function HistoryByHerAnnouncement() {
   return (
     <div className="relative z-50 w-full bg-[#7A2454] text-white">
-      <div className="mx-auto flex max-w-6xl flex-col items-center justify-center gap-3 px-4 py-5 text-center sm:gap-4 sm:py-6 md:py-7">
+      <div className="mx-auto flex max-w-6xl flex-col items-center justify-center gap-5 px-4 py-6 text-center sm:gap-6 sm:py-8 md:py-9">
         <div className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
           <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-snug">
             <span className="uppercase tracking-[0.16em] text-[#FFD7E9] text-xs sm:text-sm block sm:inline sm:mr-2.5 mb-1.5 sm:mb-0">
