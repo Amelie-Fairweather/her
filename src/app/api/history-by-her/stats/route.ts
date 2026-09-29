@@ -8,22 +8,12 @@ export const dynamic = 'force-dynamic'
 export const revalidate = 0
 
 /**
- * Corrected baselines when some report-form rows were wrong/incomplete.
- * Public totals track the live sheet, including deletes:
- *   display = BASELINE_DISPLAY + (liveSheetSum - SHEET_BASELINE)
- *   (floored at 0)
+ * Live totals from the History by HER report sheet via Apps Script / CSV.
+ * No hardcoded baselines — display tracks the sheet directly.
  *
- * Bookmarks verified: 650 + 90 + 90 + 100 = 930 → show 1,000
- * Sheet summed to 1430 at that moment (includes bad rows).
- * Locations corrected to 11 when sheet showed 9.
- *
- * IMPORTANT: HISTORY_BY_HER_STATS_URL must stay a working Apps Script /exec
- * web app (Anyone access). If it 404s, deletes/adds cannot update the site.
+ * HISTORY_BY_HER_STATS_URL = Apps Script /exec web app (Anyone access)
+ * HISTORY_BY_HER_SHEET_CSV_URL = optional published CSV fallback
  */
-const BOOKMARKS_DISPLAY_BASELINE = 1000
-const BOOKMARKS_SHEET_BASELINE = 1430
-const LOCATIONS_DISPLAY_BASELINE = 11
-const LOCATIONS_SHEET_BASELINE = 9
 
 function toNonNegInt(value: unknown): number {
   const n = typeof value === 'number' ? value : Number(value)
@@ -52,12 +42,10 @@ async function fetchFromAppsScript(url: string): Promise<FetchResult> {
       return { ok: false, reason: `apps_script_http_${res.status}` }
     }
 
-    // Apps Script sometimes returns HTML login / permission pages
     if (text.trimStart().startsWith('<')) {
       return {
         ok: false,
-        reason:
-          'apps_script_returned_html_not_json_redeploy_webapp_as_Anyone_access',
+        reason: 'apps_script_returned_html_not_json_redeploy_webapp_as_Anyone_access',
       }
     }
 
@@ -87,7 +75,6 @@ async function fetchFromAppsScript(url: string): Promise<FetchResult> {
   }
 }
 
-/** Parse a published Google Sheet CSV and sum Places + Bookmarks columns. */
 async function fetchFromPublishedCsv(url: string): Promise<FetchResult> {
   try {
     const res = await fetch(url, {
@@ -170,7 +157,6 @@ function parseLooseNumber(value: string): number {
   return Number.isFinite(n) ? Math.max(0, Math.round(n)) : 0
 }
 
-/** Minimal CSV parser that handles quoted fields. */
 function parseCsv(text: string): string[][] {
   const rows: string[][] = []
   let row: string[] = []
@@ -216,35 +202,9 @@ function parseCsv(text: string): string[][] {
   return rows
 }
 
-function applyBaselines(stats: HistoryByHerStats): HistoryByHerStats {
-  // Already adjusted upstream (e.g. production mirrored in local dev)
-  if (stats.reason?.includes('baseline_adjusted')) return stats
-
-  const liveBookmarks = stats.bookmarks
-  const liveLocations = stats.educationalInstitutions
-
+function unavailableStats(reason: string): HistoryByHerStats {
   return {
-    ...stats,
-    bookmarks: Math.max(
-      0,
-      BOOKMARKS_DISPLAY_BASELINE + liveBookmarks - BOOKMARKS_SHEET_BASELINE
-    ),
-    educationalInstitutions: Math.max(
-      0,
-      LOCATIONS_DISPLAY_BASELINE + liveLocations - LOCATIONS_SHEET_BASELINE
-    ),
-    live: true,
-    reason: `${stats.reason || 'live'}+baseline_adjusted`,
-  }
-}
-
-function frozenBaselineStats(reason: string): HistoryByHerStats {
-  return {
-    bookmarks: BOOKMARKS_DISPLAY_BASELINE,
-    educationalInstitutions: LOCATIONS_DISPLAY_BASELINE,
-    responses: 0,
-    updatedAt: null,
-    live: false,
+    ...EMPTY_HISTORY_BY_HER_STATS,
     reason,
   }
 }
@@ -263,18 +223,16 @@ export async function GET() {
     const csvUrl = process.env.HISTORY_BY_HER_SHEET_CSV_URL?.trim()
 
     if (!appsScriptUrl && !csvUrl) {
-      // Local `npm run dev` has no Vercel env vars — mirror production, or use baseline.
       const isLocalDev = process.env.NODE_ENV !== 'production' || !process.env.VERCEL
       if (isLocalDev) {
         try {
           const prod = await fetch('https://www.hereducation.org/api/history-by-her/stats', {
             cache: 'no-store',
             headers: { Accept: 'application/json' },
-            signal: AbortSignal.timeout(6000),
+            signal: AbortSignal.timeout(30000),
           })
           if (prod.ok) {
             const data = (await prod.json()) as HistoryByHerStats
-            // Use production numbers whenever it returns a positive total
             if ((data?.bookmarks ?? 0) > 0 || (data?.educationalInstitutions ?? 0) > 0) {
               return jsonStats({
                 ...data,
@@ -286,29 +244,25 @@ export async function GET() {
           // fall through
         }
       }
-      return jsonStats(frozenBaselineStats('missing_HISTORY_BY_HER_STATS_URL'))
+      return jsonStats(unavailableStats('missing_HISTORY_BY_HER_STATS_URL'))
     }
 
     const reasons: string[] = []
 
     if (appsScriptUrl) {
       const result = await fetchFromAppsScript(appsScriptUrl)
-      if (result.ok) return jsonStats(applyBaselines(result.stats))
+      if (result.ok) return jsonStats(result.stats)
       reasons.push(result.reason)
     }
 
     if (csvUrl) {
       const result = await fetchFromPublishedCsv(csvUrl)
-      if (result.ok) return jsonStats(applyBaselines(result.stats))
+      if (result.ok) return jsonStats(result.stats)
       reasons.push(result.reason)
     }
 
-    // Feed down — show verified baseline (cannot see sheet deletes/adds until URL works)
-    return jsonStats(
-      frozenBaselineStats(`${reasons.join('|') || 'feed_failed'}_using_frozen_baseline`)
-    )
+    return jsonStats(unavailableStats(reasons.join('|') || 'feed_failed'))
   } catch {
-    return jsonStats(frozenBaselineStats('unhandled_error'))
+    return jsonStats(unavailableStats('unhandled_error'))
   }
 }
-
