@@ -44,7 +44,7 @@ async function fetchFromAppsScript(url: string): Promise<FetchResult> {
       },
       redirect: 'follow',
       cache: 'no-store',
-      signal: AbortSignal.timeout(8000),
+      signal: AbortSignal.timeout(25000),
     })
 
     const text = await res.text()
@@ -94,7 +94,7 @@ async function fetchFromPublishedCsv(url: string): Promise<FetchResult> {
       headers: { Accept: 'text/csv' },
       redirect: 'follow',
       cache: 'no-store',
-      signal: AbortSignal.timeout(8000),
+      signal: AbortSignal.timeout(20000),
     })
     if (!res.ok) {
       return { ok: false, reason: `csv_http_${res.status}` }
