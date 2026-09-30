@@ -42,6 +42,8 @@ School Print Shops: Most schools have print shops that can print these front and
 Manual Assembly: If you don't have access to a print shop, watch this short tutorial to easily align and assemble the front and back sides yourself using nice paper:
 ${INSTRUCTION_VIDEO_URL}
 
+Or create your own women's history themed bookmarks!
+
 Step 2: Distribute to Your Community
 Once assembled, please donate the bookmarks to local:
 - High schools & middle schools
@@ -61,7 +63,7 @@ Global Recognition: Completing your donation and submitting the reporting form q
 
 Media Volunteers: If you opted to take photos or film a reel for our Instagram, keep an eye on your inbox—a follow-up email with detailed guidelines will be sent shortly.
 
-Timeline: Please try to complete your distribution within the next 2-3 weeks.
+Timeline: Please try to complete your distribution within the next 2–3 weeks.
 
 Thank you again for bringing vital historical figures into local classrooms and communities! Feel free to reply directly to this email if you have any questions.
 
@@ -82,10 +84,11 @@ ${link(MATERIALS_FOLDER_URL)}</p>
 <p><b>Manual Assembly:</b> If you don't have access to a print shop, watch this short tutorial to easily align and assemble the front and back sides yourself using nice paper:</p>
 <p>
   <a href="${INSTRUCTION_VIDEO_URL}" target="_blank" style="display:inline-block;text-decoration:none;">
-    <img src="${VIDEO_THUMBNAIL_URL}" width="480" style="max-width:100%;border-radius:12px;display:block;" alt="Watch how-to video" />
-    <span style="display:inline-block;margin-top:8px;padding:10px 16px;background:#EB89B5;color:#ffffff;border-radius:8px;font-weight:bold;">▶ Watch how-to video</span>
+    <img src="${VIDEO_THUMBNAIL_URL}" width="480" style="max-width:100%;border-radius:12px;display:block;border:0;" alt="Watch how-to video" />
+    <span style="display:inline-block;margin-top:8px;padding:10px 16px;background:#EB89B5;color:#ffffff;border-radius:8px;font-weight:bold;font-family:Arial,Helvetica,sans-serif;">▶ Watch how-to video</span>
   </a>
 </p>
+<p>Or create your own women's history themed bookmarks!</p>
 <p><b>Step 2: Distribute to Your Community</b><br>
 Once assembled, please donate the bookmarks to local:</p>
 <ul><li>High schools &amp; middle schools</li><li>Public libraries</li><li>Local bookshops</li></ul>

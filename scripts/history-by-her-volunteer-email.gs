@@ -292,6 +292,7 @@ function sendVolunteerEmail_(email, greetingName) {
     "Manual Assembly: If you don't have access to a print shop, watch this short tutorial to easily align and assemble the front and back sides yourself using nice paper:\n" +
     videoLine +
     "\n\n" +
+    "Or create your own women's history themed bookmarks!\n\n" +
     "Step 2: Distribute to Your Community\n" +
     "Once assembled, please donate the bookmarks to local:\n" +
     "- High schools & middle schools\n" +
@@ -337,6 +338,7 @@ function sendVolunteerEmail_(email, greetingName) {
         "</a>" +
         "</p>"
       : "<p>" + esc_(videoLine) + "</p>") +
+    "<p>Or create your own women's history themed bookmarks!</p>" +
     "<p><b>Step 2: Distribute to Your Community</b><br>" +
     "Once assembled, please donate the bookmarks to local:</p>" +
     "<ul><li>High schools &amp; middle schools</li><li>Public libraries</li><li>Local bookshops</li></ul>" +
