@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { sendVolunteerMaterialsEmail } from '@/lib/history-by-her-email'
 
 const GOOGLE_FORM_ACTION =
   'https://docs.google.com/forms/d/e/1FAIpQLSdPaht-67KRVxMnvEUkMudD2PZvqMvFTC0qJosfZFSksuvZFw/formResponse'
@@ -31,6 +32,9 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Invalid yes/no option' }, { status: 400 })
     }
 
+    const fullName = body.fullName!.trim()
+    const email = body.email!.trim()
+
     const params = new URLSearchParams()
     for (const key of REQUIRED) {
       params.append(FIELD_MAP[key], body[key]!.trim())
@@ -52,8 +56,20 @@ export async function POST(req: NextRequest) {
       )
     }
 
-    return NextResponse.json({ ok: true })
-  } catch {
+    // Form is saved — send materials via Resend (does not use Gmail Apps Script quota).
+    // Signup still succeeds if email fails; volunteer can be resent via /send-materials.
+    const emailResult = await sendVolunteerMaterialsEmail({ to: email, name: fullName })
+    if (!emailResult.ok) {
+      console.error('[history-by-her] materials email failed:', emailResult.error)
+    }
+
+    return NextResponse.json({
+      ok: true,
+      emailSent: emailResult.ok,
+      ...(emailResult.ok ? { emailId: emailResult.id } : { emailError: emailResult.error }),
+    })
+  } catch (err) {
+    console.error('[history-by-her] submit error:', err)
     return NextResponse.json({ error: 'Unable to submit volunteer form' }, { status: 500 })
   }
 }

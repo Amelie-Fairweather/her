@@ -134,9 +134,111 @@ function getSpreadsheet_() {
   );
 }
 
+/** Backup path — runs every 5 minutes automatically after installTrigger. */
+function processUnsentResponses() {
+  var left = MailApp.getRemainingDailyQuota();
+  Logger.log("Backup trigger: mail quota remaining = " + left);
+  if (left <= 0) {
+    Logger.log(
+      "SKIP backup: Google daily email quota is exhausted. Resets ~midnight Pacific. " +
+        "Unsent rows will send automatically after reset.",
+    );
+    return;
+  }
+  resendAllMissing();
+}
+
+/**
+ * Email every response that does not already have "YES" in Auto email sent.
+ * Used by the 5-minute backup trigger; you can also Run it once for catch-up.
+ * Stops immediately when Google's daily email quota is exhausted.
+ */
+function resendAllMissing() {
+  var sheet = getResponsesSheet_();
+  ensureSentColumn_(sheet);
+  var lastRow = sheet.getLastRow();
+  if (lastRow < 2) {
+    Logger.log("No responses yet");
+    return;
+  }
+
+  var sent = 0;
+  var skipped = 0;
+  var failed = 0;
+  var quotaLeft = MailApp.getRemainingDailyQuota();
+
+  for (var row = 2; row <= lastRow; row++) {
+    quotaLeft = MailApp.getRemainingDailyQuota();
+    if (quotaLeft <= 0) {
+      Logger.log(
+        "STOPPED early: daily email quota exhausted at row " +
+          row +
+          ". Remaining unsent rows will retry after midnight Pacific.",
+      );
+      break;
+    }
+
+    if (alreadySent_(sheet, row)) {
+      skipped++;
+      continue;
+    }
+
+    try {
+      emailRow_(sheet, row, null);
+      sent++;
+      Utilities.sleep(800);
+    } catch (err) {
+      failed++;
+      Logger.log("Row " + row + " FAIL: " + err);
+      var msg = String(err);
+      if (msg.indexOf("too many times for one day") !== -1 || msg.indexOf("quota") !== -1) {
+        Logger.log("Quota hit — stopping further sends today.");
+        break;
+      }
+    }
+  }
+
+  Logger.log(
+    "Done. sent=" +
+      sent +
+      " skipped=" +
+      skipped +
+      " failed=" +
+      failed +
+      " quotaLeft=" +
+      MailApp.getRemainingDailyQuota(),
+  );
+}
+
+/**
+ * Manually email ONE sheet row (e.g. Sophie = row 63).
+ * Run after quota resets, or when you have remaining quota.
+ * Edit ROW below, then Run → emailOneRow
+ */
+function emailOneRow() {
+  var ROW = 63; // ← change to the sheet row number
+  Logger.log("Mail quota remaining: " + MailApp.getRemainingDailyQuota());
+  if (MailApp.getRemainingDailyQuota() <= 0) {
+    throw new Error(
+      "No email quota left today. Wait until ~midnight Pacific, then run emailOneRow again.",
+    );
+  }
+  var sheet = getResponsesSheet_();
+  ensureSentColumn_(sheet);
+  emailRow_(sheet, ROW, null);
+}
+
 /** Instant path — fires automatically on each report form submission. */
 function onFormSubmit(e) {
   try {
+    if (MailApp.getRemainingDailyQuota() <= 0) {
+      Logger.log(
+        "FAIL: daily email quota exhausted — cannot send now. " +
+          "Backup trigger will retry after midnight Pacific.",
+      );
+      return;
+    }
+
     // Form→Sheet sync can lag a second on form-bound triggers
     if (e && e.response && !e.range) {
       Utilities.sleep(1500);
@@ -156,56 +258,6 @@ function onFormSubmit(e) {
     Logger.log("FAIL: " + err);
     throw err;
   }
-}
-
-/** Backup path — runs every 5 minutes automatically after installTrigger. */
-function processUnsentResponses() {
-  resendAllMissing();
-}
-
-/**
- * Email every response that does not already have "YES" in Auto email sent.
- * Used by the 5-minute backup trigger; you can also Run it once for catch-up.
- */
-function resendAllMissing() {
-  var sheet = getResponsesSheet_();
-  ensureSentColumn_(sheet);
-  var lastRow = sheet.getLastRow();
-  if (lastRow < 2) {
-    Logger.log("No responses yet");
-    return;
-  }
-
-  var sent = 0;
-  var skipped = 0;
-  var failed = 0;
-
-  for (var row = 2; row <= lastRow; row++) {
-    if (alreadySent_(sheet, row)) {
-      skipped++;
-      continue;
-    }
-
-    try {
-      emailRow_(sheet, row, null);
-      sent++;
-      Utilities.sleep(400);
-    } catch (err) {
-      failed++;
-      Logger.log("Row " + row + " FAIL: " + err);
-    }
-  }
-
-  Logger.log(
-    "Done. sent=" +
-      sent +
-      " skipped=" +
-      skipped +
-      " failed=" +
-      failed +
-      " quotaLeft=" +
-      MailApp.getRemainingDailyQuota(),
-  );
 }
 
 /** Send one row. event e is optional (form submit has richer namedValues). */
@@ -331,8 +383,10 @@ function sendReportThankYouEmail_(email, greetingName) {
         " to reduce spam.",
     );
   }
-  if (HER_EMAIL && email.toLowerCase() !== HER_EMAIL.toLowerCase()) {
-    options.bcc = HER_EMAIL;
+  // Do NOT BCC HER_EMAIL — Gmail counts BCC toward the daily quota (2x usage).
+
+  if (MailApp.getRemainingDailyQuota() <= 0) {
+    throw new Error("Service invoked too many times for one day: email.");
   }
 
   GmailApp.sendEmail(email, subject, body, options);
