@@ -5,11 +5,6 @@
  *   RESEND_API_KEY=re_xxx node scripts/test-volunteer-email.mjs you@email.com "Your Name"
  */
 import { Resend } from 'resend'
-import { createRequire } from 'module'
-import { pathToFileURL } from 'url'
-import { register } from 'node:module'
-import { dirname, join } from 'path'
-import { fileURLToPath } from 'url'
 
 const to = process.argv[2]
 const name = process.argv[3] || 'Volunteer'
@@ -30,9 +25,8 @@ if (!to) {
 const MATERIALS_FOLDER_URL =
   'https://drive.google.com/drive/folders/1I4gZfUv7RynkU6_Kj4deNGZFb0OAZYHM?usp=sharing'
 const INSTRUCTION_VIDEO_URL =
-  'https://drive.google.com/file/d/1hFNHGvuRvsgU11hii3PRIJ74RUJ36Q3k/view?usp=sharing'
-const VIDEO_THUMBNAIL_URL =
-  'https://drive.google.com/thumbnail?id=1hFNHGvuRvsgU11hii3PRIJ74RUJ36Q3k&sz=w1000'
+  'https://drive.google.com/file/d/1hFNHGvuRvsgU11hii3PRIJ74RUJ36Q3k/view'
+const VIDEO_THUMBNAIL_URL = 'https://www.hereducation.org/history-by-her-howto.jpg'
 const REPORT_FORM_URL =
   'https://docs.google.com/forms/d/e/1FAIpQLSeGaCWsgfY18pGDFB5NTpB9MU4LzgZPUZ7kQxBTYozZW_eKEw/viewform'
 
@@ -45,7 +39,7 @@ function esc(text) {
 }
 
 function link(url) {
-  return `<a href="${url}">${esc(url)}</a>`
+  return `<a href="${url}" style="color:#1a73e8;text-decoration:underline;">${esc(url)}</a>`
 }
 
 const subject = 'Your History by HER materials'
@@ -67,15 +61,14 @@ Or create your own women's history themed bookmarks!
 
 Step 2: Distribute to Your Community
 Once assembled, please donate the bookmarks to local:
-- High schools & middle schools
-- Public libraries
-- Local bookshops
+High schools & middle schools
+Public libraries
+Local bookshops
 
 Step 3: Track & Report Your Impact
 To receive credit for your service, keep track of:
-- The total number of bookmarks printed and donated.
-- The number of institutions you visited.
-
+The total number of bookmarks printed and donated.
+The number of institutions you visited.
 Once your donations are complete, submit your totals using this form:
 ${REPORT_FORM_URL}
 
@@ -94,45 +87,59 @@ Founder & President
 HER Education Required
 hereducation.org`
 
-const html = `
-<p>Hi ${esc(name)},</p>
-<p>Thank you so much for volunteering for History by HER, HER Education Required's global initiative aimed at improving how women's history is taught!</p>
-<p><b>Step 1: Access Your Print Files</b><br>
-This is designed to be a no-cost initiative for you. Access the ready to print bookmarks here:<br>
-${link(MATERIALS_FOLDER_URL)}</p>
-<p><b>Printing Options:</b><br>
-<b>School Print Shops:</b> Most schools have print shops that can print these front and back directly onto cardstock paper for free. Figure out how to contact the print shop, and go ask ASAP.</p>
-<p><b>Manual Assembly:</b> If you don't have access to a print shop, watch this short tutorial to easily align and assemble the front and back sides yourself using nice paper:</p>
-<p>
-  <a href="${INSTRUCTION_VIDEO_URL}" target="_blank" style="display:inline-block;text-decoration:none;">
-    <img src="${VIDEO_THUMBNAIL_URL}" width="480" style="max-width:100%;border-radius:12px;display:block;border:0;" alt="Watch how-to video" />
-    <span style="display:inline-block;margin-top:8px;padding:10px 16px;background:#EB89B5;color:#ffffff;border-radius:8px;font-weight:bold;font-family:Arial,Helvetica,sans-serif;">▶ Watch how-to video</span>
-  </a>
-</p>
-<p>Or create your own women's history themed bookmarks!</p>
-<p><b>Step 2: Distribute to Your Community</b><br>
-Once assembled, please donate the bookmarks to local:</p>
-<ul><li>High schools &amp; middle schools</li><li>Public libraries</li><li>Local bookshops</li></ul>
-<p><b>Step 3: Track &amp; Report Your Impact</b><br>
-To receive credit for your service, keep track of:</p>
-<ul><li>The total number of bookmarks printed and donated.</li><li>The number of institutions you visited.</li></ul>
-<p>Once your donations are complete, submit your totals using this form:<br>
-${link(REPORT_FORM_URL)}</p>
-<p><b>Recognition &amp; Next Steps</b><br>
-<b>Global Recognition:</b> Completing your donation and submitting the reporting form qualifies you for global recognition on our website and Instagram page!</p>
-<p><b>Media Volunteers:</b> If you opted to take photos or film a reel for our Instagram, keep an eye on your inbox—a follow-up email with detailed guidelines will be sent shortly.</p>
-<p><b>Timeline:</b> Please try to complete your distribution within the next 2–3 weeks.</p>
-<p>Thank you again for bringing vital historical figures into local classrooms and communities! Feel free to reply directly to this email if you have any questions.</p>
-<p>Best regards,<br>Amelie Fairweather<br>Founder &amp; President<br>HER Education Required<br>
-<a href="https://hereducation.org">hereducation.org</a></p>
-`.trim()
+const html = `<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+<body style="margin:0;padding:0;background:#ffffff;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#ffffff;">
+  <tr>
+    <td align="left" style="padding:24px 20px;font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.55;color:#222222;">
+      <p style="margin:0 0 16px 0;">Hi ${esc(name)},</p>
+      <p style="margin:0 0 16px 0;">Thank you so much for volunteering for History by HER, HER Education Required's global initiative aimed at improving how women's history is taught!</p>
+      <p style="margin:0 0 8px 0;"><strong>Step 1: Access Your Print Files</strong><br>
+      This is designed to be a no-cost initiative for you. Access the ready to print bookmarks here:<br>
+      ${link(MATERIALS_FOLDER_URL)}</p>
+      <p style="margin:16px 0 8px 0;"><strong>Printing Options:</strong><br>
+      <strong>School Print Shops:</strong> Most schools have print shops that can print these front and back directly onto cardstock paper for free. Figure out how to contact the print shop, and go ask ASAP.</p>
+      <p style="margin:0 0 12px 0;"><strong>Manual Assembly:</strong> If you don't have access to a print shop, watch this short tutorial to easily align and assemble the front and back sides yourself using nice paper:</p>
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 12px 0;">
+        <tr><td>
+          <a href="${INSTRUCTION_VIDEO_URL}" target="_blank" style="text-decoration:none;">
+            <img src="${VIDEO_THUMBNAIL_URL}" width="480" alt="Watch how-to video" style="display:block;width:100%;max-width:480px;height:auto;border:0;border-radius:12px;" />
+          </a>
+        </td></tr>
+        <tr><td style="padding-top:8px;">
+          <a href="${INSTRUCTION_VIDEO_URL}" target="_blank" style="display:inline-block;padding:10px 16px;background:#EB89B5;color:#ffffff;text-decoration:none;border-radius:8px;font-weight:bold;font-family:Arial,Helvetica,sans-serif;">▶ Watch how-to video</a>
+        </td></tr>
+      </table>
+      <p style="margin:0 0 16px 0;">Or create your own women's history themed bookmarks!</p>
+      <p style="margin:0 0 8px 0;"><strong>Step 2: Distribute to Your Community</strong><br>
+      Once assembled, please donate the bookmarks to local:</p>
+      <p style="margin:0 0 16px 0;">High schools &amp; middle schools<br>Public libraries<br>Local bookshops</p>
+      <p style="margin:0 0 8px 0;"><strong>Step 3: Track &amp; Report Your Impact</strong><br>
+      To receive credit for your service, keep track of:</p>
+      <p style="margin:0 0 8px 0;">The total number of bookmarks printed and donated.<br>The number of institutions you visited.</p>
+      <p style="margin:0 0 16px 0;">Once your donations are complete, submit your totals using this form:<br>
+      ${link(REPORT_FORM_URL)}</p>
+      <p style="margin:0 0 8px 0;"><strong>Recognition &amp; Next Steps</strong><br>
+      <strong>Global Recognition:</strong> Completing your donation and submitting the reporting form qualifies you for global recognition on our website and Instagram page!</p>
+      <p style="margin:0 0 8px 0;"><strong>Media Volunteers:</strong> If you opted to take photos or film a reel for our Instagram, keep an eye on your inbox—a follow-up email with detailed guidelines will be sent shortly.</p>
+      <p style="margin:0 0 16px 0;"><strong>Timeline:</strong> Please try to complete your distribution within the next 2–3 weeks.</p>
+      <p style="margin:0 0 16px 0;">Thank you again for bringing vital historical figures into local classrooms and communities! Feel free to reply directly to this email if you have any questions.</p>
+      <p style="margin:0;">Best regards,<br>Amelie Fairweather<br>Founder &amp; President<br>HER Education Required<br>
+      <a href="https://hereducation.org" style="color:#1a73e8;text-decoration:underline;">hereducation.org</a></p>
+    </td>
+  </tr>
+</table>
+</body>
+</html>`
 
 const resend = new Resend(apiKey)
 const { data, error } = await resend.emails.send({
   from,
   to: [to],
   replyTo,
-  subject: `[TEST] ${subject}`,
+  subject,
   text,
   html,
 })
