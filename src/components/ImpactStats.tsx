@@ -22,7 +22,7 @@ const impactStats = [
     detail: 'An expanding international network',
   },
   {
-    value: 1000,
+    value: 2000,
     suffix: '+',
     label: 'Youth volunteers',
     detail: 'Students advocating for women’s history',
