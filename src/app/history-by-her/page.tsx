@@ -244,29 +244,40 @@ export default function HistoryByHerPage() {
             title="Volunteers printing, crafting, and donating"
             photos={[
               {
-                src: '/community-her-donation-drive.jpg',
+                src: '/hbh-donation-drive.jpg',
                 alt: 'Students assembling materials for a H.E.R. donation drive',
-                className: 'aspect-[4/5] md:col-span-1',
               },
               {
-                src: '/community-cutting-bookmarks.jpg',
+                src: '/hbh-cutting-bookmarks.jpg',
                 alt: 'Student cutting History by HER bookmark printouts',
               },
               {
-                src: '/community-library-bookmarks.jpg',
-                alt: 'Student placing HER bookmarks in a school library display',
-              },
-              {
-                src: '/community-bookmark-craft-flatlay.jpg',
-                alt: 'Handmade HER bookmarks with pens and stickers',
-              },
-              {
-                src: '/community-cutting-flyers.jpg',
+                src: '/hbh-cutting-flyers.jpg',
                 alt: 'Student cutting HER outreach flyers',
               },
               {
-                src: '/community-girls-rock-crafts.jpg',
+                src: '/hbh-girls-rock-crafts.jpg',
                 alt: 'Handmade Join H.E.R. and Girls Rock signs',
+              },
+              {
+                src: '/hbh-library-bookmarks.jpg',
+                alt: 'Student placing HER bookmarks in a school library display',
+              },
+              {
+                src: '/hbh-library-new-books.jpg',
+                alt: 'Student browsing books while placing HER materials',
+              },
+              {
+                src: '/hbh-bookmark-craft-flatlay.jpg',
+                alt: 'Handmade HER bookmarks with pens and stickers',
+              },
+              {
+                src: '/hbh-step2-share-donate.jpg',
+                alt: 'Volunteers sharing History by HER and asking to donate bookmarks',
+              },
+              {
+                src: '/hbh-library-director-bree.jpg',
+                alt: 'Library Director Bree Drapa holding History by HER materials',
               },
             ]}
           />
