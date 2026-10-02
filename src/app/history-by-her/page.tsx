@@ -158,11 +158,6 @@ export default function HistoryByHerPage() {
               </p>
             </div>
 
-            <p className="text-base md:text-lg text-[#7A2454]/70 leading-relaxed max-w-md mx-auto">
-              Built to grow international understanding of pivotal figures in the women&apos;s rights
-              movements around the globe.
-            </p>
-
             <div className="mx-auto max-w-xl rounded-[2rem] bg-gradient-to-b from-[#FFD7E9]/70 to-[#FFF6FB] border border-[#EB89B5]/25 px-6 py-9 md:px-10 md:py-12">
               <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-[#EB89B5] mb-8">
                 Happening this fall
@@ -198,19 +193,6 @@ export default function HistoryByHerPage() {
                   <li>High schools</li>
                 </ul>
               </div>
-            </div>
-
-            <div className="max-w-md mx-auto">
-              <p className="text-sm md:text-base font-bold tracking-[0.06em] text-[#EB89B5]">
-                Open to everyone — worldwide.
-              </p>
-            </div>
-
-            <div>
-              <p className="text-xs font-bold uppercase tracking-[0.34em] text-[#EB89B5] mb-6 md:mb-8">
-                Impact so far
-              </p>
-              <HistoryByHerImpactStats variant="page" />
             </div>
           </div>
         </section>
