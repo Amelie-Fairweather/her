@@ -267,7 +267,7 @@ body {
 }
 
 .animate-her-marquee {
-  animation: her-marquee 110s linear infinite;
+  animation: her-marquee 200s linear infinite;
 }
 
 @keyframes her-sheen {
