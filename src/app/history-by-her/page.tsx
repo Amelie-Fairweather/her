@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import HistoryByHerForm from '@/components/HistoryByHerForm'
 import HistoryByHerImpactStats from '@/components/HistoryByHerImpactStats'
+import PhotoMosaic from '@/components/PhotoMosaic'
 
 const GAINS = [
   {
@@ -236,6 +237,40 @@ export default function HistoryByHerPage() {
             ))}
           </ul>
         </section>
+
+        <div className="relative z-[1]">
+          <PhotoMosaic
+            eyebrow="In action"
+            title="Volunteers printing, crafting, and donating"
+            photos={[
+              {
+                src: '/community-her-donation-drive.jpg',
+                alt: 'Students assembling materials for a H.E.R. donation drive',
+                className: 'aspect-[4/5] md:col-span-1',
+              },
+              {
+                src: '/community-cutting-bookmarks.jpg',
+                alt: 'Student cutting History by HER bookmark printouts',
+              },
+              {
+                src: '/community-library-bookmarks.jpg',
+                alt: 'Student placing HER bookmarks in a school library display',
+              },
+              {
+                src: '/community-bookmark-craft-flatlay.jpg',
+                alt: 'Handmade HER bookmarks with pens and stickers',
+              },
+              {
+                src: '/community-cutting-flyers.jpg',
+                alt: 'Student cutting HER outreach flyers',
+              },
+              {
+                src: '/community-girls-rock-crafts.jpg',
+                alt: 'Handmade Join H.E.R. and Girls Rock signs',
+              },
+            ]}
+          />
+        </div>
 
         <section className="relative z-[1] text-center space-y-3 md:space-y-4 pb-2 max-w-3xl mx-auto">
           <p className="text-xl md:text-2xl font-bold text-[#7A2454] leading-snug">

@@ -3,6 +3,23 @@
 import Image from 'next/image'
 
 const SLIDES = [
+  { src: '/community-welcome-back-shirts.jpg', alt: 'HER students in matching pink shirts at a Welcome Back meeting' },
+  { src: '/community-her-club-presentation.jpg', alt: 'HER club presentation on women’s history advocacy' },
+  { src: '/community-club-fair-knights.jpg', alt: 'HER Education Network club fair signup table' },
+  { src: '/community-her-donation-drive.jpg', alt: 'Students assembling materials for a H.E.R. donation drive' },
+  { src: '/community-cutting-bookmarks.jpg', alt: 'Student cutting History by HER bookmark printouts' },
+  { src: '/community-cutting-flyers.jpg', alt: 'Student cutting HER outreach flyers' },
+  { src: '/community-bookmark-craft-flatlay.jpg', alt: 'Handmade HER bookmarks, pens, and star stickers' },
+  { src: '/community-girls-rock-crafts.jpg', alt: 'Handmade Join H.E.R. and Girls Rock signs' },
+  { src: '/community-her-whiteboard.jpg', alt: 'Classroom whiteboard promoting H.E.R. and women to learn about' },
+  { src: '/community-library-bookmarks.jpg', alt: 'Student placing HER bookmarks in a school library display' },
+  { src: '/community-library-new-books.jpg', alt: 'Student browsing books in a school library' },
+  { src: '/community-classroom-bookmarks-board.jpg', alt: 'HER chapter classroom with bookmarks listed on the whiteboard' },
+  { src: '/community-classroom-attendance.jpg', alt: 'HER students in a busy classroom during a presentation' },
+  { src: '/community-five-students.jpg', alt: 'Five HER chapter students posing together' },
+  { src: '/community-students-table.jpg', alt: 'HER students smiling around a classroom table' },
+  { src: '/community-classroom-raised-hand.jpg', alt: 'Student raising her hand during a HER classroom discussion' },
+  { src: '/community-student-raising-hand.jpg', alt: 'HER students engaged in class' },
   { src: '/community-img-2759.jpg', alt: 'HER students in pink shirts at a Welcome Back meeting' },
   { src: '/community-img-2745.jpg', alt: 'HER students engaged in a classroom discussion' },
   { src: '/community-img-2732.jpg', alt: 'HER student in Education Required shirt with chapter members' },

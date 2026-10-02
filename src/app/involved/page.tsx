@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useState } from 'react'
 import JoinForm from '@/components/JoinForm'
+import PhotoMosaic from '@/components/PhotoMosaic'
 
 export default function Involved() {
   const [showJoinForm, setShowJoinForm] = useState(false)
@@ -264,16 +265,36 @@ export default function Involved() {
                 We club members ask that you hear our mission, and that you consider it <span className="text-[#EB89B5] font-bold">your responsibility to push forward change</span>. Write emails, attend events, and support not only us but also your daughters, sisters, mothers, and the women around you. They deserve education and a full understanding of their rights as women.
               </p>
             </div>
-            <div className="max-w-3xl mx-auto">
-              <Image
-                src="/clurb.HEIC"
-                alt="HER Club members"
-                width={800}
-                height={600}
-                className="w-full h-auto rounded-lg object-cover shadow-lg"
-                style={{ aspectRatio: '4/3' }}
-              />
-            </div>
+            <PhotoMosaic
+              eyebrow="Chapters in action"
+              title="Students leading HER around the country"
+              photos={[
+                {
+                  src: '/community-welcome-back-shirts.jpg',
+                  alt: 'HER students in matching pink shirts',
+                },
+                {
+                  src: '/community-club-fair-knights.jpg',
+                  alt: 'HER Education Network club fair table',
+                },
+                {
+                  src: '/community-her-club-presentation.jpg',
+                  alt: 'HER club classroom presentation',
+                },
+                {
+                  src: '/community-five-students.jpg',
+                  alt: 'Five HER chapter students posing together',
+                },
+                {
+                  src: '/community-students-table.jpg',
+                  alt: 'HER students at a classroom table',
+                },
+                {
+                  src: '/community-classroom-raised-hand.jpg',
+                  alt: 'Student raising her hand in class',
+                },
+              ]}
+            />
           </div>
         </section>
 
