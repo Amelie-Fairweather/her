@@ -109,6 +109,8 @@ export const herChapters: HerChapter[] = [
   { id: 'wwp-north', name: 'West Windsor-Plainsboro High School North', city: 'Plainsboro', state: 'NJ', lat: 40.3224, lng: -74.6003 },
   { id: 'glenbrook-north', name: 'Glenbrook North High School', city: 'Northbrook', state: 'IL', lat: 42.1119, lng: -87.8337 },
   { id: 'mountain-ridge', name: 'Mountain Ridge High School', city: 'Glendale', state: 'AZ', lat: 33.6916, lng: -112.2056 },
-  { id: 'decatur', name: 'Decatur High School', city: 'Decatur', state: 'GA', lat: 33.7706, lng: -84.2979 },
+  { id: 'decatur', name: 'Decatur High School', city: 'Atlanta', state: 'GA', lat: 33.7706, lng: -84.2979 },
   { id: 'hanford', name: 'Hanford', city: 'Hanford', state: 'CA', lat: 36.3446, lng: -119.6438 },
+  { id: 'robinson-secondary', name: 'Robinson Secondary School', city: 'Fairfax', state: 'VA', lat: 38.8165, lng: -77.3048 },
+  { id: 'dav-taratala', name: 'DAV Public School', city: 'Taratala, Kolkata', state: 'West Bengal, India', lat: 22.5077, lng: 88.3204 },
 ]
