@@ -9,16 +9,27 @@ export const revalidate = 0
 
 /**
  * Live totals from the History by HER report sheet via Apps Script / CSV.
- * No hardcoded baselines — display tracks the sheet directly.
+ * Sheet totals are shown plus a one-time manual addition for bookmarks already
+ * donated outside the report form.
  *
  * HISTORY_BY_HER_STATS_URL = Apps Script /exec web app (Anyone access)
  * HISTORY_BY_HER_SHEET_CSV_URL = optional published CSV fallback
  */
 
+/** Bookmarks donated outside the reporting form (added on top of live sheet totals). */
+const BOOKMARKS_MANUAL_ADDITION = 8000
+
 function toNonNegInt(value: unknown): number {
   const n = typeof value === 'number' ? value : Number(value)
   if (!Number.isFinite(n)) return 0
   return Math.max(0, Math.round(n))
+}
+
+function withBookmarkAddition(stats: HistoryByHerStats): HistoryByHerStats {
+  return {
+    ...stats,
+    bookmarks: toNonNegInt(stats.bookmarks) + BOOKMARKS_MANUAL_ADDITION,
+  }
 }
 
 type FetchResult =
@@ -251,13 +262,13 @@ export async function GET() {
 
     if (appsScriptUrl) {
       const result = await fetchFromAppsScript(appsScriptUrl)
-      if (result.ok) return jsonStats(result.stats)
+      if (result.ok) return jsonStats(withBookmarkAddition(result.stats))
       reasons.push(result.reason)
     }
 
     if (csvUrl) {
       const result = await fetchFromPublishedCsv(csvUrl)
-      if (result.ok) return jsonStats(result.stats)
+      if (result.ok) return jsonStats(withBookmarkAddition(result.stats))
       reasons.push(result.reason)
     }
 
