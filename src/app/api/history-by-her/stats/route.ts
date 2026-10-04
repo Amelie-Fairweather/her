@@ -18,6 +18,8 @@ export const revalidate = 0
 
 /** Bookmarks donated outside the reporting form (added on top of live sheet totals). */
 const BOOKMARKS_MANUAL_ADDITION = 8000
+/** Locations donated to outside the reporting form (added on top of live sheet totals). */
+const LOCATIONS_MANUAL_ADDITION = 5
 
 function toNonNegInt(value: unknown): number {
   const n = typeof value === 'number' ? value : Number(value)
@@ -25,10 +27,12 @@ function toNonNegInt(value: unknown): number {
   return Math.max(0, Math.round(n))
 }
 
-function withBookmarkAddition(stats: HistoryByHerStats): HistoryByHerStats {
+function withManualAdditions(stats: HistoryByHerStats): HistoryByHerStats {
   return {
     ...stats,
     bookmarks: toNonNegInt(stats.bookmarks) + BOOKMARKS_MANUAL_ADDITION,
+    educationalInstitutions:
+      toNonNegInt(stats.educationalInstitutions) + LOCATIONS_MANUAL_ADDITION,
   }
 }
 
@@ -262,13 +266,13 @@ export async function GET() {
 
     if (appsScriptUrl) {
       const result = await fetchFromAppsScript(appsScriptUrl)
-      if (result.ok) return jsonStats(withBookmarkAddition(result.stats))
+      if (result.ok) return jsonStats(withManualAdditions(result.stats))
       reasons.push(result.reason)
     }
 
     if (csvUrl) {
       const result = await fetchFromPublishedCsv(csvUrl)
-      if (result.ok) return jsonStats(withBookmarkAddition(result.stats))
+      if (result.ok) return jsonStats(withManualAdditions(result.stats))
       reasons.push(result.reason)
     }
 
