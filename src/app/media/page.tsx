@@ -143,13 +143,13 @@ export default function MediaCoverage() {
                   </p>
                 </div>
                 <div>
-                  <p className="text-xl md:text-3xl font-bold text-[#EB89B5] tabular-nums">55k+</p>
+                  <p className="text-xl md:text-3xl font-bold text-[#EB89B5] tabular-nums">60k+</p>
                   <p className="text-[10px] md:text-sm font-semibold uppercase tracking-[0.14em] text-[#7A2454]/70 mt-1">
                     Outreach
                   </p>
                 </div>
                 <div>
-                  <p className="text-xl md:text-3xl font-bold text-[#EB89B5] tabular-nums">200k</p>
+                  <p className="text-xl md:text-3xl font-bold text-[#EB89B5] tabular-nums">500k+</p>
                   <p className="text-[10px] md:text-sm font-semibold uppercase tracking-[0.14em] text-[#7A2454]/70 mt-1">
                     Monthly views
                   </p>
