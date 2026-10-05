@@ -3,6 +3,32 @@ import Image from 'next/image'
 
 const mediaArticles = [
   {
+    title: "Champlain Valley Union High School students advocate for women's history to be required learning",
+    source: "NBC5 / WPTZ",
+    description:
+      "TV news coverage of HER's work to make women's history required learning in Vermont schools, featuring founder Amelie Fairweather and the organization's global growth.",
+    url: "https://www.mynbc5.com/article/vermont-womens-history-education-cvu/73994074",
+    type: "video",
+    pinned: true,
+  },
+  {
+    title: "Women's history is American history. So why isn't it taught in Vermont schools?",
+    source: "VTDigger",
+    description:
+      "Opinion commentary by founder Amelie Fairweather on why women's history belongs in Vermont social studies curricula — and what HER is doing about it.",
+    url: "https://vtdigger.org/2026/07/03/opinion-womens-history-is-american-history-so-why-isnt-it-taught-in-vermont-schools/",
+    type: "article",
+    pinned: true,
+  },
+  {
+    title: "CVU Students Push for Women's History Curriculum",
+    source: "WCAX News",
+    description: "Local news coverage featuring HER club members discussing the importance of women's history education.",
+    url: "https://www.wcax.com/2025/11/17/cvu-students-push-womens-history-curriculum/",
+    type: "video",
+    pinned: true,
+  },
+  {
     title: "H.E.R. student club expands its reach",
     source: "Shelburne News",
     description: "Local news coverage on HER club's growing impact and expanded outreach efforts in the community.",
@@ -22,13 +48,6 @@ const mediaArticles = [
     description: "Coverage of CVU students advocating for expanded women's history education in the school curriculum.",
     url: "https://www.vtcng.com/shelburnenews/community/school_news/cvu-students-demand-more-women-s-history/article_144a3891-74b0-45d7-ab1d-7b23881c6f47.html",
     type: "article"
-  },
-  {
-    title: "CVU Students Push for Women's History Curriculum",
-    source: "WCAX News",
-    description: "Local news coverage featuring HER club members discussing the importance of women's history education.",
-    url: "https://www.wcax.com/2025/11/17/cvu-students-push-womens-history-curriculum/",
-    type: "video"
   },
   {
     title: "CVU show interview with founder Amelie Fairweather",
@@ -168,11 +187,18 @@ export default function MediaCoverage() {
               className="group bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-2 border-transparent hover:border-[#EB89B5]"
             >
               {/* Card Header with Type Badge */}
-              <div className="bg-gradient-to-r from-[#FFD7E9] to-[#FFF0F5] p-4 flex items-center justify-between">
-                <span className="text-sm font-semibold text-[#EB89B5] uppercase tracking-wide">
-                  {article.source}
-                </span>
-                <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
+              <div className="bg-gradient-to-r from-[#FFD7E9] to-[#FFF0F5] p-4 flex items-center justify-between gap-3">
+                <div className="flex flex-wrap items-center gap-2 min-w-0">
+                  <span className="text-sm font-semibold text-[#EB89B5] uppercase tracking-wide">
+                    {article.source}
+                  </span>
+                  {article.pinned && (
+                    <span className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-[0.12em] bg-[#7A2454] text-white">
+                      Pinned
+                    </span>
+                  )}
+                </div>
+                <span className={`shrink-0 px-3 py-1 rounded-full text-xs font-semibold ${
                   article.type === 'video' 
                     ? 'bg-[#EB89B5] text-white' 
                     : 'bg-white text-[#EB89B5] border border-[#EB89B5]'
