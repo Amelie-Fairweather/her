@@ -137,7 +137,7 @@ export default function MediaCoverage() {
               <p className="text-2xl md:text-3xl font-bold text-[#7A2454]">@hereducationrequired</p>
               <div className="mt-5 grid grid-cols-3 gap-3 md:gap-4">
                 <div>
-                  <p className="text-xl md:text-3xl font-bold text-[#EB89B5] tabular-nums">6,000+</p>
+                  <p className="text-xl md:text-3xl font-bold text-[#EB89B5] tabular-nums">6,800+</p>
                   <p className="text-[10px] md:text-sm font-semibold uppercase tracking-[0.14em] text-[#7A2454]/70 mt-1">
                     Followers
                   </p>
