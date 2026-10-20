@@ -16,7 +16,7 @@ const impactStats = [
     detail: 'Across the United States and growing',
   },
   {
-    value: 9,
+    value: 10,
     suffix: '',
     label: 'Countries',
     detail: 'An expanding international network',

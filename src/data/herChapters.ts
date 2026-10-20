@@ -113,4 +113,12 @@ export const herChapters: HerChapter[] = [
   { id: 'hanford', name: 'Hanford', city: 'Hanford', state: 'CA', lat: 36.3446, lng: -119.6438 },
   { id: 'robinson-secondary', name: 'Robinson Secondary School', city: 'Fairfax', state: 'VA', lat: 38.8165, lng: -77.3048 },
   { id: 'dav-taratala', name: 'DAV Public School', city: 'Taratala, Kolkata', state: 'West Bengal, India', lat: 22.5077, lng: 88.3204 },
+  {
+    id: 'gafl-uiwang',
+    name: 'Gyeonggi Academy of Foreign Languages',
+    city: 'Uiwang-si',
+    state: 'Gyeonggi-do, South Korea',
+    lat: 37.3469,
+    lng: 126.9583,
+  },
 ]
