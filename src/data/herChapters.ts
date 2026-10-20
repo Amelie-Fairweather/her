@@ -121,4 +121,12 @@ export const herChapters: HerChapter[] = [
     lat: 37.3469,
     lng: 126.9583,
   },
+  {
+    id: 'iu-southeast',
+    name: 'Indiana University Southeast',
+    city: 'New Albany',
+    state: 'IN',
+    lat: 38.3437,
+    lng: -85.8196,
+  },
 ]
