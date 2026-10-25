@@ -129,4 +129,12 @@ export const herChapters: HerChapter[] = [
     lat: 38.3437,
     lng: -85.8196,
   },
+  {
+    id: 'billerica-memorial',
+    name: 'Billerica Memorial High School',
+    city: 'Billerica',
+    state: 'MA',
+    lat: 42.5608,
+    lng: -71.2742,
+  },
 ]

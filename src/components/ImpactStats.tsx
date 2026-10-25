@@ -10,7 +10,7 @@ const impactStats = [
     detail: 'Student-led clubs in schools worldwide',
   },
   {
-    value: 28,
+    value: 29,
     suffix: '',
     label: 'States',
     detail: 'Across the United States and growing',
