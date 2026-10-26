@@ -159,7 +159,7 @@ export default function HistoryByHerPage() {
             </div>
 
             <div className="mx-auto max-w-xl rounded-[2rem] bg-gradient-to-b from-[#FFD7E9]/70 to-[#FFF6FB] border border-[#EB89B5]/25 px-6 py-9 md:px-10 md:py-12">
-              <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-[#EB89B5] mb-8">
+              <p className="text-sm md:text-base font-bold uppercase tracking-[0.28em] text-[#EB89B5] mb-8">
                 Happening this fall
               </p>
 
@@ -169,12 +169,25 @@ export default function HistoryByHerPage() {
                     1
                   </span>
                   <p className="text-xl md:text-2xl text-[#7A2454] leading-snug pt-1.5 font-semibold">
-                    Print ready-to-go bookmarks
+                    <a
+                      href="#history-by-her"
+                      className="underline decoration-[#EB89B5]/50 underline-offset-4 hover:decoration-[#EB89B5] transition-colors"
+                    >
+                      Register as a volunteer
+                    </a>
                   </p>
                 </li>
                 <li className="flex gap-4">
                   <span className="shrink-0 w-10 h-10 rounded-full bg-[#EB89B5] text-white text-base font-bold flex items-center justify-center">
                     2
+                  </span>
+                  <p className="text-xl md:text-2xl text-[#7A2454] leading-snug pt-1.5 font-semibold">
+                    Print ready-to-go bookmarks
+                  </p>
+                </li>
+                <li className="flex gap-4">
+                  <span className="shrink-0 w-10 h-10 rounded-full bg-[#EB89B5] text-white text-base font-bold flex items-center justify-center">
+                    3
                   </span>
                   <p className="text-xl md:text-2xl text-[#7A2454] leading-snug pt-1.5 font-semibold">
                     Donate them locally
@@ -183,7 +196,7 @@ export default function HistoryByHerPage() {
               </ol>
 
               <div className="mt-10 pt-8 border-t border-[#EB89B5]/20">
-                <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#EB89B5]/80 mb-5">
+                <p className="text-sm md:text-base font-bold uppercase tracking-[0.22em] text-[#EB89B5]/80 mb-5">
                   Where to donate
                 </p>
                 <ul className="grid grid-cols-2 gap-x-4 gap-y-4 max-w-sm mx-auto text-lg md:text-xl font-bold text-[#7A2454]">
