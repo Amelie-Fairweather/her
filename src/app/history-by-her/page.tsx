@@ -163,30 +163,30 @@ export default function HistoryByHerPage() {
                 Happening this fall
               </p>
 
-              <ol className="space-y-6 text-left max-w-sm mx-auto">
+              <ol className="space-y-7 text-left max-w-md mx-auto">
                 <li className="flex gap-4">
-                  <span className="shrink-0 w-8 h-8 rounded-full bg-[#EB89B5] text-white text-sm font-bold flex items-center justify-center">
+                  <span className="shrink-0 w-10 h-10 rounded-full bg-[#EB89B5] text-white text-base font-bold flex items-center justify-center">
                     1
                   </span>
-                  <p className="text-base md:text-lg text-[#7A2454] leading-snug pt-1 font-semibold">
+                  <p className="text-xl md:text-2xl text-[#7A2454] leading-snug pt-1.5 font-semibold">
                     Print ready-to-go bookmarks
                   </p>
                 </li>
                 <li className="flex gap-4">
-                  <span className="shrink-0 w-8 h-8 rounded-full bg-[#EB89B5] text-white text-sm font-bold flex items-center justify-center">
+                  <span className="shrink-0 w-10 h-10 rounded-full bg-[#EB89B5] text-white text-base font-bold flex items-center justify-center">
                     2
                   </span>
-                  <p className="text-base md:text-lg text-[#7A2454] leading-snug pt-1 font-semibold">
+                  <p className="text-xl md:text-2xl text-[#7A2454] leading-snug pt-1.5 font-semibold">
                     Donate them locally
                   </p>
                 </li>
               </ol>
 
               <div className="mt-10 pt-8 border-t border-[#EB89B5]/20">
-                <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#EB89B5]/80 mb-4">
+                <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#EB89B5]/80 mb-5">
                   Where to donate
                 </p>
-                <ul className="grid grid-cols-2 gap-3 max-w-xs mx-auto text-sm md:text-base font-bold text-[#7A2454]">
+                <ul className="grid grid-cols-2 gap-x-4 gap-y-4 max-w-sm mx-auto text-lg md:text-xl font-bold text-[#7A2454]">
                   <li>Libraries</li>
                   <li>Bookstores</li>
                   <li>Middle schools</li>
