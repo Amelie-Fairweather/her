@@ -7,6 +7,9 @@ type Variant = 'banner' | 'page' | 'card'
 
 const CACHE_KEY = 'her:history-by-her-stats'
 
+/** Registered History by HER volunteers (manual total). */
+const REGISTERED_VOLUNTEERS = 71
+
 function formatNumber(n: number) {
   return n.toLocaleString('en-US')
 }
@@ -85,6 +88,7 @@ export default function HistoryByHerImpactStats({
 
   const bookmarksLabel = showPlaceholder ? '—' : formatNumber(bookmarks ?? 0)
   const locationsLabel = showPlaceholder ? '—' : formatNumber(locations ?? 0)
+  const volunteersLabel = formatNumber(REGISTERED_VOLUNTEERS)
 
   if (variant === 'banner') {
     return (
@@ -108,6 +112,17 @@ export default function HistoryByHerImpactStats({
             locations
           </span>
         </p>
+        <span className="hidden sm:inline text-white/40 text-3xl md:text-4xl" aria-hidden>
+          ·
+        </span>
+        <p className="leading-none">
+          <span className="font-bold tabular-nums text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
+            {volunteersLabel}
+          </span>{' '}
+          <span className="text-white/90 text-base sm:text-lg md:text-xl lg:text-2xl font-semibold">
+            registered volunteers
+          </span>
+        </p>
       </div>
     )
   }
@@ -124,13 +139,20 @@ export default function HistoryByHerImpactStats({
         <span>
           <strong className="tabular-nums text-[#EB89B5]">{locationsLabel}</strong> locations
         </span>
+        <span className="text-[#EB89B5]/35" aria-hidden>
+          ·
+        </span>
+        <span>
+          <strong className="tabular-nums text-[#EB89B5]">{volunteersLabel}</strong> registered
+          volunteers
+        </span>
       </div>
     )
   }
 
   return (
     <div className="relative z-[1]">
-      <div className="grid grid-cols-2 gap-4 md:gap-8 max-w-2xl mx-auto">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 max-w-3xl mx-auto">
         <div className="rounded-3xl bg-white border border-[#EB89B5]/20 px-4 py-7 md:px-8 md:py-10 text-center shadow-lg shadow-[#EB89B5]/10">
           <p className="text-4xl md:text-6xl font-bold tabular-nums text-[#EB89B5] leading-none">
             {bookmarksLabel}
@@ -145,6 +167,14 @@ export default function HistoryByHerImpactStats({
           </p>
           <p className="mt-3 text-xs md:text-sm font-bold uppercase tracking-[0.18em] text-[#7A2454]">
             Locations
+          </p>
+        </div>
+        <div className="rounded-3xl bg-white border border-[#EB89B5]/20 px-4 py-7 md:px-8 md:py-10 text-center shadow-lg shadow-[#EB89B5]/10 col-span-2 md:col-span-1">
+          <p className="text-4xl md:text-6xl font-bold tabular-nums text-[#EB89B5] leading-none">
+            {volunteersLabel}
+          </p>
+          <p className="mt-3 text-xs md:text-sm font-bold uppercase tracking-[0.18em] text-[#7A2454]">
+            Registered volunteers
           </p>
         </div>
       </div>
