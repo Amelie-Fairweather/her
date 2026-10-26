@@ -1,13 +1,23 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Start a HER Chapter at Your School',
+  title: 'Start a HER Chapter — High School Movements & Student Leadership',
   description:
-    'Apply to start a Her Education Required chapter and bring women’s history advocacy to your high school or community.',
+    'Apply to start a HER chapter: build a high school movement for women’s history, girls’ education, gender equity, and youth advocacy — leadership that strengthens college admissions profiles.',
+  keywords: [
+    'high school movements',
+    'students',
+    'leadership',
+    'college admissions',
+    'youth advocacy',
+    'girls education',
+    'womens history',
+  ],
   alternates: { canonical: 'https://www.hereducation.org/apply' },
   openGraph: {
-    title: 'Apply to Start a HER Chapter',
-    description: 'Launch a student-led HER chapter for women’s history education.',
+    title: 'Start a HER Chapter — Student Leadership & Advocacy',
+    description:
+      'Launch a student-led chapter for women’s history education and youth advocacy.',
     url: 'https://www.hereducation.org/apply',
   },
 }

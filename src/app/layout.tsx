@@ -17,26 +17,39 @@ const coiny = Coiny({
 const SITE_URL = "https://www.hereducation.org";
 const SITE_NAME = "Her Education Required";
 const SITE_DESCRIPTION =
-  "Her Education Required (HER) is a global youth network advocating for women's history education in schools — chapters worldwide, History by HER bookmarks, AMAs, and curriculum change.";
+  "Her Education Required (HER) is a student-led youth advocacy network for women's history and girls' education — high school movements, leadership, gender equity in education, and college-ready civic engagement worldwide.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Her Education Required | Women's History Education & Youth Advocacy",
+    default:
+      "Her Education Required | Students, Youth Advocacy & Women's History Education",
     template: "%s | Her Education Required",
   },
   description: SITE_DESCRIPTION,
   keywords: [
+    "students",
+    "leadership",
+    "high school movements",
+    "womens history",
+    "women's history",
+    "youth advocacy",
+    "women",
+    "gender",
+    "education",
+    "girls education",
+    "girls' education",
+    "college admissions",
+    "girls",
+    "youth",
+    "advocacy",
     "Her Education Required",
     "HER Education Required",
     "women's history education",
-    "women's history curriculum",
-    "women's history in schools",
     "History by HER",
-    "youth advocacy women's history",
-    "CVU women's history",
-    "Vermont women's history education",
-    "hereducationrequired",
+    "student leadership",
+    "youth leadership",
+    "gender education",
   ],
   authors: [{ name: "Her Education Required" }],
   creator: "Her Education Required",
@@ -53,7 +66,8 @@ export const metadata: Metadata = {
     shortcut: "/logo.png",
   },
   openGraph: {
-    title: "Her Education Required | Women's History Education & Youth Advocacy",
+    title:
+      "Her Education Required | Students, Youth Advocacy & Women's History Education",
     description: SITE_DESCRIPTION,
     url: SITE_URL,
     siteName: SITE_NAME,
@@ -70,7 +84,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Her Education Required | Women's History Education",
+    title:
+      "Her Education Required | Students, Youth Advocacy & Women's History",
     description: SITE_DESCRIPTION,
     images: [`${SITE_URL}/logo.png`],
   },
@@ -100,9 +115,19 @@ const organizationJsonLd = {
   foundingDate: "2025",
   areaServed: "Worldwide",
   knowsAbout: [
-    "women's history education",
-    "curriculum advocacy",
-    "youth leadership",
+    "students",
+    "leadership",
+    "high school movements",
+    "women's history",
+    "youth advocacy",
+    "women",
+    "gender",
+    "education",
+    "girls education",
+    "college admissions",
+    "girls",
+    "youth",
+    "advocacy",
     "History by HER",
   ],
 };

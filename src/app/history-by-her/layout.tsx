@@ -1,21 +1,25 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'History by HER — Educational Women’s History Bookmarks',
+  title: 'History by HER — Women’s History Education for Students & Youth',
   description:
-    'Volunteer with History by HER: print free women’s history bookmarks and donate them to local schools, libraries, and bookstores. Open worldwide.',
+    'History by HER helps students and youth advance women’s history education: print educational bookmarks and donate them to schools and libraries — leadership through advocacy.',
   keywords: [
+    'womens history',
+    'women’s history',
+    'students',
+    'youth',
+    'education',
+    'girls education',
+    'advocacy',
+    'youth advocacy',
     'History by HER',
-    'women’s history bookmarks',
-    'volunteer women’s history',
-    'educational bookmarks',
-    'donate bookmarks schools libraries',
   ],
   alternates: { canonical: 'https://www.hereducation.org/history-by-her' },
   openGraph: {
-    title: 'History by HER — Women’s History Bookmark Initiative',
+    title: 'History by HER — Women’s History Bookmarks for Students',
     description:
-      'Print and donate women’s history bookmarks to schools and libraries in your community.',
+      'A youth advocacy initiative bringing women’s history education into schools and communities.',
     url: 'https://www.hereducation.org/history-by-her',
   },
 }

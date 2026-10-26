@@ -1,22 +1,24 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Media Coverage — HER in the News',
+  title: 'Media — Youth Advocacy, Women’s History & High School Movements',
   description:
-    'News and media coverage of Her Education Required, including NBC5, VTDigger, WCAX, and local Vermont outlets on women’s history curriculum advocacy.',
+    'News coverage of HER students leading youth advocacy for women’s history, girls’ education, gender equity, and high school movements — including NBC5, VTDigger, and WCAX.',
   keywords: [
-    'Her Education Required news',
-    'CVU women’s history',
-    'Vermont women’s history education',
-    'NBC5 HER',
-    'VTDigger women’s history',
-    'WCAX women’s history curriculum',
+    'youth advocacy',
+    'womens history',
+    'students',
+    'high school movements',
+    'girls education',
+    'gender',
+    'education',
+    'advocacy',
   ],
   alternates: { canonical: 'https://www.hereducation.org/media' },
   openGraph: {
-    title: 'HER Media Coverage',
+    title: 'HER in the News — Students & Youth Advocacy',
     description:
-      'TV, newspaper, and opinion coverage of Her Education Required’s women’s history advocacy.',
+      'Media coverage of student leadership and advocacy for women’s history education.',
     url: 'https://www.hereducation.org/media',
   },
 }
