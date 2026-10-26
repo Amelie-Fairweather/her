@@ -246,18 +246,6 @@ export default function HistoryByHerPage() {
                 alt: 'Student placing HER bookmarks in a school library display',
               },
               {
-                src: '/hbh-library-new-books.jpg',
-                alt: 'Student browsing books while placing HER materials',
-              },
-              {
-                src: '/hbh-bookmark-craft-flatlay.jpg',
-                alt: 'Handmade HER bookmarks with pens and stickers',
-              },
-              {
-                src: '/hbh-step2-share-donate.jpg',
-                alt: 'Volunteers sharing History by HER and asking to donate bookmarks',
-              },
-              {
                 src: '/hbh-library-director-bree.jpg',
                 alt: 'Library Director Bree Drapa holding History by HER materials',
               },

@@ -1,20 +1,21 @@
 /**
- * History by HER — volunteer form auto-email (LEGACY / Google Form only)
+ * History by HER — volunteer form auto-email via Resend
  *
- * NEW SIGNUPS via hereducation.org use Resend (no Gmail quota):
- *   POST /api/history-by-her → Google Form + Resend materials email
- *   POST /api/history-by-her/send-materials → manual catch-up (secret auth)
+ * Reads each Google Form response row → greets that person's NAME
+ * and sends to that person's EMAIL (from the form).
  *
- * Keep this script ONLY for people who submit the Google Form directly
- * (not through the website). Prefer turning triggers OFF once Resend is live
- * so you do not double-email website signups.
+ * Website signups already do this at:
+ *   POST /api/history-by-her
  *
- * SETUP (optional legacy path):
- * 1. Open the responses sheet while logged into hereducationrequired@gmail.com
- * 2. Extensions → Apps Script → paste this file → Save
+ * This script covers people who open the Google Form directly.
+ *
+ * SETUP (do once):
+ * 1. Open the responses sheet → Extensions → Apps Script → paste this file → Save
+ * 2. Project Settings → Script properties → Add:
+ *      RESEND_API_KEY = (same key as Vercel)
  * 3. Select installTrigger → Run → Allow permissions
  *
- * QUOTA NOTE (consumer Gmail ≈ 100 emails/day) — this is why we moved to Resend.
+ * Optional: delete old Gmail triggers first so nothing double-sends.
  *
  * Debug: Executions → Logs. Look for "OK sent to ..."
  */
@@ -23,28 +24,19 @@ var MATERIALS_FOLDER_URL =
   "https://drive.google.com/drive/folders/1I4gZfUv7RynkU6_Kj4deNGZFb0OAZYHM?usp=sharing";
 var INSTRUCTION_VIDEO_URL =
   "https://drive.google.com/file/d/1hFNHGvuRvsgU11hii3PRIJ74RUJ36Q3k/view?usp=sharing";
-
-// Optional: upload a thumbnail image to Drive, share “Anyone with link”, then use its direct image URL
 var VIDEO_THUMBNAIL_URL =
   "https://drive.google.com/thumbnail?id=1hFNHGvuRvsgU11hii3PRIJ74RUJ36Q3k&sz=w1000";
 var REPORT_FORM_URL =
   "https://docs.google.com/forms/d/e/1FAIpQLSeGaCWsgfY18pGDFB5NTpB9MU4LzgZPUZ7kQxBTYozZW_eKEw/viewform";
-/** Keep this close to the real Gmail display name (mismatched From = spam). */
-var FROM_NAME = "Amelie Fairweather";
-var HER_EMAIL = "hereducationrequired@gmail.com";
+var FROM_EMAIL = "Amelie Fairweather <materials@hereducation.org>";
+var REPLY_TO = "hereducationrequired@gmail.com";
 var SENT_HEADER = "Auto email sent";
-
-/**
- * Catch-up limits so a backlog cannot burn the whole daily Gmail quota overnight.
- * Free Gmail Apps Script ≈ 100 emails/day total (shared across ALL scripts on the account).
- */
-var MAX_CATCHUP_PER_RUN = 10; // backup job sends at most this many per run
-var MIN_QUOTA_RESERVE = 25; // stop catch-up when quota drops to this (save room for new signups)
+var MAX_CATCHUP_PER_RUN = 25;
 
 /**
  * Run ONCE. Installs:
- * 1) On form submit → email immediately
- * 2) Every 5 minutes → catch anyone the submit trigger missed
+ * 1) On form submit → email that respondent immediately (their name + their email)
+ * 2) Every 6 hours → catch anyone missed
  */
 function installTrigger() {
   var ssId = SpreadsheetApp.getActiveSpreadsheet().getId();
@@ -66,25 +58,15 @@ function installTrigger() {
     .everyHours(6)
     .create();
 
+  ensureResendKey_();
   Logger.log(
-    "Installed: onFormSubmit (instant) + processUnsentResponses (every 6 hours). Automatic email is ON.",
+    "Installed: onFormSubmit (instant) + processUnsentResponses (every 6 hours). Resend auto-email is ON.",
   );
-  Logger.log("Mail quota remaining today: " + MailApp.getRemainingDailyQuota());
 }
 
-/** Instant path — fires automatically on each form submission. */
+/** Instant path — fires on each Google Form submission. */
 function onFormSubmit(e) {
   try {
-    var left = MailApp.getRemainingDailyQuota();
-    Logger.log("onFormSubmit quota remaining = " + left);
-    if (left <= 0) {
-      Logger.log(
-        "FAIL: daily email quota exhausted — cannot send now. " +
-          "Backup trigger will retry after ~midnight Pacific.",
-      );
-      return;
-    }
-
     var sheet = getResponsesSheet_();
     ensureSentColumn_(sheet);
 
@@ -97,31 +79,18 @@ function onFormSubmit(e) {
     emailRow_(sheet, rowIndex, e);
   } catch (err) {
     Logger.log("FAIL: " + err);
-    // Do not leave permanent FAIL for transient errors — backup trigger will retry.
     throw err;
   }
 }
 
-/** Backup path — runs every 6 hours after installTrigger (re-run installTrigger to update). */
+/** Backup path — catch missing YES rows. */
 function processUnsentResponses() {
-  var left = MailApp.getRemainingDailyQuota();
-  Logger.log("Backup trigger: mail quota remaining = " + left);
-  if (left <= MIN_QUOTA_RESERVE) {
-    Logger.log(
-      "SKIP backup: quota " +
-        left +
-        " <= reserve " +
-        MIN_QUOTA_RESERVE +
-        ". Saving sends for new live signups. Catch-up resumes when quota is higher (after midnight Pacific).",
-    );
-    return;
-  }
   resendAllMissing();
 }
 
 /**
- * Email responses missing "YES" in Auto email sent — max MAX_CATCHUP_PER_RUN per run.
- * Stops early to protect daily quota for new volunteers.
+ * Email responses missing "YES" in Auto email sent.
+ * Each row uses THAT row's name + email from the Google Form.
  */
 function resendAllMissing() {
   var sheet = getResponsesSheet_();
@@ -137,26 +106,13 @@ function resendAllMissing() {
   var failed = 0;
 
   for (var row = 2; row <= lastRow; row++) {
-    var left = MailApp.getRemainingDailyQuota();
-    if (left <= MIN_QUOTA_RESERVE) {
-      Logger.log(
-        "STOPPED early at row " +
-          row +
-          ": quota " +
-          left +
-          " hit reserve " +
-          MIN_QUOTA_RESERVE +
-          ".",
-      );
-      break;
-    }
     if (sent >= MAX_CATCHUP_PER_RUN) {
       Logger.log(
         "STOPPED early at row " +
           row +
           ": hit MAX_CATCHUP_PER_RUN (" +
           MAX_CATCHUP_PER_RUN +
-          "). Run again later or tomorrow for more of the backlog.",
+          ").",
       );
       break;
     }
@@ -169,63 +125,28 @@ function resendAllMissing() {
     try {
       emailRow_(sheet, row, null);
       sent++;
-      Utilities.sleep(800);
+      Utilities.sleep(400);
     } catch (err) {
       failed++;
       Logger.log("Row " + row + " FAIL: " + err);
-      var msg = String(err);
-      if (
-        msg.indexOf("too many times for one day") !== -1 ||
-        msg.toLowerCase().indexOf("quota") !== -1
-      ) {
-        Logger.log("Quota hit — stopping further sends today.");
-        break;
-      }
     }
   }
 
-  Logger.log(
-    "Done. sent=" +
-      sent +
-      " skipped=" +
-      skipped +
-      " failed=" +
-      failed +
-      " quotaLeft=" +
-      MailApp.getRemainingDailyQuota(),
-  );
+  Logger.log("Done. sent=" + sent + " skipped=" + skipped + " failed=" + failed);
 }
 
 /**
- * Manually email ONE sheet row.
- * Rows after ~50 are still missing — set ROW to the person you need (e.g. 51, 63).
+ * Manually email ONE sheet row (uses that row's form name + email).
  * Edit ROW, then Run → emailOneRow
  */
 function emailOneRow() {
-  var ROW = 51; // ← next unsent after row 50; change as needed (Sophie was 63)
-  var left = MailApp.getRemainingDailyQuota();
-  Logger.log("Mail quota remaining: " + left);
-  if (left <= 0) {
-    throw new Error(
-      "No email quota left today. Wait until ~midnight Pacific, then run emailOneRow again. " +
-        "Or email that person manually from Gmail right now.",
-    );
-  }
+  var ROW = 51;
   var sheet = getResponsesSheet_();
   ensureSentColumn_(sheet);
   emailRow_(sheet, ROW, null);
 }
 
-/** Check how many emails you can still send today. Run this anytime. */
-function checkMailQuota() {
-  var left = MailApp.getRemainingDailyQuota();
-  Logger.log("Mail quota remaining today: " + left);
-  if (left <= 0) {
-    Logger.log("Quota exhausted. Auto-email resumes after ~midnight Pacific.");
-  }
-}
-
-/** Send one row. event e is optional (form submit has richer namedValues). */
+/** Send one row. Uses the name + email from the Google Form answers on that row. */
 function emailRow_(sheet, rowIndex, e) {
   var answers = readSheetRow_(sheet, rowIndex);
   if (e) {
@@ -252,10 +173,10 @@ function emailRow_(sheet, rowIndex, e) {
     );
   }
 
-  sendVolunteerEmail_(email, name || "Volunteer");
+  var greeting = name || "Volunteer";
+  sendVolunteerEmail_(email, greeting);
   markSent_(sheet, rowIndex, "YES " + new Date().toISOString() + " → " + email);
-  Logger.log("OK sent to " + email + " (row " + rowIndex + ")");
-  Logger.log("Mail quota remaining today: " + MailApp.getRemainingDailyQuota());
+  Logger.log("OK sent to " + email + " as Hi " + greeting + " (row " + rowIndex + ")");
 }
 
 function alreadySent_(sheet, rowIndex) {
@@ -266,21 +187,55 @@ function alreadySent_(sheet, rowIndex) {
   return status.indexOf("YES") === 0;
 }
 
-function sendVolunteerEmail_(email, greetingName) {
-  if (MailApp.getRemainingDailyQuota() <= 0) {
-    throw new Error("Service invoked too many times for one day: email.");
+function ensureResendKey_() {
+  var key = PropertiesService.getScriptProperties().getProperty("RESEND_API_KEY");
+  if (!key) {
+    throw new Error(
+      "Missing Script property RESEND_API_KEY. " +
+        "Apps Script → Project Settings → Script properties → Add RESEND_API_KEY " +
+        "(same value as Vercel).",
+    );
   }
+  return key;
+}
 
-  var videoLine =
-    INSTRUCTION_VIDEO_URL && INSTRUCTION_VIDEO_URL.indexOf("http") === 0
-      ? INSTRUCTION_VIDEO_URL
-      : "[Tutorial video link coming soon]";
+/** Sends via Resend API — greets greetingName, delivers to email. */
+function sendVolunteerEmail_(email, greetingName) {
+  var apiKey = ensureResendKey_();
+  var content = buildEmailContent_(greetingName);
 
+  var payload = {
+    from: FROM_EMAIL,
+    to: [email],
+    reply_to: REPLY_TO,
+    subject: content.subject,
+    text: content.text,
+    html: content.html,
+  };
+
+  var res = UrlFetchApp.fetch("https://api.resend.com/emails", {
+    method: "post",
+    contentType: "application/json",
+    headers: { Authorization: "Bearer " + apiKey },
+    payload: JSON.stringify(payload),
+    muteHttpExceptions: true,
+  });
+
+  var code = res.getResponseCode();
+  var body = res.getContentText();
+  if (code < 200 || code >= 300) {
+    throw new Error("Resend HTTP " + code + ": " + body);
+  }
+  Logger.log("Resend OK: " + body);
+}
+
+function buildEmailContent_(greetingName) {
+  var name = String(greetingName || "Volunteer").trim() || "Volunteer";
   var subject = "Your History by HER materials";
 
-  var body =
+  var text =
     "Hi " +
-    greetingName +
+    name +
     ",\n\n" +
     "Thank you so much for volunteering for History by HER, HER Education Required's global initiative aimed at improving how women's history is taught!\n\n" +
     "Step 1: Access Your Print Files\n" +
@@ -290,7 +245,7 @@ function sendVolunteerEmail_(email, greetingName) {
     "Printing Options:\n" +
     "School Print Shops: Most schools have print shops that can print these front and back directly onto cardstock paper for free. Figure out how to contact the print shop, and go ask ASAP.\n\n" +
     "Manual Assembly: If you don't have access to a print shop, watch this short tutorial to easily align and assemble the front and back sides yourself using nice paper:\n" +
-    videoLine +
+    INSTRUCTION_VIDEO_URL +
     "\n\n" +
     "Or create your own women's history themed bookmarks!\n\n" +
     "Step 2: Distribute to Your Community\n" +
@@ -308,7 +263,7 @@ function sendVolunteerEmail_(email, greetingName) {
     "Recognition & Next Steps\n" +
     "Global Recognition: Completing your donation and submitting the reporting form qualifies you for global recognition on our website and Instagram page!\n\n" +
     "Media Volunteers: If you opted to take photos or film a reel for our Instagram, keep an eye on your inbox—a follow-up email with detailed guidelines will be sent shortly.\n\n" +
-    "Timeline: Please try to complete your distribution within the next 2-3 weeks.\n\n" +
+    "Timeline: Please try to complete your distribution within the next 2–3 weeks.\n\n" +
     "Thank you again for bringing vital historical figures into local classrooms and communities! Feel free to reply directly to this email if you have any questions.\n\n" +
     "Best regards,\n" +
     "Amelie Fairweather\n" +
@@ -316,9 +271,9 @@ function sendVolunteerEmail_(email, greetingName) {
     "HER Education Required\n" +
     "hereducation.org";
 
-  var htmlBody =
+  var html =
     "<p>Hi " +
-    esc_(greetingName) +
+    esc_(name) +
     ",</p>" +
     "<p>Thank you so much for volunteering for History by HER, HER Education Required's global initiative aimed at improving how women's history is taught!</p>" +
     "<p><b>Step 1: Access Your Print Files</b><br>" +
@@ -328,16 +283,16 @@ function sendVolunteerEmail_(email, greetingName) {
     "<p><b>Printing Options:</b><br>" +
     "<b>School Print Shops:</b> Most schools have print shops that can print these front and back directly onto cardstock paper for free. Figure out how to contact the print shop, and go ask ASAP.</p>" +
     "<p><b>Manual Assembly:</b> If you don't have access to a print shop, watch this short tutorial to easily align and assemble the front and back sides yourself using nice paper:</p>" +
-    (INSTRUCTION_VIDEO_URL && INSTRUCTION_VIDEO_URL.indexOf("http") === 0
-      ? "<p>" +
-        '<a href="' +
-        INSTRUCTION_VIDEO_URL +
-        '" target="_blank" style="display:inline-block;text-decoration:none;">' +
-        '<img src="https://drive.google.com/thumbnail?id=1hFNHGvuRvsgU11hii3PRIJ74RUJ36Q3k&sz=w1000" width="480" style="max-width:100%;border-radius:12px;display:block;" alt="Watch how-to video" />' +
-        '<span style="display:inline-block;margin-top:8px;padding:10px 16px;background:#EB89B5;color:#ffffff;border-radius:8px;font-weight:bold;">▶ Watch how-to video</span>' +
-        "</a>" +
-        "</p>"
-      : "<p>" + esc_(videoLine) + "</p>") +
+    "<p>" +
+    '<a href="' +
+    INSTRUCTION_VIDEO_URL +
+    '" target="_blank" style="display:inline-block;text-decoration:none;">' +
+    '<img src="' +
+    VIDEO_THUMBNAIL_URL +
+    '" width="480" style="max-width:100%;border-radius:12px;display:block;border:0;" alt="Watch how-to video" />' +
+    '<span style="display:inline-block;margin-top:8px;padding:10px 16px;background:#EB89B5;color:#ffffff;border-radius:8px;font-weight:bold;">▶ Watch how-to video</span>' +
+    "</a>" +
+    "</p>" +
     "<p>Or create your own women's history themed bookmarks!</p>" +
     "<p><b>Step 2: Distribute to Your Community</b><br>" +
     "Once assembled, please donate the bookmarks to local:</p>" +
@@ -356,44 +311,17 @@ function sendVolunteerEmail_(email, greetingName) {
     "<p>Best regards,<br>Amelie Fairweather<br>Founder &amp; President<br>HER Education Required<br>" +
     '<a href="https://hereducation.org">hereducation.org</a></p>';
 
-  // GmailApp uses normal Gmail sending (better inbox placement than MailApp).
-  // Must be authorized as hereducationrequired@gmail.com — see SETUP above.
-  var options = {
-    name: FROM_NAME,
-    htmlBody: htmlBody,
-  };
-
-  var sender = "";
-  try {
-    sender = String(Session.getActiveUser().getEmail() || "").toLowerCase();
-  } catch (err) {
-    sender = "";
-  }
-  // Only add Reply-To when the script is NOT already sending from HER_EMAIL
-  // (From school + Reply-To elsewhere is a common spam trigger).
-  if (sender && sender !== HER_EMAIL.toLowerCase()) {
-    options.replyTo = HER_EMAIL;
-    Logger.log(
-      "WARNING: sending as " +
-        sender +
-        ". Re-run installTrigger while logged into " +
-        HER_EMAIL +
-        " to reduce spam.",
-    );
-  }
-  // Do NOT BCC HER_EMAIL — Gmail counts BCC toward the daily quota (2x usage).
-
-  GmailApp.sendEmail(email, subject, body, options);
+  return { subject: subject, text: text, html: html };
 }
 
 function testSendEmail() {
   var TEST_EMAIL = "PASTE_YOUR_EMAIL_HERE@gmail.com";
+  var TEST_NAME = "Test Volunteer";
   if (TEST_EMAIL.indexOf("PASTE_") === 0) {
     throw new Error("Edit TEST_EMAIL in testSendEmail() to your real email first.");
   }
-  sendVolunteerEmail_(TEST_EMAIL, "Volunteer");
-  Logger.log("Test email sent to " + TEST_EMAIL);
-  Logger.log("Mail quota remaining today: " + MailApp.getRemainingDailyQuota());
+  sendVolunteerEmail_(TEST_EMAIL, TEST_NAME);
+  Logger.log("Test email sent to " + TEST_EMAIL + " as Hi " + TEST_NAME);
 }
 
 function syncLatestResponse() {
@@ -440,11 +368,6 @@ function readSheetRow_(sheet, rowIndex) {
     named[header] = values[i] != null ? String(values[i]) : "";
   }
   return named;
-}
-
-function readLatestSheetRow_() {
-  var sheet = getResponsesSheet_();
-  return readSheetRow_(sheet, sheet.getLastRow());
 }
 
 function getResponsesSheet_() {
@@ -497,7 +420,6 @@ function mergeAnswers_(base, overlay) {
 function findEmail_(named) {
   var keys = Object.keys(named || {});
   var i;
-  // Prefer Google Forms "Email Address" / any email question
   for (i = 0; i < keys.length; i++) {
     var lk = keys[i].toLowerCase();
     if (lk.indexOf("email") !== -1) {

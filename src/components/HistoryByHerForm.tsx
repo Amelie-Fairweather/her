@@ -34,12 +34,22 @@ export default function HistoryByHerForm() {
     setStatus('idle')
 
     try {
-      const res = await fetch('/api/history-by-her', {
+      // Always hit www so apex → www redirects cannot drop the POST.
+      const res = await fetch('https://www.hereducation.org/api/history-by-her', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
       })
-      if (!res.ok) throw new Error('submit failed')
+      const data = (await res.json().catch(() => ({}))) as {
+        ok?: boolean
+        emailSent?: boolean
+        emailError?: string
+      }
+      if (!res.ok || !data.ok) throw new Error('submit failed')
+      if (!data.emailSent) {
+        console.error('[history-by-her] form saved but email failed:', data.emailError)
+        throw new Error(data.emailError || 'email failed')
+      }
       setStatus('success')
       setForm(initialForm)
     } catch {
@@ -67,22 +77,13 @@ export default function HistoryByHerForm() {
         <div className="p-6 md:p-10">
           {status === 'success' && (
             <div className="mb-6 rounded-xl bg-green-50 border border-green-300 text-green-800 px-4 py-3 text-sm">
-              You&apos;re signed up — check your email for the bookmark PDF, assembly video, and report
-              form.
+              You&apos;re signed up — materials were emailed to the address you entered (check spam for
+              mail from materials@hereducation.org).
             </div>
           )}
           {status === 'error' && (
             <div className="mb-6 rounded-xl bg-red-50 border border-red-300 text-red-800 px-4 py-3 text-sm">
-              Something went wrong. Try again or{' '}
-              <a
-                href="https://docs.google.com/forms/d/e/1FAIpQLSdPaht-67KRVxMnvEUkMudD2PZvqMvFTC0qJosfZFSksuvZFw/viewform"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline font-semibold"
-              >
-                open the volunteer form
-              </a>
-              , or email{' '}
+              Something went wrong sending materials. Try again, or email{' '}
               <a href="mailto:hereducationrequired@gmail.com" className="underline font-semibold">
                 hereducationrequired@gmail.com
               </a>
@@ -211,14 +212,12 @@ export default function HistoryByHerForm() {
             </button>
 
             <p className="text-center text-xs text-gray-500">
-              Prefer Google Forms?{' '}
+              Questions? Email{' '}
               <a
-                href="https://docs.google.com/forms/d/e/1FAIpQLSdPaht-67KRVxMnvEUkMudD2PZvqMvFTC0qJosfZFSksuvZFw/viewform"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="mailto:hereducationrequired@gmail.com"
                 className="text-[#EB89B5] font-semibold underline underline-offset-2 hover:text-[#7A2454]"
               >
-                Open the volunteer form
+                hereducationrequired@gmail.com
               </a>
             </p>
           </form>
