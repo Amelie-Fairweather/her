@@ -261,6 +261,22 @@ export default function HistoryByHerPage() {
                 src: '/hbh-library-director-bree.jpg',
                 alt: 'Library Director Bree Drapa holding History by HER materials',
               },
+              {
+                src: '/hbh-students-bookmarks-fan.jpg',
+                alt: 'Two students holding a fan of History by HER bookmarks',
+              },
+              {
+                src: '/hbh-bookmarks-steinem-display.jpg',
+                alt: 'History by HER bookmarks displayed next to a Gloria Steinem book',
+              },
+              {
+                src: '/hbh-chapter-table-group.jpg',
+                alt: 'HER chapter students around a table with History by HER materials',
+              },
+              {
+                src: '/hbh-students-presentation-bookmarks.jpg',
+                alt: 'Two students holding History by HER bookmarks at a chapter presentation',
+              },
             ]}
           />
         </div>
