@@ -8,7 +8,7 @@ type Variant = 'banner' | 'page' | 'card'
 const CACHE_KEY = 'her:history-by-her-stats'
 
 /** Registered History by HER volunteers (manual total). */
-const REGISTERED_VOLUNTEERS = 71
+const REGISTERED_VOLUNTEERS = 80
 
 function formatNumber(n: number) {
   return n.toLocaleString('en-US')
