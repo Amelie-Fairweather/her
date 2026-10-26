@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { Coiny, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -77,6 +78,7 @@ export default function RootLayout({
         className={`${geistMono.variable} ${coiny.variable} antialiased`}
       >
         {children}
+        <Analytics />
       </body>
     </html>
   );
