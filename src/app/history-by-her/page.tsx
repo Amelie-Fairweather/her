@@ -226,44 +226,44 @@ export default function HistoryByHerPage() {
             title="Volunteers printing, crafting, and donating"
             photos={[
               {
+                src: '/hbh-students-presentation-bookmarks.jpg',
+                alt: 'Two students holding History by HER bookmarks at a chapter presentation',
+              },
+              {
                 src: '/hbh-donation-drive.jpg',
                 alt: 'Students assembling materials for a H.E.R. donation drive',
-              },
-              {
-                src: '/hbh-cutting-bookmarks.jpg',
-                alt: 'Student cutting History by HER bookmark printouts',
-              },
-              {
-                src: '/hbh-cutting-flyers.jpg',
-                alt: 'Student cutting HER outreach flyers',
-              },
-              {
-                src: '/hbh-girls-rock-crafts.jpg',
-                alt: 'Handmade Join H.E.R. and Girls Rock signs',
               },
               {
                 src: '/hbh-library-bookmarks.jpg',
                 alt: 'Student placing HER bookmarks in a school library display',
               },
               {
-                src: '/hbh-library-director-bree.jpg',
-                alt: 'Library Director Bree Drapa holding History by HER materials',
-              },
-              {
-                src: '/hbh-students-bookmarks-fan.jpg',
-                alt: 'Two students holding a fan of History by HER bookmarks',
-              },
-              {
-                src: '/hbh-bookmarks-steinem-display.jpg',
-                alt: 'History by HER bookmarks displayed next to a Gloria Steinem book',
+                src: '/hbh-cutting-bookmarks.jpg',
+                alt: 'Student cutting History by HER bookmark printouts',
               },
               {
                 src: '/hbh-chapter-table-group.jpg',
                 alt: 'HER chapter students around a table with History by HER materials',
               },
               {
-                src: '/hbh-students-presentation-bookmarks.jpg',
-                alt: 'Two students holding History by HER bookmarks at a chapter presentation',
+                src: '/hbh-girls-rock-crafts.jpg',
+                alt: 'Handmade Join H.E.R. and Girls Rock signs',
+              },
+              {
+                src: '/hbh-students-bookmarks-fan.jpg',
+                alt: 'Two students holding a fan of History by HER bookmarks',
+              },
+              {
+                src: '/hbh-library-director-bree.jpg',
+                alt: 'Library Director Bree Drapa holding History by HER materials',
+              },
+              {
+                src: '/hbh-cutting-flyers.jpg',
+                alt: 'Student cutting HER outreach flyers',
+              },
+              {
+                src: '/hbh-bookmarks-steinem-display.jpg',
+                alt: 'History by HER bookmarks displayed next to a Gloria Steinem book',
               },
             ]}
           />
