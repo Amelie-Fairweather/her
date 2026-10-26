@@ -92,34 +92,34 @@ export default function HistoryByHerImpactStats({
 
   if (variant === 'banner') {
     return (
-      <div className="flex flex-nowrap items-center justify-center gap-x-2.5 sm:gap-x-4 md:gap-x-6 lg:gap-x-8 overflow-x-auto">
-        <p className="leading-none whitespace-nowrap shrink-0">
-          <span className="font-bold tabular-nums text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
+      <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-3 sm:gap-x-8 md:gap-x-10">
+        <p className="leading-none">
+          <span className="font-bold tabular-nums text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
             {bookmarksLabel}
           </span>{' '}
-          <span className="text-white/90 text-sm sm:text-base md:text-lg lg:text-xl font-semibold">
+          <span className="text-white/90 text-base sm:text-lg md:text-xl lg:text-2xl font-semibold">
             bookmarks donated
           </span>
         </p>
-        <span className="text-white/40 text-2xl md:text-3xl shrink-0" aria-hidden>
+        <span className="hidden sm:inline text-white/40 text-3xl md:text-4xl" aria-hidden>
           ·
         </span>
-        <p className="leading-none whitespace-nowrap shrink-0">
-          <span className="font-bold tabular-nums text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
+        <p className="leading-none">
+          <span className="font-bold tabular-nums text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
             {locationsLabel}
           </span>{' '}
-          <span className="text-white/90 text-sm sm:text-base md:text-lg lg:text-xl font-semibold">
+          <span className="text-white/90 text-base sm:text-lg md:text-xl lg:text-2xl font-semibold">
             locations
           </span>
         </p>
-        <span className="text-white/40 text-2xl md:text-3xl shrink-0" aria-hidden>
+        <span className="hidden sm:inline text-white/40 text-3xl md:text-4xl" aria-hidden>
           ·
         </span>
-        <p className="leading-none whitespace-nowrap shrink-0">
-          <span className="font-bold tabular-nums text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
+        <p className="leading-none">
+          <span className="font-bold tabular-nums text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
             {volunteersLabel}
           </span>{' '}
-          <span className="text-white/90 text-sm sm:text-base md:text-lg lg:text-xl font-semibold">
+          <span className="text-white/90 text-base sm:text-lg md:text-xl lg:text-2xl font-semibold">
             registered volunteers
           </span>
         </p>
