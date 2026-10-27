@@ -137,4 +137,12 @@ export const herChapters: HerChapter[] = [
     lat: 42.5608,
     lng: -71.2742,
   },
+  {
+    id: 'north-creek',
+    name: 'North Creek High School',
+    city: 'Bothell',
+    state: 'WA',
+    lat: 47.8245,
+    lng: -122.1824,
+  },
 ]
