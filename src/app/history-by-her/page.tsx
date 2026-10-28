@@ -271,6 +271,10 @@ export default function HistoryByHerPage() {
                 alt: 'Library Director Bree Drapa holding History by HER materials',
               },
               {
+                src: '/hbh-volunteers-bookmarks-new.jpg',
+                alt: 'History by HER volunteers with bookmarks',
+              },
+              {
                 src: '/hbh-cutting-flyers.jpg',
                 alt: 'Student cutting HER outreach flyers',
               },
