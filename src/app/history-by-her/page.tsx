@@ -259,10 +259,6 @@ export default function HistoryByHerPage() {
                 alt: 'HER chapter students around a table with History by HER materials',
               },
               {
-                src: '/hbh-girls-rock-crafts.jpg',
-                alt: 'Handmade Join H.E.R. and Girls Rock signs',
-              },
-              {
                 src: '/hbh-students-bookmarks-fan.jpg',
                 alt: 'Two students holding a fan of History by HER bookmarks',
               },
