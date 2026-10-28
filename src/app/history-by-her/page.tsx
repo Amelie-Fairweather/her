@@ -274,10 +274,6 @@ export default function HistoryByHerPage() {
                 src: '/hbh-cutting-flyers.jpg',
                 alt: 'Student cutting HER outreach flyers',
               },
-              {
-                src: '/hbh-bookmarks-steinem-display.jpg',
-                alt: 'History by HER bookmarks displayed next to a Gloria Steinem book',
-              },
             ]}
           />
         </div>
