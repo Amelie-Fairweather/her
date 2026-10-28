@@ -145,4 +145,12 @@ export const herChapters: HerChapter[] = [
     lat: 47.8245,
     lng: -122.1824,
   },
+  {
+    id: 'woodstock-union',
+    name: 'Woodstock Union High School',
+    city: 'Woodstock',
+    state: 'VT',
+    lat: 43.6133,
+    lng: -72.5456,
+  },
 ]
