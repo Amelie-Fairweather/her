@@ -153,4 +153,12 @@ export const herChapters: HerChapter[] = [
     lat: 43.6133,
     lng: -72.5456,
   },
+  {
+    id: 'mount-abraham',
+    name: 'Mount Abraham Union High School',
+    city: 'Bristol',
+    state: 'VT',
+    lat: 44.1355,
+    lng: -73.094,
+  },
 ]
