@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 
 const impactStats = [
   {
-    value: 110,
+    value: 115,
     suffix: '+',
     label: 'Chapters',
     detail: 'Student-led clubs in schools worldwide',
