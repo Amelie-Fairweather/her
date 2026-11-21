@@ -16,8 +16,12 @@ export const revalidate = 0
  * HISTORY_BY_HER_SHEET_CSV_URL = optional published CSV fallback
  */
 
-/** Bookmarks donated outside the reporting form (added on top of live sheet totals). */
-const BOOKMARKS_MANUAL_ADDITION = 8000
+/**
+ * Bookmarks donated outside the reporting form, plus the amount that used to be
+ * inflated by excluded test/junk sheet rows — so cleaning the count does not
+ * drop the public total below what was already shown (~10,803).
+ */
+const BOOKMARKS_MANUAL_ADDITION = 9260
 /** Locations donated to outside the reporting form (added on top of live sheet totals). */
 const LOCATIONS_MANUAL_ADDITION = 5
 

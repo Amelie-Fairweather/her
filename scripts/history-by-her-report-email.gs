@@ -602,9 +602,19 @@ function computeImpactTotals_() {
     };
   }
 
+  // Test / non-count emails (still get certificate emails; just excluded from public totals)
+  var SKIP_EMAILS = {
+    "ameliefairweather@cvsdvt.org": true,
+  };
+
   var headers = sheet.getRange(1, 1, 1, lastCol).getValues()[0];
   var bookmarkCol = findColumnByKeywords_(headers, ["bookmark"]);
-  var placesCol = findColumnByKeywords_(headers, ["places you donated", "number of places", "places"]);
+  var placesCol = findColumnByKeywords_(headers, [
+    "places you donated",
+    "number of places",
+    "places",
+  ]);
+  var emailCol = findColumnByKeywords_(headers, ["email"]);
 
   var values = sheet.getRange(2, 1, lastRow, lastCol).getValues();
   for (var r = 0; r < values.length; r++) {
@@ -617,10 +627,22 @@ function computeImpactTotals_() {
       }
     }
     if (!hasAny) continue;
-    responses++;
 
-    if (bookmarkCol >= 0) bookmarks += parseNumber_(row[bookmarkCol]);
-    if (placesCol >= 0) places += parseNumber_(row[placesCol]);
+    var email = "";
+    if (emailCol >= 0) email = extractEmail_(row[emailCol]);
+    if (email && SKIP_EMAILS[email.toLowerCase()]) continue;
+    // Incomplete rows without a real email (e.g. "mtonoki")
+    if (emailCol >= 0 && !email) continue;
+
+    var rowBookmarks = bookmarkCol >= 0 ? parseBookmarkNumber_(row[bookmarkCol]) : 0;
+    var rowPlaces = placesCol >= 0 ? parsePlacesNumber_(row[placesCol]) : 0;
+
+    // Skip junk rows with no usable bookmark count
+    if (rowBookmarks <= 0) continue;
+
+    responses++;
+    bookmarks += rowBookmarks;
+    places += rowPlaces;
   }
 
   return {
@@ -634,7 +656,6 @@ function computeImpactTotals_() {
 function findColumnByKeywords_(headers, keywords) {
   var i;
   var k;
-  // Prefer the most specific keyword match first
   for (k = 0; k < keywords.length; k++) {
     var needle = String(keywords[k]).toLowerCase();
     for (i = 0; i < headers.length; i++) {
@@ -648,11 +669,46 @@ function findColumnByKeywords_(headers, keywords) {
   return -1;
 }
 
+/** Bookmarks: plain numbers, #102, "About 100". Ignores prose with no clear total. */
+function parseBookmarkNumber_(value) {
+  if (typeof value === "number" && isFinite(value)) {
+    return Math.max(0, Math.round(value));
+  }
+  var text = String(value || "")
+    .replace(/,/g, "")
+    .trim();
+  var pure = text.match(/^#?\s*(\d+)\s*$/);
+  if (pure) return parseInt(pure[1], 10);
+  var about = text.match(/^(?:about|approx\.?|approximately|~)\s*(\d+)\s*$/i);
+  if (about) return parseInt(about[1], 10);
+  return 0;
+}
+
+/**
+ * Places: plain small integers, or "I've donated to 1 place...".
+ * Leading "1. school name" counts as 1. Pure prose with no number → 0.
+ */
+function parsePlacesNumber_(value) {
+  if (typeof value === "number" && isFinite(value)) {
+    var n = Math.round(value);
+    return n > 0 && n < 1000 ? n : 0;
+  }
+  var text = String(value || "")
+    .replace(/,/g, "")
+    .trim();
+  var pure = text.match(/^(\d+)\s*$/);
+  if (pure) return parseInt(pure[1], 10);
+  var placePhrase = text.match(/\b(\d+)\s+places?\b/i);
+  if (placePhrase) return parseInt(placePhrase[1], 10);
+  var lead = text.match(/^(\d+)\b/);
+  if (lead) {
+    var leadN = parseInt(lead[1], 10);
+    return leadN > 0 && leadN < 100 ? leadN : 0;
+  }
+  return 0;
+}
+
+/** @deprecated kept for any older callers */
 function parseNumber_(value) {
-  if (typeof value === "number" && isFinite(value)) return Math.max(0, Math.round(value));
-  var text = String(value || "").replace(/,/g, "");
-  var match = text.match(/-?\d+(\.\d+)?/);
-  if (!match) return 0;
-  var n = parseFloat(match[0]);
-  return isFinite(n) ? Math.max(0, Math.round(n)) : 0;
+  return parseBookmarkNumber_(value) || parsePlacesNumber_(value);
 }
