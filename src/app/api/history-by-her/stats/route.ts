@@ -24,6 +24,8 @@ export const revalidate = 0
 const BOOKMARKS_MANUAL_ADDITION = 9260
 /** Locations donated to outside the reporting form (added on top of live sheet totals). */
 const LOCATIONS_MANUAL_ADDITION = 5
+/** Public locations total should not display below this floor. */
+const LOCATIONS_DISPLAY_FLOOR = 36
 
 function toNonNegInt(value: unknown): number {
   const n = typeof value === 'number' ? value : Number(value)
@@ -35,8 +37,10 @@ function withManualAdditions(stats: HistoryByHerStats): HistoryByHerStats {
   return {
     ...stats,
     bookmarks: toNonNegInt(stats.bookmarks) + BOOKMARKS_MANUAL_ADDITION,
-    educationalInstitutions:
+    educationalInstitutions: Math.max(
+      LOCATIONS_DISPLAY_FLOOR,
       toNonNegInt(stats.educationalInstitutions) + LOCATIONS_MANUAL_ADDITION,
+    ),
   }
 }
 

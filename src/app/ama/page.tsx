@@ -2,6 +2,19 @@ import Link from 'next/link'
 import Image from 'next/image'
 import AmaSpeakerForm from '@/components/AmaSpeakerForm'
 
+const upcomingAmas = [
+  {
+    name: 'Cliff Burrows',
+    role: 'Former President of Starbucks U.S. operations',
+    date: 'Upcoming',
+    detail:
+      'Business-themed mentorship session with Cliff Burrows, former President of all Starbucks U.S. operations — a live Ask Me Anything on leadership, career paths, and building at scale.',
+    photoUrl: '/cliff-burrows.jpg',
+    photoAlt: 'Cliff Burrows, former President of Starbucks U.S. operations',
+    rsvpUrl: 'https://luma.com/jv5l8r73',
+  },
+]
+
 const pastAmas = [
   {
     name: 'Steve Stecklow',
@@ -69,8 +82,9 @@ export default function AmaPage() {
               <span className="font-semibold text-[#7A2454]">Steve Stecklow</span> (three-time Pulitzer
               Prize–winning journalist for Reuters), and{' '}
               <span className="font-semibold text-[#7A2454]">Rubina Fillion</span> (Head of AI Initiatives
-              at The New York Times) — bringing investigative reporting, journalism excellence, and AI
-              leadership into the same room as student organizers.
+              at The New York Times) — and is next welcoming{' '}
+              <span className="font-semibold text-[#7A2454]">Cliff Burrows</span> (former President of
+              Starbucks U.S. operations) for a business-themed mentorship session.
             </p>
             <p>
               Chapters join virtually from classrooms and living rooms across our network. One guest.
@@ -90,6 +104,46 @@ export default function AmaPage() {
             >
               Apply to be a speaker
             </a>
+          </div>
+        </section>
+
+        <section className="mb-14">
+          <h2 className="text-2xl md:text-3xl font-bold text-[#7A2454] mb-6">Upcoming AMA</h2>
+          <div className="space-y-6">
+            {upcomingAmas.map((ama) => (
+              <article
+                key={ama.name}
+                id="cliff-burrows"
+                className="bg-white rounded-2xl shadow-lg border-2 border-[#EB89B5]/40 overflow-hidden"
+              >
+                <div className="p-6 md:p-8">
+                  <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#EB89B5] mb-2">
+                    {ama.date}
+                  </p>
+                  <h3 className="text-xl md:text-2xl font-bold text-[#7A2454]">{ama.name}</h3>
+                  <p className="text-sm md:text-base text-[#EB89B5] font-semibold mt-1">{ama.role}</p>
+                  <p className="mt-3 text-gray-700 leading-relaxed">{ama.detail}</p>
+                  <a
+                    href={ama.rsvpUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex mt-5 items-center justify-center rounded-xl bg-[#EB89B5] text-white px-6 py-3 font-semibold hover:bg-[#7A2454] transition-colors"
+                  >
+                    RSVP on Luma →
+                  </a>
+                </div>
+                <div className="relative w-full aspect-[16/10] bg-[#FFD7E9]">
+                  <Image
+                    src={ama.photoUrl}
+                    alt={ama.photoAlt}
+                    fill
+                    className="object-cover object-top"
+                    sizes="(max-width: 768px) 100vw, 896px"
+                    priority
+                  />
+                </div>
+              </article>
+            ))}
           </div>
         </section>
 
