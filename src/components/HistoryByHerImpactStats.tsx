@@ -92,38 +92,14 @@ export default function HistoryByHerImpactStats({
 
   if (variant === 'banner') {
     return (
-      <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-3 sm:gap-x-8 md:gap-x-10">
-        <p className="leading-none">
-          <span className="font-bold tabular-nums text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
-            {bookmarksLabel}
-          </span>{' '}
-          <span className="text-white/90 text-base sm:text-lg md:text-xl lg:text-2xl font-semibold">
-            bookmarks donated
-          </span>
-        </p>
-        <span className="hidden sm:inline text-white/40 text-3xl md:text-4xl" aria-hidden>
-          ·
+      <p className="leading-none text-center">
+        <span className="font-bold tabular-nums text-white text-xl sm:text-2xl md:text-3xl">
+          {bookmarksLabel}
+        </span>{' '}
+        <span className="text-white/90 text-xs sm:text-sm md:text-base font-semibold">
+          bookmarks donated
         </span>
-        <p className="leading-none">
-          <span className="font-bold tabular-nums text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
-            {locationsLabel}
-          </span>{' '}
-          <span className="text-white/90 text-base sm:text-lg md:text-xl lg:text-2xl font-semibold">
-            locations
-          </span>
-        </p>
-        <span className="hidden sm:inline text-white/40 text-3xl md:text-4xl" aria-hidden>
-          ·
-        </span>
-        <p className="leading-none">
-          <span className="font-bold tabular-nums text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
-            {volunteersLabel}
-          </span>{' '}
-          <span className="text-white/90 text-base sm:text-lg md:text-xl lg:text-2xl font-semibold">
-            registered volunteers
-          </span>
-        </p>
-      </div>
+      </p>
     )
   }
 
