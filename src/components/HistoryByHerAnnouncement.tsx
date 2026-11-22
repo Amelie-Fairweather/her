@@ -20,6 +20,22 @@ export default function HistoryByHerAnnouncement() {
           </Link>
         </div>
         <HistoryByHerImpactStats variant="banner" />
+        <div className="w-full max-w-3xl border-t border-white/20 pt-5 sm:pt-6">
+          <Link
+            href="/ama#cliff-burrows"
+            className="group flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-5"
+          >
+            <p className="text-sm sm:text-base md:text-lg font-semibold leading-snug text-white/95 group-hover:text-white">
+              <span className="uppercase tracking-[0.16em] text-[#FFD7E9] text-[10px] sm:text-xs block sm:inline sm:mr-2 mb-1 sm:mb-0">
+                New
+              </span>
+              Ask Me Anything opportunity — Cliff Burrows, former President of Starbucks
+            </p>
+            <span className="inline-flex shrink-0 items-center justify-center rounded-none border-2 border-white/80 bg-transparent px-5 py-2 text-xs md:text-sm font-bold uppercase tracking-[0.14em] text-white transition-colors group-hover:bg-white group-hover:text-[#7A2454]">
+              Learn more
+            </span>
+          </Link>
+        </div>
       </div>
     </div>
   )

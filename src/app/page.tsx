@@ -11,22 +11,6 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-[#FFFBF3] overflow-x-hidden">
       <HistoryByHerAnnouncement />
-      <Link
-        href="/ama#cliff-burrows"
-        className="relative z-50 block w-full bg-[#EB89B5] text-white transition-colors hover:bg-[#7A2454]"
-      >
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-center gap-2 px-4 py-4 text-center sm:flex-row sm:gap-4 sm:py-5">
-          <p className="text-base sm:text-lg md:text-xl font-bold leading-snug">
-            <span className="uppercase tracking-[0.16em] text-white/90 text-xs sm:text-sm block sm:inline sm:mr-2.5 mb-1 sm:mb-0">
-              New
-            </span>
-            Ask Me Anything opportunity — Cliff Burrows, former President of Starbucks
-          </p>
-          <span className="inline-flex shrink-0 items-center justify-center rounded-none border-2 border-white bg-white px-5 py-2 text-xs md:text-sm font-bold uppercase tracking-[0.14em] text-[#7A2454]">
-            Learn more
-          </span>
-        </div>
-      </Link>
       <HomeParallaxHero />
 
       <main className="max-w-7xl mx-auto px-4 pt-0 pb-16">
