@@ -7,6 +7,7 @@ import ScholarshipTracker from '@/components/ScholarshipTracker'
 import ImpactStats from '@/components/ImpactStats'
 import FounderQuoteParallax from '@/components/FounderQuoteParallax'
 import StudentVoicesSection from '@/components/StudentVoicesSection'
+import ChapterBulletinBoard from '@/components/ChapterBulletinBoard'
 
 export default function HomeParallaxHero() {
   const [offsetY, setOffsetY] = useState(0)
@@ -133,7 +134,7 @@ export default function HomeParallaxHero() {
                 Empowering the Next Generation Through Complete History
               </h3>
               <p className="text-sm md:text-lg font-semibold text-[#7A2454] max-w-3xl mx-auto mb-4 md:mb-5">
-                Across the world, students consistently report next to no education.
+                Across the world, students consistently report next to no women&apos;s history education.
               </p>
               <p className="text-sm md:text-lg text-gray-700 max-w-3xl mx-auto mb-3 md:mb-4">
                 A well-rounded education is impossible without understanding the full scope of history. Today, millions of
@@ -154,6 +155,8 @@ export default function HomeParallaxHero() {
       <FounderQuoteParallax />
 
       <StudentVoicesSection />
+
+      <ChapterBulletinBoard />
 
       <div className="relative z-20 mb-16 md:mb-20 max-w-7xl mx-auto px-4 md:px-6 bg-[#FFFBF3] pt-2 md:pt-4">
         <ScholarshipTracker />

@@ -86,8 +86,11 @@ export default function Home() {
             </div>
           </Link>
 
-          <Link href="/ama" className="group">
-            <div className="bg-white/95 rounded-2xl shadow-[0_16px_40px_-24px_rgba(122,36,84,0.35)] p-6 md:p-10 text-center hover:shadow-[0_24px_50px_-20px_rgba(122,36,84,0.4)] transition-all duration-300 transform hover:-translate-y-2 border border-[#EB89B5]/15 hover:border-[#EB89B5]/45 h-[240px] md:h-[320px] flex flex-col justify-center">
+          <Link href="/ama#cliff-burrows" className="group">
+            <div className="relative bg-white/95 rounded-2xl shadow-[0_16px_40px_-24px_rgba(122,36,84,0.35)] p-6 md:p-10 text-center hover:shadow-[0_24px_50px_-20px_rgba(122,36,84,0.4)] transition-all duration-300 transform hover:-translate-y-2 border border-[#EB89B5]/15 hover:border-[#EB89B5]/45 h-[240px] md:h-[320px] flex flex-col justify-center">
+              <span className="absolute top-3 right-3 md:top-4 md:right-4 text-[10px] md:text-xs font-bold uppercase tracking-[0.18em] text-[#EB89B5]">
+                New
+              </span>
               <div className="w-14 h-14 md:w-20 md:h-20 bg-[#FFD7E9] rounded-full flex items-center justify-center mx-auto mb-4 md:mb-5 group-hover:bg-[#EB89B5] transition-colors">
                 <svg className="w-7 h-7 md:w-10 md:h-10 text-[#EB89B5] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
@@ -95,7 +98,7 @@ export default function Home() {
               </div>
               <h3 className="text-base md:text-2xl font-bold text-gray-800 mb-2 md:mb-3">Ask Me Anything</h3>
               <p className="text-sm md:text-lg text-gray-600 group-hover:text-gray-700 leading-snug px-1">
-                Live conversations with journalists, leaders, and changemakers.
+                New opportunity — Cliff Burrows, former President of Starbucks.
               </p>
             </div>
           </Link>
